@@ -1,4 +1,4 @@
-# Sprint9EventsApp
+# Sprint 9 Events App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
 
