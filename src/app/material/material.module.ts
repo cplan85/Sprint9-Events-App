@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
@@ -25,6 +26,7 @@ import {MatCardModule} from '@angular/material/card';
 
   MatButtonModule,
   MatCardModule,
+  MatDividerModule,
   MatFormFieldModule,
   MatGridListModule,
   MatInputModule,
