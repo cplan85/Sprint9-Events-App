@@ -5,49 +5,47 @@ autocomplete="off"
 [formGroup]="myForm"
 (ngSubmit)="login()">
                 
-  <h1>Login</h1>
-
- 
- <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-      <input matInput 
-               type="email" 
-               formControlName="email"
-               placeholder="enter your email">
-               <mat-error *ngIf="myForm.value.email.invalid">Email is incorrect</mat-error>
- </mat-form-field>
- <br>
-
- <mat-form-field appearance="fill">
-    <mat-label>Password</mat-label>
-      <input matInput
-      type="password"
-      formControlName="password"
-               placeholder="enter your password">
- </mat-form-field>
-
- 
-    
-    
-    <div class="container-login100-form-btn">
-        <div class="wrap-login100-form-btn">
-            <div class="login100-form-bgbtn"></div>
-            <button  
-            mat-raised-button color="warn"
-            class="login100-form-btn"
-            [disabled]="myForm.invalid">
-                Login
-            </button>
+  <div class="main-form-content">
+      <h1>Login</h1>
+      
+       
+       <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+          <input matInput
+                   type="email"
+                   formControlName="email"
+                   placeholder="enter your email">
+                   <mat-error *ngIf="myForm.value.email.invalid">Email is incorrect</mat-error>
+       </mat-form-field>
+       <br>
+      
+       <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+          <input matInput
+          type="password"
+          formControlName="password"
+                   placeholder="enter your password">
+       </mat-form-field>
+      
+      
+      
+            <div>
+                <div></div>
+                <button
+                mat-raised-button color="warn"
+                class="login100-form-btn"
+                [disabled]="myForm.invalid">
+                    Login
+                </button>
+            </div>
+      
+        <div class="flex-col-c p-t-60">
+            <span class="txt1 p-b-17">
+                Don't have an account?
+            </span>
+            <a routerLink="/auth/register" class="txt2">
+               Create one here
+            </a>
         </div>
-    </div>
-
-    <div class="flex-col-c p-t-60">
-        <span class="txt1 p-b-17">
-            Don't have an account?
-        </span>
-
-        <a routerLink="/auth/register" class="txt2">
-           Create one here
-        </a>
-    </div>
+  </div>
 </form>
