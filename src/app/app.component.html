@@ -1,3 +1,70 @@
-<h1>Event Zorro App</h1>
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="push">
 
-<router-outlet></router-outlet>
+        <mat-toolbar>
+            <span>Menu</span>
+            <span class="spacer"></span>
+            <button 
+            mat-icon-button
+            (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+            <a 
+            routerLink="./list" 
+            mat-list-item
+            (click)="sidenav.toggle()">
+            <mat-icon mat-list-icon>label</mat-icon>
+                <span>List of Heroes</span>
+            </a>
+
+            <a 
+            routerLink="./add" 
+            mat-list-item
+            (click)="sidenav.toggle()">
+            <mat-icon mat-list-icon>add</mat-icon>
+                <span>Add Heroe</span>
+            </a>
+
+            <a 
+            routerLink="./find" 
+            mat-list-item
+            (click)="sidenav.toggle()">
+            <mat-icon mat-list-icon>search</mat-icon>
+                <span>Find Heroe</span>
+            </a>
+
+        </mat-nav-list>
+        
+    </mat-sidenav>
+
+    <mat-toolbar>
+        <button 
+        mat-icon-button
+        (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+            <img src="../assets/logo.svg" alt="">
+        </button>
+
+        <span class="spacer"></span>
+
+        <button 
+        
+        mat-button>
+            About
+        </button>
+
+        <span>auth.usuario</span>
+        <button 
+        
+        mat-button>
+            Login
+        </button>
+    </mat-toolbar>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+</mat-sidenav-container>
+
