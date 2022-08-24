@@ -1,37 +1,39 @@
+
 <form 
 class="login100-form" 
 autocomplete="off"
 [formGroup]="myForm"
 (ngSubmit)="login()">
                 
-    <span class="login100-form-title p-b-49">
-        Login
-    </span>
+  <h1>Login</h1>
 
-    <div class="wrap-input100 m-b-23">
-        <span class="label-input100">Email</span>
-        <input class="input100"
+ 
+ <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+      <input matInput 
                type="email" 
                formControlName="email"
-               placeholder="Ingrese su email">
-        <span class="focus-input100"></span>
-    </div>
+               placeholder="enter your email">
+               <mat-error *ngIf="myForm.value.email.invalid">Email is incorrect</mat-error>
+ </mat-form-field>
+ <br>
 
-    <div class="wrap-input100">
-        <span class="label-input100">Password</span>
-        <input class="input100"
-               type="password"
-               formControlName="password"
-               placeholder="Ingrese su contraseña">
-        <span class="focus-input100"></span>
-    </div>
+ <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+      <input matInput
+      type="password"
+      formControlName="password"
+               placeholder="enter your password">
+ </mat-form-field>
+
+ 
     
-    <div class="text-right p-t-8 p-b-31"></div>
     
     <div class="container-login100-form-btn">
         <div class="wrap-login100-form-btn">
             <div class="login100-form-bgbtn"></div>
-            <button 
+            <button  
+            mat-raised-button color="warn"
             class="login100-form-btn"
             [disabled]="myForm.invalid">
                 Login
