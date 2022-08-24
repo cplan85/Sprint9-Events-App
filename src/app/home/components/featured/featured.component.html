@@ -1,2 +1,18 @@
 <h2>Featured Events</h2>
 <mat-divider></mat-divider>
+<br>
+
+<div class="container">
+    <div fxLayout="row wrap"
+    fxLayout.xs="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="1.2rem"
+    >
+        <div fxFlex="20"
+            fxFlex.lg="15"
+            fxFlex.sm="30"
+        *ngFor="let featuredEvent of featuredEvents">
+        <app-featured-card [featuredEvent]="featuredEvent" ></app-featured-card>
+        </div>
+    </div>
+</div>
