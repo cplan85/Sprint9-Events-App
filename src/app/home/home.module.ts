@@ -10,6 +10,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MapComponent } from './components/map/map.component';
 import { FriendEventsComponent } from './components/friend-events/friend-events.component';
 import { FeaturedCardComponent } from './components/featured-card/featured-card.component';
+import { MapScreenComponent } from './map-screen/map-screen.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 
@@ -21,6 +23,8 @@ import { FeaturedCardComponent } from './components/featured-card/featured-card.
     MapComponent,
     FriendEventsComponent,
     FeaturedCardComponent,
+    MapScreenComponent,
+    LoadingComponent,
   ],
   imports: [
     CommonModule,
