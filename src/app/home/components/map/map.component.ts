@@ -1,3 +1,4 @@
+import { MapService } from './../../../services/map.service';
 import { Component, AfterViewInit,ElementRef, ViewChild, OnInit} from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { PlacesService } from 'src/app/services/places.service';
@@ -19,7 +20,9 @@ export class MapComponent implements AfterViewInit, OnInit {
   currentLat: number = 41.40378416042038;
   currentLong: number = 2.1747936849217937;
 
-  constructor(private placesService: PlacesService) { }
+  constructor(private placesService: PlacesService,
+    private mapService: MapService
+    ) { }
 
   ngOnInit(): void {
     
@@ -53,7 +56,7 @@ const popup = new mapboxgl.Popup()
   .setPopup(popup)
   .addTo(map)
 
-
+  this.mapService.setMap( map)
 
 
   }

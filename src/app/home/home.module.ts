@@ -12,6 +12,7 @@ import { FriendEventsComponent } from './components/friend-events/friend-events.
 import { FeaturedCardComponent } from './components/featured-card/featured-card.component';
 import { MapScreenComponent } from './map-screen/map-screen.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-location.component';
 
 
 
@@ -25,6 +26,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     FeaturedCardComponent,
     MapScreenComponent,
     LoadingComponent,
+    BtnMyLocationComponent,
   ],
   imports: [
     CommonModule,
