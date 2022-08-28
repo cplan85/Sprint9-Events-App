@@ -1,9 +1,15 @@
 <div class="search-container">
-    <input type="text"
-    class="form-control"
-    placeholder="Find a place..."
-    #txtQuery
-    (keyup)="onQueryChange(txtQuery.value)"
-    >
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Find a place...</mat-label>
+        <input 
+        matInput 
+        placeholder="New York City" 
+        #txtQuery
+        (keyup)="onQueryChange(txtQuery.value)"
+        class="form-control"
+        value="">
+      </mat-form-field>
+
     <app-search-results></app-search-results>
 </div>
