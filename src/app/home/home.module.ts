@@ -13,6 +13,8 @@ import { FeaturedCardComponent } from './components/featured-card/featured-card.
 import { MapScreenComponent } from './map-screen/map-screen.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-location.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 
 
@@ -27,6 +29,8 @@ import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-loca
     MapScreenComponent,
     LoadingComponent,
     BtnMyLocationComponent,
+    SearchBarComponent,
+    SearchResultsComponent,
   ],
   imports: [
     CommonModule,
