@@ -1,1 +1,39 @@
-<p>search-results works!</p>
+<div *ngIf="isLoadingPlaces">
+    <div class="alert alert-primary mt-2 text-center">
+        <h6>Loading</h6>
+        <span>Wait please...</span>
+    </div>
+</div>
+
+
+<mat-accordion>
+    <mat-expansion-panel 
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+    [disabled]="places.length==0"
+    >
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+       {{!isLoadingPlaces && places.length >0 ? 'Show' : 'Search'}}
+      </mat-panel-title>
+      <mat-panel-description>
+       {{places.length}} Results
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+<mat-selection-list class="list-group mt-2" *ngIf="places.length > 0" [multiple]="false">
+    <mat-list-option *ngFor="let place of places" 
+    [class.active]="place.id === selectedId"
+    (click)="flyTo(place)"
+    >
+        <div mat-line>{{place.text}}</div>
+        <div mat-line>{{place.place_name}}</div>
+        <!-- <button 
+        mat-flat-button
+        [color]="(place.id === selectedId) ? 'primary' : 'accent' "
+        class="btn btn-sm btn-outline-primary"
+        [ngClass]="(place.id === selectedId) ? 'btn-outline-light' : 'btn-outline-primary'" 
+        >Directions</button> -->
+    </mat-list-option>
+</mat-selection-list>
+</mat-expansion-panel>
+</mat-accordion>
