@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { PlacesService } from 'src/app/services/places.service';
+import { EventsService } from './../../../services/events.service';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-featured',
   templateUrl: './featured.component.html',
   styleUrls: ['./featured.component.scss']
 })
-export class FeaturedComponent implements OnInit {
+export class FeaturedComponent implements OnInit, AfterViewInit {
 
  featuredEvents: any[] = [
     {name: "Lebanon Hanover",
@@ -34,9 +36,20 @@ export class FeaturedComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(private placesService: PlacesService  ,private eventsService: EventsService) { }
 
   ngOnInit(): void {
+    this.placesService.getUserLocation()
+   
   }
+
+  ngAfterViewInit(): void {
+    // this.eventsService.getLocalEvents().subscribe(resp => {
+    //   console.log(resp._embedded, "Featured Events")
+  
+    
+    // })
+  }
+  
 
 }

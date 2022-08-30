@@ -30,3 +30,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .spacer {
     flex: 1 1 auto;
 }
+
+.marker {
+  background-image: url('./assets/search-marker.svg');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.popupImg {
+  display:block;
+  width:100%;
+}

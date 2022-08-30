@@ -1,3 +1,4 @@
+import { MapService } from 'src/app/services/map.service';
 import { PlacesApiClient } from './../home/api/placesApiClient';
 import { PlacesResponse, Feature } from './../home/interfaces/places';
 import { Injectable } from '@angular/core';
@@ -15,7 +16,8 @@ get isUserLocationReady(): boolean {
   return !!this.userLocation
 }
 
-  constructor(private placesApi: PlacesApiClient) {
+  constructor(private placesApi: PlacesApiClient,
+    private mapService: MapService) {
     this.getUserLocation();
    }
 
@@ -54,6 +56,8 @@ get isUserLocationReady(): boolean {
 
       this.isLoadingPlaces = false;
       this.places = resp.features;
+
+      this.mapService.createMarkersFromPlaces(this.places, this.userLocation!)
 
     });
 

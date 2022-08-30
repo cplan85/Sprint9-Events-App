@@ -1,3 +1,4 @@
+import { EventsService } from './../../../services/events.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 interface FeaturedEvent  {name: string,
@@ -24,7 +25,9 @@ export class FeaturedCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
   }
+
+    
+  
 
 }

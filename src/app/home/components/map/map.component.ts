@@ -1,3 +1,4 @@
+import { EventsService } from './../../../services/events.service';
 import { MapService } from './../../../services/map.service';
 import { Component, AfterViewInit,ElementRef, ViewChild, OnInit} from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -21,12 +22,15 @@ export class MapComponent implements AfterViewInit, OnInit {
   currentLong: number = 2.1747936849217937;
 
   constructor(private placesService: PlacesService,
-    private mapService: MapService
+    private mapService: MapService,
+    private eventsService: EventsService
     ) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
+   
+
     
-  }
+    }
 
   ngAfterViewInit(): void {
 
@@ -57,6 +61,35 @@ const popup = new mapboxgl.Popup()
   .addTo(map)
 
   this.mapService.setMap( map)
+
+  this.eventsService.getLocalEvents().subscribe(resp => {
+    console.log(resp, "full Response")
+
+    resp._embedded.events.forEach(event => {
+
+      const eventPopup = new mapboxgl.Popup()
+      .setHTML(`
+      <h6>${event.name}</h6>
+      <span>${event.dates.start.localDate}</span>
+      <img class="popupImg" src="${event.images[0].url}">
+      <span>${event.priceRanges[1].min} -${event.priceRanges[1].max} ${event.priceRanges[1].currency}</span>
+      <a href=${event.url}>Event Link</a>
+      `);
+    
+        //console.log(event._embedded.venues[0].location, "specific")
+        const lat = parseFloat(event._embedded.venues[0].location.latitude)
+        const long = parseFloat(event._embedded.venues[0].location.longitude)
+    
+    
+        new mapboxgl.Marker({color: 'red', draggable:true})
+        .setLngLat([long, lat])
+        .setPopup(eventPopup)
+        .addTo(map)
+
+    })
+
+  
+  })
 
 
   }
