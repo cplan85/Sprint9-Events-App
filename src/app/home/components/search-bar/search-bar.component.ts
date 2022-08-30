@@ -7,6 +7,8 @@ import { PlacesService } from 'src/app/services/places.service';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent {
+  
+  showSearch: boolean = false;
 
   private debounceTimer?: NodeJS.Timeout;
 
@@ -21,5 +23,10 @@ export class SearchBarComponent {
       console.log('Send this query', query)
     }, 500);
   }
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
+  }
+  
 
 }

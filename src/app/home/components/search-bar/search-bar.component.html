@@ -1,6 +1,21 @@
 
-<div class="search-container">
-  
+<button id="search-icon" *ngIf="!showSearch; else elseBlock"
+mat-fab color="accent" 
+aria-label="Example icon button with a bookmark icon"
+(click)="toggleSearch()"
+>
+    <mat-icon>search</mat-icon>
+  </button>
+  <ng-template #elseBlock>
+ <div class="search-container">
+  <div class="close-button-container"
+  fxLayout="row" fxLayoutAlign="space-between center"
+  >
+  <p>Change your location</p>
+    <button
+    mat-button
+    (click)="toggleSearch()">X</button>
+  </div>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label> <mat-icon>search</mat-icon> Find a place...</mat-label>
@@ -14,4 +29,5 @@
       </mat-form-field>
 
     <app-search-results></app-search-results>
-</div>
+</div> 
+</ng-template>

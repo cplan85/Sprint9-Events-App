@@ -46,7 +46,7 @@ export class MapService {
       <span>${place.place_name}</span>`)
 
       const el = document.createElement('div');
-      el.className = 'marker';
+      el.className = 'search-marker';
 
       
 

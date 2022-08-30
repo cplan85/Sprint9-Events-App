@@ -67,21 +67,26 @@ const popup = new mapboxgl.Popup()
 
     resp._embedded.events.forEach(event => {
 
+      console.log(event.classifications[0].segment.name)
+
       const eventPopup = new mapboxgl.Popup()
       .setHTML(`
       <h6>${event.name}</h6>
       <span>${event.dates.start.localDate}</span>
       <img class="popupImg" src="${event.images[0].url}">
-      <span>${event.priceRanges[1].min} -${event.priceRanges[1].max} ${event.priceRanges[1].currency}</span>
+      <p>${event.priceRanges[0].min} -${event.priceRanges[1].max} ${event.priceRanges[1].currency}</p>
       <a href=${event.url}>Event Link</a>
       `);
+
+      const el = document.createElement('div');
+      el.className = 'music-marker';
     
         //console.log(event._embedded.venues[0].location, "specific")
         const lat = parseFloat(event._embedded.venues[0].location.latitude)
         const long = parseFloat(event._embedded.venues[0].location.longitude)
     
     
-        new mapboxgl.Marker({color: 'red', draggable:true})
+        new mapboxgl.Marker(el, { draggable:true})
         .setLngLat([long, lat])
         .setPopup(eventPopup)
         .addTo(map)

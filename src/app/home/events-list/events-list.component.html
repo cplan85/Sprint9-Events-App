@@ -1,0 +1,25 @@
+<button id="events-icon"  *ngIf="!showEvents; else elseBlock"
+
+mat-fab color="accent" 
+aria-label="Example icon button with a bookmark icon"
+matBadge="20"
+matBadgeColor="warn"
+(click)="toggleEvents()"
+>
+    <mat-icon>music_note</mat-icon>
+  </button>
+
+  <ng-template #elseBlock>
+    <div class="search-container">
+     <div class="close-button-container"
+     fxLayout="row" fxLayoutAlign="space-between center"
+     >
+     <p>Events in Barcelona</p>
+       <button
+       mat-button
+       (click)="toggleEvents()">X</button>
+     </div>
+   
+       <app-search-results></app-search-results>
+   </div> 
+   </ng-template>

@@ -15,6 +15,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-location.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { EventsListComponent } from './events-list/events-list.component';
 
 
 
@@ -31,6 +32,7 @@ import { SearchResultsComponent } from './components/search-results/search-resul
     BtnMyLocationComponent,
     SearchBarComponent,
     SearchResultsComponent,
+    EventsListComponent,
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,8 @@
+
+
 .search-container {
     position:absolute;
-    top: 20px;
+    top: 100px;
     left:20px;
     width: 250px;
     z-index:1000;
@@ -12,21 +14,17 @@
     border: 1px solid grey;
 }
 
-mat-form-field {
-    width:100%;
-}
-
-#search-icon {
-    z-index: 999;
-    position:absolute;
-    top: 20px;
-    left:20px;
-    display:block;
-}
-
 .close-button-container {
     display: flex;
     align-items: flex-end;
     margin-bottom: .5rem;
     
+}
+
+#events-icon {
+    z-index: 999;
+    position:absolute;
+    top: 100px;
+    left:20px;
+    display:block;
 }
