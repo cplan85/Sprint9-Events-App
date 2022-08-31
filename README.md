@@ -11,10 +11,16 @@ Angular is used for the front-end UI Components. Node and Express comprise the b
 * [![Express.JS][Express.js]][Expressjs-url]
 * ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 * [![Node.JS][Node.js]][Node-url]
+* [![MapBox][MapBox.com]][Mapbox-url]
+* ![MaterialUI](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)
 
 Tools Used: 
 * ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+* ![Illustrator](https://img.shields.io/badge/Adobe%20Illustrator-FF9A00?style=for-the-badge&logo=adobe%20illustrator&logoColor=white)
 
+APIs Used: 
+* ![TicketMaster](https://img.shields.io/badge/TicketMaster%20Discovery-0592CD?style=for-the-badge)
+* [![MapBox][MapBox-places]][Mapbox-url]
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
@@ -48,4 +54,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 [Express.js]: https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
 [Expressjs-url]: https://expressjs.com/en/guide/routing.html
+
+[MapBox-places]: https://img.shields.io/badge/MapBox%20Places-000000?style=for-the-badge&logo=mapbox&logoColor=white
+[MapBox.com]: https://img.shields.io/badge/MapBox-000000?style=for-the-badge&logo=mapbox&logoColor=white
+[Mapbox-url]: https://www.mapbox.com/
 
