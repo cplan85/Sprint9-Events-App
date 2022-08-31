@@ -18,6 +18,8 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { EventsListComponent } from './events-list/events-list.component';
 import { BtnLoadMoreComponent } from './components/btn-load-more/btn-load-more.component';
 import { EventsPanelsComponent } from './components/events-panels/events-panels.component';
+import { BtnQuestionMarkComponent } from './components/btn-question-mark/btn-question-mark.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -37,6 +39,8 @@ import { EventsPanelsComponent } from './components/events-panels/events-panels.
     EventsListComponent,
     BtnLoadMoreComponent,
     EventsPanelsComponent,
+    BtnQuestionMarkComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
