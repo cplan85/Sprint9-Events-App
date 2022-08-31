@@ -2,11 +2,11 @@
 
 mat-fab color="accent" 
 aria-label="Example icon button with a bookmark icon"
-matBadge="20"
+[matBadge]="mapEvents.length"
 matBadgeColor="warn"
 (click)="toggleEvents()"
 >
-    <mat-icon>music_note</mat-icon>
+    <mat-icon>event_note</mat-icon>
   </button>
 
   <ng-template #elseBlock>
@@ -20,6 +20,6 @@ matBadgeColor="warn"
        (click)="toggleEvents()">X</button>
      </div>
    
-       <app-search-results></app-search-results>
+        <app-events-panels></app-events-panels>
    </div> 
    </ng-template>

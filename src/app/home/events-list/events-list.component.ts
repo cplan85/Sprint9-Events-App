@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AppEvent } from './../interfaces/appEvents';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-events-list',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class EventsListComponent implements OnInit {
   showEvents: boolean = false;
 
+  @Input() mapEvents!: AppEvent[];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -15,6 +18,7 @@ export class EventsListComponent implements OnInit {
 
   toggleEvents() {
     this.showEvents = !this.showEvents;
+    //console.log(this.mapEvents)
   }
 
 }

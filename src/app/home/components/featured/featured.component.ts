@@ -2,6 +2,7 @@ import { Feature } from './../../interfaces/places';
 import { PlacesService } from 'src/app/services/places.service';
 import { EventsService } from './../../../services/events.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AppEvent } from '../../interfaces/appEvents';
 
 @Component({
   selector: 'app-featured',
@@ -13,7 +14,7 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
 
  places: Feature[] = [];
 
- featuredEvents: any[] = [
+ featuredEvents: AppEvent[] = [
   ]
 
   private debounceTimer?: NodeJS.Timeout;
@@ -48,6 +49,7 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
 
         resp._embedded.events.forEach(event => { 
           this.featuredEvents.push({
+            id:event.id,
             name: event.name,
             date: event.dates.start.localDate,
             startTime: event.dates.start.localTime,
@@ -55,10 +57,13 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
             min: event.priceRanges[0].min,
             max: event.priceRanges[1].max,
             venue: event._embedded.venues[0].name,
+            venueImages:  event._embedded.venues[0].images,
             venueUrl: event._embedded.venues[0].url,
-            address: event._embedded.venues[0].address,
+            address: event._embedded.venues[0].address.line1,
             promoter: event.promoter.name,
-            type: event.classifications[0].segment.name
+            type: event.classifications[0].segment.name,
+            lat: parseFloat(event._embedded.venues[0].location.latitude),
+            long: parseFloat(event._embedded.venues[0].location.longitude),
           })
         }
         )

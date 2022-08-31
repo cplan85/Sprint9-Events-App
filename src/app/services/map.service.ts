@@ -1,3 +1,4 @@
+import { AppEvent } from './../home/interfaces/appEvents';
 import { Feature } from './../home/interfaces/places';
 import { Injectable } from '@angular/core';
 import { LngLatBounds, LngLatLike, Map, Marker, Popup } from 'mapbox-gl';
@@ -6,6 +7,8 @@ import { LngLatBounds, LngLatLike, Map, Marker, Popup } from 'mapbox-gl';
   providedIn: 'root'
 })
 export class MapService {
+
+  mapEvents: AppEvent[] = [];
 
   private map: Map | undefined;
   private markers: Marker[] = [];

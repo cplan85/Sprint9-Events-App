@@ -1,3 +1,4 @@
+import { AppEvent } from './../../interfaces/appEvents';
 import { EventsService } from './../../../services/events.service';
 import { MapService } from './../../../services/map.service';
 import { Component, AfterViewInit,ElementRef, ViewChild, OnInit} from '@angular/core';
@@ -20,6 +21,8 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   currentLat: number = 41.40378416042038;
   currentLong: number = 2.1747936849217937;
+
+  mapEvents: AppEvent[] = [];
 
   constructor(private placesService: PlacesService,
     private mapService: MapService,
@@ -66,6 +69,25 @@ const popup = new mapboxgl.Popup()
     console.log(resp, "full Response")
 
     resp._embedded.events.forEach(event => {
+
+      this.mapEvents.push({
+        id:event.id,
+        name: event.name,
+        date: event.dates.start.localDate,
+        startTime: event.dates.start.localTime,
+        img: event.images[0].url,
+        min: event.priceRanges[0].min,
+        max: event.priceRanges[1].max,
+        venue: event._embedded.venues[0].name,
+        venueImages:  event._embedded.venues[0].images,
+        venueUrl: event._embedded.venues[0].url,
+        address: event._embedded.venues[0].address.line1,
+        promoter: event.promoter.name,
+        type: event.classifications[0].segment.name,
+        lat: parseFloat(event._embedded.venues[0].location.latitude),
+        long: parseFloat(event._embedded.venues[0].location.longitude)
+      })
+      this.mapService.mapEvents = this.mapEvents;
 
       console.log(event.classifications[0].segment.name)
 

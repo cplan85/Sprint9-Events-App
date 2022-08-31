@@ -1,18 +1,6 @@
-import { EventsService } from './../../../services/events.service';
+import { AppEvent } from './../../interfaces/appEvents';
 import { Component, Input, OnInit } from '@angular/core';
 
-interface FeaturedEvent  {name: string,
-venue: string,
-address: string,
-min: string,
-max: string,
-id: string,
-img: string,
-date: string,
-promoter: string,
-startTime: string,
-type: string
-}
 
 @Component({
   selector: 'app-featured-card',
@@ -25,7 +13,7 @@ export class FeaturedCardComponent implements OnInit {
 
   constructor() { }
 
-  @Input() featuredEvent!: FeaturedEvent;
+  @Input() featuredEvent!: AppEvent;
 
   ngOnInit(): void {
 

@@ -17,6 +17,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { EventsListComponent } from './events-list/events-list.component';
 import { BtnLoadMoreComponent } from './components/btn-load-more/btn-load-more.component';
+import { EventsPanelsComponent } from './components/events-panels/events-panels.component';
 
 
 
@@ -35,6 +36,7 @@ import { BtnLoadMoreComponent } from './components/btn-load-more/btn-load-more.c
     SearchResultsComponent,
     EventsListComponent,
     BtnLoadMoreComponent,
+    EventsPanelsComponent,
   ],
   imports: [
     CommonModule,
