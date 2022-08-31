@@ -8,6 +8,10 @@ min: string,
 max: string,
 id: string,
 img: string,
+date: string,
+promoter: string,
+startTime: string,
+type: string
 }
 
 @Component({

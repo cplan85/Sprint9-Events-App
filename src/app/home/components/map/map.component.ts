@@ -62,7 +62,7 @@ const popup = new mapboxgl.Popup()
 
   this.mapService.setMap( map)
 
-  this.eventsService.getLocalEvents().subscribe(resp => {
+  this.eventsService.getLocalEvents(this.placesService.userLocation!, 40).subscribe(resp => {
     console.log(resp, "full Response")
 
     resp._embedded.events.forEach(event => {

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { MapService } from 'src/app/services/map.service';
 import { PlacesApiClient } from './../home/api/placesApiClient';
 import { PlacesResponse, Feature } from './../home/interfaces/places';
@@ -17,6 +18,7 @@ get isUserLocationReady(): boolean {
 }
 
   constructor(private placesApi: PlacesApiClient,
+    private http: HttpClient,
     private mapService: MapService) {
     this.getUserLocation();
    }
@@ -60,8 +62,11 @@ get isUserLocationReady(): boolean {
       this.mapService.createMarkersFromPlaces(this.places, this.userLocation!)
 
     });
-
-    //this.http.get('https://api.mapbox.com/geocoding/v5/mapbox.places/-3.7025667922966363,40.418485973367154.json?limit=1&types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoiY3BsYW4yMDMiLCJhIjoiY2w2dXkwdTFjMDk3dTNjcWc3bXF1Nm5rayJ9.QqqejAGOIHOMldC0wc0DNw')
     
   }
+
+  getLocationName() {
+     this.http.get<PlacesResponse>('https://api.mapbox.com/geocoding/v5/mapbox.places/-3.7025667922966363,40.418485973367154.json?limit=1&types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoiY3BsYW4yMDMiLCJhIjoiY2w2dXkwdTFjMDk3dTNjcWc3bXF1Nm5rayJ9.QqqejAGOIHOMldC0wc0DNw')
+  }
+
 }

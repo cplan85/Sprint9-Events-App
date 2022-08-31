@@ -2,6 +2,38 @@ mat-card {
     background-color: #8CD1C2;
     margin-top: 1.2rem;
     position:relative;
+    min-height: 455px;
+}
+
+.date-container{
+     background-color: #1B1464;
+     color:white;
+     text-align:center;
+     width:50%;
+}
+
+.time-container {
+    background-color: #FF8BC8;
+    color:white;
+    text-align:center;
+    width:50%;
+}
+
+.full-time-container {
+    max-height: 30px;
+}
+
+// .mat-card-image {
+// //max-height:140px;
+
+// }
+
+mat-card-title {
+    margin-top: 1rem;
+}
+.mat-card-header .mat-card-title {
+min-height: 70px;
+
 }
 
 

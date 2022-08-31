@@ -14,12 +14,13 @@ export class EventsService {
   private latLong: string = `41.37441,2.16953,1` 
   private apiKey: string = environment.ticketMasterApiKey;
 
+  localEvents: Event[] = [];
+
   constructor(private placesService: PlacesService,
     private http: HttpClient) { }
 
-  getLocalEvents(): Observable<EventsResponse> {
-    console.log(this.latLong)
+  getLocalEvents(userLocation: [number, number], size: number): Observable<EventsResponse> {
     this.latLong = `${this.placesService.userLocation![1]},${this.placesService.userLocation![0]}`
-    return this.http.get<EventsResponse>(`${this.baseUrl}apikey=${this.apiKey}&latlong=${this.latLong}&size=20`)
+    return this.http.get<EventsResponse>(`${this.baseUrl}apikey=${this.apiKey}&latlong=${this.latLong}&size=${size}`)
    }
 }
