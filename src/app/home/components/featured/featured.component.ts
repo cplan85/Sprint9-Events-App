@@ -1,3 +1,4 @@
+import { Feature } from './../../interfaces/places';
 import { PlacesService } from 'src/app/services/places.service';
 import { EventsService } from './../../../services/events.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
@@ -9,10 +10,30 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 })
 export class FeaturedComponent implements OnInit, AfterViewInit {
 
+
+ places: Feature[] = [];
+
  featuredEvents: any[] = [
   ]
 
-  constructor(private placesService: PlacesService  ,private eventsService: EventsService) { }
+  private debounceTimer?: NodeJS.Timeout;
+
+  //NEED TO UPDATE THIS SECTION
+  onQueryChange( query: string = '') {
+
+    if (this.debounceTimer) clearTimeout( this.debounceTimer);
+
+    this.debounceTimer = setTimeout(() => {
+      this.placesService.getPlacesByQuery(query);
+      console.log('Send this query', query)
+      this.places = this.placesService.places
+    }, 500);
+  }
+  //CHANGE THIS SECTION
+
+  currentCity: string ='';
+
+  constructor(public placesService: PlacesService  ,private eventsService: EventsService) { }
 
   get isUserLocationReady() {
 
@@ -42,6 +63,12 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
         }
         )
       } )
+
+      this.placesService.getLocationName().subscribe(resp => {
+        console.log(resp.features[0])
+        //console.log(resp.features[0].context[0].text)
+        this.currentCity=resp.features[0].context[3].text;
+       })
 
     })
   }

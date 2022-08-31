@@ -1,4 +1,17 @@
-<h2>Featured Events</h2>
+<h2>Featured Events in {{currentCity}}
+
+    <mat-form-field appearance="fill">
+        <input 
+        matInput 
+        placeholder="London.." 
+        #txtQuery
+        (keyup)="onQueryChange(txtQuery.value)"
+        class="form-control"
+        [value]="currentCity">
+        
+      </mat-form-field>
+
+</h2>
 <mat-divider></mat-divider>
 <br>
 

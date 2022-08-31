@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { MapService } from 'src/app/services/map.service';
 import { PlacesApiClient } from './../home/api/placesApiClient';
@@ -12,6 +13,8 @@ export class PlacesService {
 public userLocation?: [number, number];
 public isLoadingPlaces: boolean = false;
 public places: Feature[] = [];
+
+public currentCityName:string = '';
 
 get isUserLocationReady(): boolean {
   return !!this.userLocation
@@ -54,7 +57,7 @@ get isUserLocationReady(): boolean {
         proximity: this.userLocation!.join(',')
       }
     }).subscribe(resp => {
-      console.log(resp.features)
+      console.log(resp.features, "places")
 
       this.isLoadingPlaces = false;
       this.places = resp.features;
@@ -65,8 +68,12 @@ get isUserLocationReady(): boolean {
     
   }
 
-  getLocationName() {
-     this.http.get<PlacesResponse>('https://api.mapbox.com/geocoding/v5/mapbox.places/-3.7025667922966363,40.418485973367154.json?limit=1&types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoiY3BsYW4yMDMiLCJhIjoiY2w2dXkwdTFjMDk3dTNjcWc3bXF1Nm5rayJ9.QqqejAGOIHOMldC0wc0DNw')
+  getLocationName(userLocation = this.userLocation) {
+
+    console.log(userLocation)
+    if (!this.userLocation) throw Error('There is no userLocation')
+
+   return  this.http.get<PlacesResponse>(`https://api.mapbox.com/geocoding/v5/mapbox.places/${userLocation?.toString()}.json?limit=1&types=place%2Cpostcode%2Caddress&access_token=${environment.mapboxToken}`)
   }
 
 }

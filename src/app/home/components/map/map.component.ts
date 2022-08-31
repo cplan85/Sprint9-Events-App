@@ -78,15 +78,15 @@ const popup = new mapboxgl.Popup()
       <a href=${event.url}>Event Link</a>
       `);
 
-      const el = document.createElement('div');
-      el.className = 'music-marker';
+      const musicMarker = document.createElement('div');
+      musicMarker.className = 'music-marker';
     
         //console.log(event._embedded.venues[0].location, "specific")
         const lat = parseFloat(event._embedded.venues[0].location.latitude)
         const long = parseFloat(event._embedded.venues[0].location.longitude)
     
     
-        new mapboxgl.Marker(el, { draggable:true})
+        new mapboxgl.Marker(musicMarker, { draggable:true})
         .setLngLat([long, lat])
         .setPopup(eventPopup)
         .addTo(map)

@@ -73,7 +73,10 @@ export class MapService {
       padding: 100
     }) 
    
+  }
 
+  removeMarkers() {
+    this.markers.forEach( marker => marker.remove());
   }
 
   createMarkersFromEvents() {
