@@ -66,7 +66,6 @@ export class MapService {
     if( places.length === 0) return;
 
 
-    //limits of map
     const bounds = new LngLatBounds();
     newMarkers.forEach( marker => bounds.extend(marker.getLngLat()));
 

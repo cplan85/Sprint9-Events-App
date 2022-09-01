@@ -1,11 +1,13 @@
 #main-footer{
-padding-top:2rem;
+padding-top:4rem;
 height: 600px;
-background-image: url('./../../../../assets/footerbg4.jpg');
+background-image: url('./../../../../assets/footerbg.jpg');
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
+background-repeat: no-repeat;
+background-position:center;
 }
 
 .icon {

@@ -1,0 +1,39 @@
+#checkboxes-icon {
+    z-index: 999;
+    position:absolute;
+    top: 140px;
+    right:20px;
+    display:block;
+}
+
+.checkboxes-container {
+    position:absolute;
+    top: 140px;
+    right:20px;
+    width: 360px;
+    z-index:1000;
+
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0px 10px 10px rgba(0,0,0, 0.1 );
+    border-radius: 5px;
+    border: 1px solid grey;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+
+  mat-checkbox {
+    margin-left: 1.2rem;
+  }
+
+  .icon {
+    height: 30px;
+    margin-left: .5rem;
+  }

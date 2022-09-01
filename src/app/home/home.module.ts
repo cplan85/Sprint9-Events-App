@@ -7,6 +7,7 @@ import { HomeMainComponent } from './components/home-main/home-main.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 import { MapComponent } from './components/map/map.component';
 import { FriendEventsComponent } from './components/friend-events/friend-events.component';
 import { FeaturedCardComponent } from './components/featured-card/featured-card.component';
@@ -20,6 +21,7 @@ import { BtnLoadMoreComponent } from './components/btn-load-more/btn-load-more.c
 import { EventsPanelsComponent } from './components/events-panels/events-panels.component';
 import { BtnQuestionMarkComponent } from './components/btn-question-mark/btn-question-mark.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { EventsCheckboxesComponent } from './components/events-checkboxes/events-checkboxes.component';
 
 
 
@@ -41,11 +43,13 @@ import { FooterComponent } from './components/footer/footer.component';
     EventsPanelsComponent,
     BtnQuestionMarkComponent,
     FooterComponent,
+    EventsCheckboxesComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     HomeRoutingModule,
+    FormsModule,
     FlexLayoutModule
   ]
 })

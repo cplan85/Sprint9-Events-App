@@ -3,6 +3,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -30,6 +31,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
   MatBadgeModule,
   MatButtonModule,
   MatCardModule,
+  MatCheckboxModule,
   MatDividerModule,
   MatExpansionModule,
   MatFormFieldModule,

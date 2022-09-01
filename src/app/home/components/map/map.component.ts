@@ -29,6 +29,8 @@ export class MapComponent implements AfterViewInit, OnInit {
     private eventsService: EventsService
     ) { }
 
+   
+
     ngOnInit(): void {
    
 
@@ -102,23 +104,42 @@ const popup = new mapboxgl.Popup()
 
       const musicMarker = document.createElement('div');
       musicMarker.className = 'music-marker';
+
+      const miscMarker = document.createElement('div');
+      miscMarker.className = 'misc-marker';
     
         //console.log(event._embedded.venues[0].location, "specific")
         const lat = parseFloat(event._embedded.venues[0].location.latitude)
         const long = parseFloat(event._embedded.venues[0].location.longitude)
     
     
+        
+       if(event.classifications[0].segment.name==="Music") {
+
         new mapboxgl.Marker(musicMarker, { draggable:true})
         .setLngLat([long, lat])
         .setPopup(eventPopup)
         .addTo(map)
+
+       }
+
+       if(event.classifications[0].segment.name==="Miscellaneous") {
+
+        new mapboxgl.Marker(miscMarker, { draggable:true})
+        .setLngLat([long, lat])
+        .setPopup(eventPopup)
+        .addTo(map)
+
+       }
+       
+  
 
     })
 
   
   })
 
-
+  
   }
  
 }
