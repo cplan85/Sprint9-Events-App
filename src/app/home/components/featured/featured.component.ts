@@ -13,6 +13,7 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
 
 
  places: Feature[] = [];
+ isDataLoaded: boolean = false;
 
  featuredEvents: AppEvent[] = [
   ]
@@ -71,9 +72,10 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
 
       this.placesService.getLocationName().subscribe(resp => {
         console.log(resp.features[0])
-        //console.log(resp.features[0].context[0].text)
         this.currentCity=resp.features[0].context[3].text;
        })
+
+       this.isDataLoaded = true;
 
     })
   }
@@ -81,15 +83,17 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
   
 
   ngOnInit(): void {
- 
+    this.placesService.getUserLocation().then(()=> {
+      this.generateEvents();
+    })
    
   }
 
   ngAfterViewInit(): void {
 
-    this.placesService.getUserLocation;
-    
-  this.generateEvents()
+   // this.placesService.getUserLocation;
+
+ 
   }
   
 
