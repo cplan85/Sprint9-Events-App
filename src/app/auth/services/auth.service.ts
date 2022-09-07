@@ -34,6 +34,7 @@ export class AuthService {
           localStorage.setItem('token', resp.token!)
           this._user = {
             name: resp.name!,
+            userName: resp.userName!,
             uid: resp.uid!,
             email: resp.email!,
           }
@@ -45,10 +46,10 @@ export class AuthService {
 
   }
 
-  register(name: string, email:string, password: string) {
+  register(name: string, userName: string, email:string, password: string) {
 
     const url = `${this.baseUrl}auth/new`;
-    const body = {name, email, password};
+    const body = {name, userName, email, password};
 
     return  this.http.post<AuthResponse>(url, body)
     .pipe(
@@ -60,6 +61,7 @@ export class AuthService {
           localStorage.setItem('token', resp.token!)
           this._user = {
             name: resp.name!,
+            userName: resp.userName!,
             uid: resp.uid!,
             email: resp.email!,
           }
@@ -86,6 +88,7 @@ export class AuthService {
         localStorage.setItem('token', resp.token!)
         this._user = {
           name: resp.name!,
+          userName: resp.userName!,
           uid: resp.uid!,
           email: resp.email!,
         }
