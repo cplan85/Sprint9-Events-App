@@ -22,6 +22,7 @@ import { EventsPanelsComponent } from './components/events-panels/events-panels.
 import { BtnQuestionMarkComponent } from './components/btn-question-mark/btn-question-mark.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { EventsCheckboxesComponent } from './components/events-checkboxes/events-checkboxes.component';
+import { EventComponent } from './pages/event/event.component';
 
 
 
@@ -44,6 +45,7 @@ import { EventsCheckboxesComponent } from './components/events-checkboxes/events
     BtnQuestionMarkComponent,
     FooterComponent,
     EventsCheckboxesComponent,
+    EventComponent,
   ],
   imports: [
     CommonModule,

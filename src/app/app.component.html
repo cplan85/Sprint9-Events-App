@@ -21,11 +21,19 @@
             </a>
 
             <a 
-            routerLink="./add" 
+            routerLink="./maps" 
             mat-list-item
             (click)="sidenav.toggle()">
-            <mat-icon mat-list-icon>add</mat-icon>
-                <span>Add Heroe</span>
+            <mat-icon mat-list-icon>map</mat-icon>
+                <span>My Maps</span>
+            </a>
+
+            <a 
+            routerLink="./calendar" 
+            mat-list-item
+            (click)="sidenav.toggle()">
+            <mat-icon mat-list-icon>calendar_today</mat-icon>
+                <span>My Calendar</span>
             </a>
 
             <a 
@@ -33,7 +41,7 @@
             mat-list-item
             (click)="sidenav.toggle()">
             <mat-icon mat-list-icon>search</mat-icon>
-                <span>Find Heroe</span>
+                <span>Search Events</span>
             </a>
 
         </mat-nav-list>
