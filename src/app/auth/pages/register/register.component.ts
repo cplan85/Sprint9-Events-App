@@ -13,10 +13,10 @@ import { AuthService } from '../../services/auth.service';
 export class RegisterComponent {
 
   myForm: FormGroup = this.formBuilder.group({
-    name: ['', [Validators.required, Validators.minLength(2)]],
-    userName: ['', [Validators.required, Validators.minLength(4)]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+    name: ['John Doe', [Validators.required, Validators.minLength(2)]],
+    userName: ['Jdoe1', [Validators.required, Validators.minLength(4)]],
+    email: ['JohnDoe@gmail.com', [Validators.required, Validators.email]],
+    password: ['123456', [Validators.required, Validators.minLength(6)]]
 
   })
 
