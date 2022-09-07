@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,28 +20,36 @@ export class LoginComponent {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              //private authService:AuthService
+              private authService:AuthService
               ) { }
+
+              swalWithCustomStyle = Swal.mixin({
+                customClass: {
+                  confirmButton: 'mat-raised-button mat-warn',
+                  cancelButton: 'mat-raised-button mat-accent'
+                },
+                buttonsStyling: false
+              })
 
   login() {
   const {email, password} = this.myForm.value;
-    //  console.log(this.myForm.value)
-    //  console.log(this.myForm.valid)
+      console.log(this.myForm.value)
+    
 
-    //  this.authService.login(email, password)
-    //  .subscribe( ok => {
-    //    console.log(ok, "ok from login")
-    //    if ( ok === true ) {
-    //      this.router.navigateByUrl('/dashboard')
-    //    } else {
-    //      Swal.fire({
-    //        title: 'Error!',
-    //       text: ok,
-    //   icon: 'error',
-    //        confirmButtonText: 'Close'
-    //      })
-    //    }
-    //  })
+      this.authService.login(email, password)
+      .subscribe( ok => {
+        console.log(ok, "ok from login")
+        if ( ok === true ) {
+          this.router.navigateByUrl('/dashboard')
+        } else {
+          this.swalWithCustomStyle.fire({
+            title: 'Error!',
+           text: ok,
+       icon: 'error',
+            confirmButtonText: 'Close'
+          })
+        }
+    })
 
   }
   
