@@ -1,2 +1,49 @@
-<p>event works WELL!</p>
 
+<mat-grid-list cols="1" *ngIf="!event; else divevent">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+    </mat-grid-list>
+    
+    <ng-template #divevent>
+      <div class="event-container">
+          <div
+          fxLayout="column"
+          fxLayout.xs="column"
+          fxLayoutgap="1.5rem">
+          
+          <div fxFlex="50"><h1>
+            {{event.name}}
+            <mat-divider></mat-divider>
+            <small> {{event.date}} @ {{event.startTime}}</small>
+            <h3>{{event.min}} - {{event.max}} €</h3>
+
+            <button mat-flat-button color="warn" (click)="goToLink()">Buy Tickets</button>
+          </h1>
+             
+              <br>
+              <img [src]="event.img">
+              </div>
+          <div fxFlex="50">
+            <h3>Brought to you by {{event.promoter}}</h3>
+
+            <mat-list>
+                <mat-list-item><b>Category</b> - {{event.type}}</mat-list-item>
+                <mat-list-item><mat-icon> place</mat-icon> Location</mat-list-item>
+                <mat-divider></mat-divider>
+                <img [src]="event.venueImages ? event.venueImages[0].url  : null">
+                <mat-list-item>{{event.venue}}
+                </mat-list-item>
+                <mat-list-item>{{event.address}}</mat-list-item>
+                <mat-list-item>
+                    <button mat-flat-button color="accent" (click)="goToLink()">Venue Link</button>
+                    </mat-list-item>
+            </mat-list>
+            <br>
+            <button mat-button color="warn"
+            (click)="return()"
+            >Return</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>

@@ -3,6 +3,7 @@ export interface AppEvent {
     id?: string,
     name: string,
     date: string,
+    url: string,
     startTime: string,
     img: string,
     min: number,

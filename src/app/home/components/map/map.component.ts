@@ -75,6 +75,7 @@ const popup = new mapboxgl.Popup()
       this.mapEvents.push({
         id:event.id,
         name: event.name,
+        url: event.url,
         date: event.dates.start.localDate,
         startTime: event.dates.start.localTime,
         img: event.images[0].url,

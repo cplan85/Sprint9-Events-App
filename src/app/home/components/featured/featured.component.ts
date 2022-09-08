@@ -52,6 +52,7 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
           this.featuredEvents.push({
             id:event.id,
             name: event.name,
+            url: event.url,
             date: event.dates.start.localDate,
             startTime: event.dates.start.localTime,
             img: event.images[0].url,
@@ -69,6 +70,8 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
         }
         )
       } )
+
+      this.eventsService.setLocalEvents(this.featuredEvents)
 
       this.placesService.getLocationName().subscribe(resp => {
         console.log(resp.features[0])
