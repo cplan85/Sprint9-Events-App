@@ -16,9 +16,9 @@
             {{event.name}}
             <mat-divider></mat-divider>
             <small> {{event.date}} @ {{event.startTime}}</small>
-            <h3>{{event.min}} - {{event.max}} €</h3>
+            <h3>{{event.min | number: '1.2-2'}} - {{event.max | number: '1.2-2'}} €</h3>
 
-            <button mat-flat-button color="warn" (click)="goToLink()">Buy Tickets</button>
+            <button mat-flat-button color="warn" (click)="goToLink(event.url)">Buy Tickets</button>
           </h1>
              
               <br>
@@ -36,7 +36,7 @@
                 </mat-list-item>
                 <mat-list-item>{{event.address}}</mat-list-item>
                 <mat-list-item>
-                    <button mat-flat-button color="accent" (click)="goToLink()">Venue Link</button>
+                    <button mat-flat-button color="accent" (click)="goToLink(event.venueUrl)">Venue Link</button>
                     </mat-list-item>
             </mat-list>
             <br>

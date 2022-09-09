@@ -6,7 +6,7 @@
     </mat-card-header>
     <img mat-card-image [src]="featuredEvent.img">
     <mat-card-content>
-        <h3>{{featuredEvent.min}} - {{featuredEvent.max}} €</h3>
+        <h3>{{featuredEvent.min | number: '1.2-2'}} - {{featuredEvent.max | number: '1.2-2'}} €</h3>
         <div fxLayout="row" fxFill class="full-time-container">
             <div class="date-container">
                 <h4>{{featuredEvent.date}}</h4>

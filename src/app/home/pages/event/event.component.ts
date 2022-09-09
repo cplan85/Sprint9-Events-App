@@ -21,8 +21,10 @@ export class EventComponent implements OnInit {
     this.router.navigate(['/home/'])
   }
 
-  goToLink(){
-    window.location.href = this.event.venueUrl
+
+
+  goToLink(link:string){
+    window.location.href = link;
   }
   ngOnInit(): void {
 
