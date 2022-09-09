@@ -13,12 +13,9 @@
           fxLayoutgap="1.5rem"
         >
      
-          <div
-          fxLayout="column"
-          fxLayout.xs="column"
-          fxLayoutgap="1.5rem">
+          <div>
           
-          <div fxFlex="50"><h1>
+          <div ><h1>
             {{event.name}}
             <mat-divider></mat-divider>
             <small> {{event.date}} @ {{event.startTime}}</small>
@@ -30,7 +27,7 @@
               <br>
               <img [src]="event.img">
               </div>
-          <div fxFlex="50">
+          <div>
             <h3>Brought to you by {{event.promoter}}</h3>
 
             <mat-list>
@@ -51,7 +48,8 @@
             >Return</button>
           </div>
         </div>
-        <app-event-map></app-event-map>
+        <app-event-map [event]="event"
+        fxFlex="50"></app-event-map>
       </div>
       </div>
     </ng-template>
