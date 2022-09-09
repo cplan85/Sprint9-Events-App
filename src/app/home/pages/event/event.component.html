@@ -7,6 +7,12 @@
     
     <ng-template #divevent>
       <div class="event-container">
+        <div
+        fxLayout="row"
+          fxLayout.xs="column"
+          fxLayoutgap="1.5rem"
+        >
+     
           <div
           fxLayout="column"
           fxLayout.xs="column"
@@ -45,5 +51,7 @@
             >Return</button>
           </div>
         </div>
+        <app-event-map></app-event-map>
+      </div>
       </div>
     </ng-template>
