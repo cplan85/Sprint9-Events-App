@@ -5,7 +5,7 @@ export interface AppEvent {
     date: string,
     url: string,
     startTime: string,
-    img: string,
+    img?: string,
     min: number,
     max: number,
     venue: string,

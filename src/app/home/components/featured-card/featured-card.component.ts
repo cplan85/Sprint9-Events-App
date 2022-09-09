@@ -16,11 +16,6 @@ export class FeaturedCardComponent implements OnInit {
   @Input() featuredEvent!: AppEvent;
 
   ngOnInit(): void {
-
-    console.log(this.featuredEvent, "my event")
   }
-
-    
-  
 
 }

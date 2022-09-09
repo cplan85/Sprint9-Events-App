@@ -1,3 +1,4 @@
+import { Event } from './../../interfaces/events';
 import { AppEvent } from './../../interfaces/appEvents';
 import { EventsService } from './../../../services/events.service';
 import { MapService } from './../../../services/map.service';
@@ -5,6 +6,7 @@ import { Component, AfterViewInit,ElementRef, ViewChild, OnInit} from '@angular/
 import { environment } from 'src/environments/environment';
 import { PlacesService } from 'src/app/services/places.service';
 import * as mapboxgl from 'mapbox-gl';
+
 
 interface MarkerColor {
   color: string;
@@ -22,12 +24,105 @@ export class MapComponent implements AfterViewInit, OnInit {
   currentLat: number = 41.40378416042038;
   currentLong: number = 2.1747936849217937;
 
+  map!: mapboxgl.Map;
   mapEvents: AppEvent[] = [];
 
   constructor(private placesService: PlacesService,
     private mapService: MapService,
     private eventsService: EventsService
     ) { }
+
+    test(map:mapboxgl.Map) {
+      console.log('test works');
+
+      this.eventsService.getNextEvents(this.eventsService.next).subscribe(resp => {
+        console.log(resp, "full Response")
+        this.eventsService.setNext(resp._links.next.href)
+    
+        this.addEventMarkers(resp._embedded.events, map);
+    
+      
+      })
+    }
+
+    addEventMarkers(events: Event[], map: mapboxgl.Map) {
+
+      events.forEach(event => {
+        this.mapEvents.push({
+          id:event.id,
+          name: event.name,
+          url: event.url? event.url : "",
+          date: event.dates.start.localDate ,
+          startTime: event.dates.start.localTime,
+          img: event.images[0].url ? event.images[0].url : '' ,
+          min: event.priceRanges[0].min ? event.priceRanges[0].min : 0,
+          max: event.priceRanges[1].max ? event.priceRanges[0].max : 1000,
+          venue: event._embedded.venues[0].name,
+          venueImages:  event._embedded.venues[0].images ? event._embedded.venues[0].images : [] ,
+          venueUrl: event._embedded.venues[0].url,
+          address: event._embedded.venues[0].address.line1,
+          promoter: event.promoter.name,
+          type: event.classifications[0].segment.name,
+          lat: parseFloat(event._embedded.venues[0].location.latitude),
+          long: parseFloat(event._embedded.venues[0].location.longitude)
+        })
+        this.mapService.mapEvents = this.mapEvents;
+  
+        console.log(event.classifications[0].segment.name);
+  
+        const eventPopup = new mapboxgl.Popup()
+        .setHTML(`
+        <h6>${event.name}</h6>
+        <span>${event.dates.start.localDate}</span>
+        <img class="popupImg" src="${event.images[0].url}">
+        <p>${event.priceRanges[0].min} -${event.priceRanges[1].max} ${event.priceRanges[1].currency}</p>
+        <a href=${event.url}>Event Link</a>
+        `);
+  
+        const musicMarker = document.createElement('div');
+        musicMarker.className = 'music-marker';
+
+        const sportsMarker = document.createElement('div');
+        sportsMarker.className = 'sports-marker';
+        
+  
+        const miscMarker = document.createElement('div');
+        miscMarker.className = 'misc-marker';
+      
+         // console.log(event._embedded.venues[0].location, "specific")
+          const lat = parseFloat(event._embedded.venues[0].location.latitude)
+          const long = parseFloat(event._embedded.venues[0].location.longitude)
+      
+      
+          
+         if(event.classifications[0].segment.name==="Music") {
+  
+          new mapboxgl.Marker(musicMarker, { draggable:true})
+          .setLngLat([long, lat])
+          .setPopup(eventPopup)
+          .addTo(map)
+  
+         }
+
+         if(event.classifications[0].segment.name==="Sports") {
+  
+          new mapboxgl.Marker(sportsMarker, { draggable:true})
+          .setLngLat([long, lat])
+          .setPopup(eventPopup)
+          .addTo(map)
+  
+         }
+  
+         if(event.classifications[0].segment.name==="Miscellaneous") {
+  
+          new mapboxgl.Marker(miscMarker, { draggable:true})
+          .setLngLat([long, lat])
+          .setPopup(eventPopup)
+          .addTo(map)
+  
+         }
+      })
+    }
 
    
 
@@ -54,6 +149,7 @@ map.on('style.load', () => {
 map.setFog({}); // Set the default atmosphere style
 });
 
+this.map = map;
 const popup = new mapboxgl.Popup()
   .setHTML(`
   <h6>Your Home Base</h6>
@@ -69,73 +165,9 @@ const popup = new mapboxgl.Popup()
 
   this.eventsService.getLocalEvents(this.placesService.userLocation!, 40).subscribe(resp => {
     console.log(resp, "full Response")
+    this.eventsService.setNext(resp._links.next.href)
 
-    resp._embedded.events.forEach(event => {
-
-      this.mapEvents.push({
-        id:event.id,
-        name: event.name,
-        url: event.url,
-        date: event.dates.start.localDate,
-        startTime: event.dates.start.localTime,
-        img: event.images[0].url,
-        min: event.priceRanges[0].min,
-        max: event.priceRanges[1].max,
-        venue: event._embedded.venues[0].name,
-        venueImages:  event._embedded.venues[0].images,
-        venueUrl: event._embedded.venues[0].url,
-        address: event._embedded.venues[0].address.line1,
-        promoter: event.promoter.name,
-        type: event.classifications[0].segment.name,
-        lat: parseFloat(event._embedded.venues[0].location.latitude),
-        long: parseFloat(event._embedded.venues[0].location.longitude)
-      })
-      this.mapService.mapEvents = this.mapEvents;
-
-      console.log(event.classifications[0].segment.name)
-
-      const eventPopup = new mapboxgl.Popup()
-      .setHTML(`
-      <h6>${event.name}</h6>
-      <span>${event.dates.start.localDate}</span>
-      <img class="popupImg" src="${event.images[0].url}">
-      <p>${event.priceRanges[0].min} -${event.priceRanges[1].max} ${event.priceRanges[1].currency}</p>
-      <a href=${event.url}>Event Link</a>
-      `);
-
-      const musicMarker = document.createElement('div');
-      musicMarker.className = 'music-marker';
-
-      const miscMarker = document.createElement('div');
-      miscMarker.className = 'misc-marker';
-    
-        //console.log(event._embedded.venues[0].location, "specific")
-        const lat = parseFloat(event._embedded.venues[0].location.latitude)
-        const long = parseFloat(event._embedded.venues[0].location.longitude)
-    
-    
-        
-       if(event.classifications[0].segment.name==="Music") {
-
-        new mapboxgl.Marker(musicMarker, { draggable:true})
-        .setLngLat([long, lat])
-        .setPopup(eventPopup)
-        .addTo(map)
-
-       }
-
-       if(event.classifications[0].segment.name==="Miscellaneous") {
-
-        new mapboxgl.Marker(miscMarker, { draggable:true})
-        .setLngLat([long, lat])
-        .setPopup(eventPopup)
-        .addTo(map)
-
-       }
-       
-  
-
-    })
+    this.addEventMarkers(resp._embedded.events, map);
 
   
   })
