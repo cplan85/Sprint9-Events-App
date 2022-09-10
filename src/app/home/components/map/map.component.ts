@@ -32,7 +32,7 @@ export class MapComponent implements AfterViewInit, OnInit {
     private eventsService: EventsService
     ) { }
 
-    test(map:mapboxgl.Map) {
+    loadMoreEvents(map:mapboxgl.Map) {
       console.log('test works');
 
       this.eventsService.getNextEvents(this.eventsService.next).subscribe(resp => {
@@ -55,8 +55,8 @@ export class MapComponent implements AfterViewInit, OnInit {
           date: event.dates.start.localDate ,
           startTime: event.dates.start.localTime,
           img: event.images[0].url ? event.images[0].url : '' ,
-          min: event.priceRanges[0].min ? event.priceRanges[0].min : 0,
-          max: event.priceRanges[1].max ? event.priceRanges[0].max : 1000,
+          min: event.priceRanges? event.priceRanges[0].min : 0,
+          max: event.priceRanges? event.priceRanges[0].max : 1000,
           venue: event._embedded.venues[0].name,
           venueImages:  event._embedded.venues[0].images ? event._embedded.venues[0].images : [] ,
           venueUrl: event._embedded.venues[0].url,
@@ -75,7 +75,7 @@ export class MapComponent implements AfterViewInit, OnInit {
         <h6>${event.name}</h6>
         <span>${event.dates.start.localDate}</span>
         <img class="popupImg" src="${event.images[0].url}">
-        <p>${event.priceRanges[0].min} -${event.priceRanges[1].max} ${event.priceRanges[1].currency}</p>
+        <p>${event.priceRanges? event.priceRanges[0].min: 0} -${event.priceRanges? event.priceRanges[1].max: 1000} ${event.priceRanges? event.priceRanges[1].currency: ''}</p>
         <a href=${event.url}>Event Link</a>
         `);
   

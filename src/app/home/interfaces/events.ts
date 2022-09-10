@@ -25,7 +25,7 @@ export interface Event {
     classifications: EventClassification[];
     promoter:        Promoter;
     promoters:       Promoter[];
-    priceRanges:     PriceRange[];
+    priceRanges?:     PriceRange[];
     _links:          EventLinks;
     _embedded:       EventEmbedded;
 }

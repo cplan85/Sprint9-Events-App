@@ -21,7 +21,7 @@ matBadgeColor="warn"
    
      <section class="example-section">
         <img class="icon" src="./../../../../assets/music-marker.svg" alt="">Music <mat-checkbox color="primary" (click)="toggleCategory('music-marker', music)" class="example-margin" [(ngModel)]="music"></mat-checkbox>
-        <img class="icon" src="./../../../../assets/sports-marker.svg" alt="">Sports <mat-checkbox color="primary" class="example-margin" [(ngModel)]="sports"></mat-checkbox>
+        <img class="icon" src="./../../../../assets/sports-marker.svg" alt="">Sports <mat-checkbox color="primary" (click)="toggleCategory('sports-marker', sports)"  class="example-margin" [(ngModel)]="sports"></mat-checkbox>
         <img class="icon" src="./../../../../assets/arts-marker.svg" alt="">Theatre <mat-checkbox color="primary" class="example-margin" [(ngModel)]="arts"></mat-checkbox>
       </section>
       <section class="example-section">

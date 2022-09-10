@@ -46,7 +46,9 @@ export class MapService {
       const popup = new Popup()
       .setHTML(`
       <h6>${place.text}</h6>
-      <span>${place.place_name}</span>`)
+      <span>${place.place_name}</span>
+      <br>
+      <button color="warn" class="mat-raised-button mat-button-base mat-warn">Change my location</button>`)
 
       const el = document.createElement('div');
       el.className = 'search-marker';
