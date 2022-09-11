@@ -71,3 +71,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display:block;
   width:100%;
 }
+
+.mat-dialog-container { 
+  border-radius: 2rem 0!important; 
+  background-color: rgba(82,185,163,0.80)!important;
+}

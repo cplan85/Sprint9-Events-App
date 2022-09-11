@@ -1,0 +1,33 @@
+<div class="dialog-container">
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <h2 mat-dialog-title>MAP HELP</h2>
+        <button mat-button mat-dialog-close>X</button>
+    </div>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        Click any location pin on the map to display more information about that event.
+        <img class="icon" src="./../../../../assets/music-marker.svg" alt="">
+    </div>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        Click on the my location button located at the top right to return to your original location.
+        <button 
+        mat-mini-fab color="accent" 
+        aria-label="Example icon button with a bookmark icon"
+        >
+            <mat-icon>my_location</mat-icon>
+          </button>
+    </div>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+        Use the filter/key menu, located in the top right of the map, to toggle what type of locations are visibile on the map, or to view the map key.
+        <button
+        mat-mini-fab color="accent" 
+        aria-label="Example icon button with a bookmark icon"
+        matBadgeColor="warn"
+        >
+            <mat-icon>filter_list</mat-icon>
+          </button>
+    </div>
+</div>
+

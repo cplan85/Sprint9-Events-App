@@ -2,6 +2,7 @@ import { AppEvent } from './../home/interfaces/appEvents';
 import { Feature } from './../home/interfaces/places';
 import { Injectable } from '@angular/core';
 import { LngLatBounds, LngLatLike, Map, Marker, Popup } from 'mapbox-gl';
+import * as mapboxgl from 'mapbox-gl';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,10 @@ export class MapService {
     })
   }
 
+  testFunction(coordinates: [number, number]) {
+    console.log(coordinates)
+  }
+
   createMarkersFromPlaces(places: Feature[], userLocation: [number, number]) {
 
     if(!this.map) throw Error('Map is not initialized');
@@ -48,7 +53,7 @@ export class MapService {
       <h6>${place.text}</h6>
       <span>${place.place_name}</span>
       <br>
-      <button color="warn" class="mat-raised-button mat-button-base mat-warn">Change my location</button>`)
+      <button color="warn" onclick='${this.map.setCenter([lng, lat])}' class="mat-raised-button mat-button-base mat-warn">Change my location</button>`)
 
       const el = document.createElement('div');
       el.className = 'search-marker';

@@ -153,7 +153,7 @@ this.map = map;
 const popup = new mapboxgl.Popup()
   .setHTML(`
   <h6>Your Home Base</h6>
-  <span>If you want to return to your center click on bottom on top right</span>
+  <span>If you want to return to your center click on top right button.</span>
   `);
 
   new mapboxgl.Marker({color: 'black'})

@@ -6,6 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeMainComponent } from './components/home-main/home-main.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FeaturedComponent } from './components/featured/featured.component';
+import { DialogMapInfoDialog } from './components/btn-question-mark/btn-question-mark.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { MapComponent } from './components/map/map.component';
@@ -32,6 +33,7 @@ import { EventMapComponent } from './event-map/event-map.component';
   declarations: [
     HomeMainComponent,
     HeaderComponent,
+    DialogMapInfoDialog,
     FeaturedComponent,
     MapComponent,
     FriendEventsComponent,
