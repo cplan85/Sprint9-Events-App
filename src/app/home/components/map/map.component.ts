@@ -51,19 +51,19 @@ export class MapComponent implements AfterViewInit, OnInit {
       events.forEach(event => {
         this.mapEvents.push({
           id:event.id,//
-          name: event.name,
+          name: event.name ? event.name : '',
           url: event.url? event.url : "",
           date: event.dates.start.localDate ? event.dates.start.localDate: '' ,
           startTime: event.dates.start.localTime,
           img: event.images[0].url ? event.images[0].url : '' ,
           min: event.priceRanges? event.priceRanges[0].min : 0,
           max: event.priceRanges? event.priceRanges[0].max : 1000,
-          venue: event._embedded.venues[0].name,
+          venue: event._embedded.venues[0].name ? event._embedded.venues[0].name : '',
           venueImages:  event._embedded.venues[0].images ? event._embedded.venues[0].images : [] ,
           venueUrl: event._embedded.venues[0].url,
           address: event._embedded.venues[0].address.line1,
-          promoter: event.promoter.name,
-          type: event.classifications[0].segment.name,
+          promoter: event.promoter? event.promoter.name : '',
+          type: event.classifications[0].segment.name ? event.classifications[0].segment.name: '',
           lat: parseFloat(event._embedded.venues[0].location.latitude),
           long: parseFloat(event._embedded.venues[0].location.longitude)
         })
@@ -76,12 +76,15 @@ export class MapComponent implements AfterViewInit, OnInit {
         <h6>${event.name}</h6>
         <span>${event.dates.start.localDate}</span>
         <img class="popupImg" src="${event.images[0].url}">
-        <p>${event.priceRanges? event.priceRanges[0].min: 0} -${event.priceRanges? event.priceRanges[1].max: 1000} ${event.priceRanges? event.priceRanges[1].currency: ''}</p>
+        <p>${event.priceRanges? event.priceRanges[0].min: 0} -${event.priceRanges? event.priceRanges[0].max: 1000} ${event.priceRanges? event.priceRanges[0].currency: ''}</p>
         <a href=${event.url}>Event Link</a>
         `);
   
         const musicMarker = document.createElement('div');
         musicMarker.className = 'music-marker';
+
+        const artsMarker = document.createElement('div');
+       artsMarker.className = 'arts-marker';
 
         const sportsMarker = document.createElement('div');
         sportsMarker.className = 'sports-marker';
@@ -122,6 +125,16 @@ export class MapComponent implements AfterViewInit, OnInit {
           .addTo(map)
   
          }
+
+         if(event.classifications[0].segment.name==="Arts & Theatre") {
+  
+          new mapboxgl.Marker(artsMarker, { draggable:true})
+          .setLngLat([long, lat])
+          .setPopup(eventPopup)
+          .addTo(map)
+  
+         }
+
       })
     }
 
@@ -132,7 +145,7 @@ export class MapComponent implements AfterViewInit, OnInit {
       this.mapService.mySubject.subscribe((data) => {
         console.log('MAP COMPONENT RESPONDS TO DATA CHANGE!', data)
       
-        this.eventsService.getLocalEvents(data, 1).subscribe(resp => {
+        this.eventsService.getLocalEvents(data, 40).subscribe(resp => {
           this.mapEvents = [];
           console.log(resp, "full Response from Change Detection")
           this.eventsService.setNext(resp._links.next.href)
@@ -164,7 +177,10 @@ zoom: 12, // starting zoom
 projection: {name: 'globe' }// display the map as a 3D globe
 });
 map.on('style.load', () => {
-map.setFog({}); // Set the default atmosphere style
+map.setFog({"color": "#f5f5f5",
+"range": [0.8, 8],
+"horizon-blend": 0.5,
+}); // Set the default atmosphere style
 });
 
 this.map = map;

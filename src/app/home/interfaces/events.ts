@@ -23,8 +23,8 @@ export interface Event {
     sales:           Sales;
     dates:           Dates;
     classifications: EventClassification[];
-    promoter:        Promoter;
-    promoters:       Promoter[];
+    promoter?:        Promoter;
+    promoters?:       Promoter[];
     priceRanges?:     PriceRange[];
     _links:          EventLinks;
     _embedded:       EventEmbedded;

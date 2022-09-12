@@ -62,7 +62,7 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
             venueImages:  event._embedded.venues[0].images,
             venueUrl: event._embedded.venues[0].url,
             address: event._embedded.venues[0].address.line1,
-            promoter: event.promoter.name,
+            promoter: event.promoter? event.promoter.name : '',
             type: event.classifications[0].segment.name,
             lat: parseFloat(event._embedded.venues[0].location.latitude),
             long: parseFloat(event._embedded.venues[0].location.longitude),

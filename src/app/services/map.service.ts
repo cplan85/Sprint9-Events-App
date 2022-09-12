@@ -68,7 +68,7 @@ myDataSetter(data : any){
       
       const divElement = document.createElement('div');
       const assignBtn = document.createElement('div');
-      assignBtn.innerHTML = ` <button color="warn" class="mat-raised-button mat-button-base mat-primary change-location-btn">Change my location</button>`;
+      assignBtn.innerHTML = ` <button color="warn" class="mat-raised-button mat-button-base mat-primary change-location-btn">Get Events Near Here</button>`;
       divElement.innerHTML = innerHtmlContent;
       divElement.appendChild(assignBtn);
       // btn.className = 'btn';
