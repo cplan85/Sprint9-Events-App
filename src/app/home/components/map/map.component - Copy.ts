@@ -132,9 +132,9 @@ export class MapComponent implements AfterViewInit, OnInit {
       this.mapService.mySubject.subscribe((data) => {
         console.log('MAP COMPONENT RESPONDS TO DATA CHANGE!', data)
       
-        this.eventsService.getLocalEvents(data, 1).subscribe(resp => {
-          this.mapEvents = [];
-          console.log(resp, "full Response from Change Detection")
+        this.eventsService.getLocalEvents(data, 10).subscribe(resp => {
+          this.mapEvents = []
+          console.log(resp, "full Response from change")
           this.eventsService.setNext(resp._links.next.href)
       
           this.addEventMarkers(resp._embedded.events, this.map);
@@ -146,7 +146,6 @@ export class MapComponent implements AfterViewInit, OnInit {
        })
    
 
-    
     
     }
 

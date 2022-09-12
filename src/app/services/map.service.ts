@@ -3,6 +3,7 @@ import { Feature } from './../home/interfaces/places';
 import { Injectable } from '@angular/core';
 import { LngLatBounds, LngLatLike, Map, Marker, Popup } from 'mapbox-gl';
 import * as mapboxgl from 'mapbox-gl';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,15 @@ export class MapService {
     this.map = map;
 
   }
+
+  //CODE TO TEST FROM STACK OVERFLOW
+mySubject : Subject<any> = new Subject<any>();
+myData : any ;
+
+myDataSetter(data : any){
+ this.myData = data;
+ this.mySubject.next(this.myData);
+}
   
 
   flyTo( coords: LngLatLike) {
@@ -33,8 +43,10 @@ export class MapService {
     })
   }
 
-  testFunction(coordinates: [number, number]) {
+  assignNewCoordinates(coordinates: [number, number]) {
+    this.map?.flyTo({center: coordinates});
     console.log(coordinates)
+    this.myDataSetter(coordinates)
   }
 
   createMarkersFromPlaces(places: Feature[], userLocation: [number, number]) {
@@ -48,12 +60,32 @@ export class MapService {
 
     for (const place of places) {
       const [lng,lat] = place.center;
+
+      const name = 'abc';
+      const innerHtmlContent = `<h6>${place.text}</h6>
+       <span>${place.place_name}</span>
+       <br>`;
+      
+      const divElement = document.createElement('div');
+      const assignBtn = document.createElement('div');
+      assignBtn.innerHTML = ` <button color="warn" class="mat-raised-button mat-button-base mat-primary change-location-btn">Change my location</button>`;
+      divElement.innerHTML = innerHtmlContent;
+      divElement.appendChild(assignBtn);
+      // btn.className = 'btn';
+      assignBtn.addEventListener('click', (e) => {
+        this.assignNewCoordinates([lng,lat])
+      });
+
+
       const popup = new Popup()
-      .setHTML(`
-      <h6>${place.text}</h6>
-      <span>${place.place_name}</span>
-      <br>
-      <button color="warn" onclick='${this.map.setCenter([lng, lat])}' class="mat-raised-button mat-button-base mat-warn">Change my location</button>`)
+      .setDOMContent(divElement);
+      // .setHTML(`
+      // <h6>${place.text}</h6>
+      // <span>${place.place_name}</span>
+      // <br>
+      // <button color="warn" onClick='${this.testFunction([lng,lat])}' class="mat-raised-button mat-button-base mat-warn change-location-btn">Change my location</button>`)
+
+ 
 
       const el = document.createElement('div');
       el.className = 'search-marker';
@@ -65,8 +97,10 @@ export class MapService {
       .setPopup( popup)
       .addTo (this.map);
 
+
       newMarkers.push(newMarker)
     }
+
 
     this.markers=newMarkers;
 
