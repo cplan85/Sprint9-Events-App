@@ -31,49 +31,34 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex: 1 1 auto;
 }
 
-.search-marker {
-  background-image: url('./assets/search-marker.svg');
+.search-marker, .music-marker, .misc-marker, .sports-marker, .arts-marker, .family-marker{
   background-size: cover;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.search-marker {
+  background-image: url('./assets/search-marker.svg');
 }
 
 .music-marker {
   background-image: url('./assets/music-marker.svg');
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
+
 }
 
 .misc-marker {
   background-image: url('./assets/misc-marker.svg');
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
+
 }
 
 .sports-marker {
   background-image: url('./assets/sports-marker.svg');
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
 }
 
 .arts-marker {
   background-image: url('./assets/arts-marker.svg');
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
 }
 
 .popupImg {

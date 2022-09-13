@@ -21,6 +21,8 @@ export class EventComponent implements OnInit {
     this.router.navigate(['/home/'])
   }
 
+  
+
 
 
   goToLink(link:string){

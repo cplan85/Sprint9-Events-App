@@ -38,6 +38,10 @@
                 <mat-list-item>{{event.venue}}
                 </mat-list-item>
                 <mat-list-item>{{event.address}}</mat-list-item>
+                <mat-list-item *ngIf="event.seatmapImg">
+                  <h2>Venue Seating Map</h2>
+                </mat-list-item>
+                <img [src]="event.seatmapImg ? event.seatmapImg  : null">
                 <mat-list-item>
                     <button mat-flat-button color="accent" (click)="goToLink(event.venueUrl)">Venue Link</button>
                     </mat-list-item>

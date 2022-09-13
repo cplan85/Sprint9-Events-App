@@ -22,12 +22,17 @@ export interface Event {
     units:           Units;
     sales:           Sales;
     dates:           Dates;
+    seatmap?:        SeatMap;
     classifications: EventClassification[];
     promoter?:        Promoter;
     promoters?:       Promoter[];
     priceRanges?:     PriceRange[];
     _links:          EventLinks;
     _embedded:       EventEmbedded;
+}
+
+export interface SeatMap {
+    staticUrl: string;
 }
 
 export interface EventEmbedded {

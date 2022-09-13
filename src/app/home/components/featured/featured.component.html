@@ -1,17 +1,31 @@
-<h2>Featured Events in {{currentCity}}
-
-    <mat-form-field appearance="fill">
-        <input 
-        matInput 
-        placeholder="London.." 
-        #txtQuery
-        (keyup)="onQueryChange(txtQuery.value)"
-        class="form-control"
-        [value]="currentCity">
-        
-      </mat-form-field>
-
-</h2>
+<div class="container">
+    <h2>Featured Events in
+        <mat-form-field appearance="fill">
+            <input
+            type="text"
+            placeholder="Type In a city.."
+            matInput
+            aria-label="Find Hero"
+            #txtQuery
+            [(ngModel)]="term"
+            [matAutocomplete]="auto"
+            (input)="finding(txtQuery.value)"
+            [value]="currentCity"
+            >
+    
+            <mat-autocomplete
+            autoActiveFirstOption
+            (optionSelected)="optionSelected( $event)"
+            #auto="matAutocomplete">
+                <mat-option *ngFor="let place of places" [value]="place">
+                  {{place.place_name
+                  }}
+                </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+    
+    </h2>
+</div>
 <mat-divider></mat-divider>
 <br>
 
@@ -32,6 +46,9 @@
         *ngFor="let featuredEvent of featuredEvents">
         <app-featured-card [featuredEvent]="featuredEvent" ></app-featured-card>
         </div>
+    </div>
+    <div class="buttom-button" fxLayout="row" fxLayoutAlign="center center" >
+        <button mat-stroked-button color="primary">LOAD MORE EVENTS</button>
     </div>
 </div>
 </ng-template>

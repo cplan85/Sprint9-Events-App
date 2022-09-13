@@ -16,4 +16,5 @@ export interface AppEvent {
     type: string,
     lat: number,
     long: number,
+    seatmapImg?: string,
 }
