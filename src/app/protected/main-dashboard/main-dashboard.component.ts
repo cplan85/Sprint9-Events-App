@@ -1,3 +1,4 @@
+import { User } from './../../auth/interfaces/interfaces';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-dashboard.component.scss']
 })
 export class MainDashboardComponent implements OnInit {
+
+
+ user: any = {
+  name: 'John Doe',
+  email: 'jDoe@gmail.com',
+  userName: 'Jdoe',
+  events: [],
+  maps: [],
+  friends: [],
+ }
 
   constructor() { }
 

@@ -1,3 +1,54 @@
 <p>main-dashboard works!</p>
 <p>main-dashboard works!</p>
-<p>main-dashboard works!</p>
+<p>main-dashboard works!2343</p>
+
+<div class="container">
+    <div 
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-between center" >
+        <div
+        class="left"
+        fxFlex="20"
+        fxFlex.lg="15"
+        fxFlex.sm="30"
+         >
+         <mat-card>
+             <mat-list>
+                <h3>Welcome Back</h3>
+                <h2> {{user.name}}</h2>
+                <p> <mat-icon>perm_identity</mat-icon> {{user.userName}}</p>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <b>Email Address</b>
+                </mat-list-item>
+                <mat-list-item>
+                    {{user.email}}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </mat-list-item>
+                     </mat-list>
+         </mat-card>
+    </div>
+        <div class="right"
+        fxFlex="80"
+        fxFlex.lg="85"
+        fxFlex.sm="90"
+        >
+          
+                <div class="right-content"
+                     >
+                     <mat-tab-group mat-align-tabs="center">
+                        <mat-tab label="My Events">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur laborum consectetur deserunt nesciunt sapiente. Ea itaque, cumque blanditiis optio iusto ipsa at pariatur impedit molestiae, facilis quas soluta quam amet.</mat-tab>
+                        <mat-tab label="My Maps">Content 2</mat-tab>
+                        <mat-tab label="My Calendar">Content 3</mat-tab>
+                      </mat-tab-group>
+                </div>
+        </div>
+    
+    </div>
+</div>
