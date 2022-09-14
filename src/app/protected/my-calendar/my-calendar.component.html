@@ -1,1 +1,8 @@
-<p>my-calendar works!</p>
+<mat-card class="demo-inline-calendar-card">
+    <mat-calendar [(selected)]="selected" [dateClass]="dateClass" > 
+    </mat-calendar>
+   
+  </mat-card>
+
+ 
+  <p>Selected date: {{selected}}</p>

@@ -6,14 +6,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ShortNumberPipe } from './pipes/short-number.pipe';
+//import { ShortNumberPipe } from './pipes/short-number.pipe';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ShortNumberPipe
+    AppComponent
+    //ShortNumberPipe
   ],
   imports: [
     BrowserModule,

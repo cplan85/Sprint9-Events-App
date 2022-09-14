@@ -6,7 +6,7 @@
     <div 
     fxLayout="row"
     fxLayout.xs="column"
-    fxLayoutAlign="space-between center" >
+    fxLayoutAlign="space-between start" >
         <div
         class="left"
         fxFlex="20"
@@ -45,7 +45,9 @@
                      <mat-tab-group mat-align-tabs="center">
                         <mat-tab label="My Events">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur laborum consectetur deserunt nesciunt sapiente. Ea itaque, cumque blanditiis optio iusto ipsa at pariatur impedit molestiae, facilis quas soluta quam amet.</mat-tab>
                         <mat-tab label="My Maps">Content 2</mat-tab>
-                        <mat-tab label="My Calendar">Content 3</mat-tab>
+                        <mat-tab label="My Calendar">
+                            <app-my-calendar></app-my-calendar>
+                        </mat-tab>
                       </mat-tab-group>
                 </div>
         </div>
