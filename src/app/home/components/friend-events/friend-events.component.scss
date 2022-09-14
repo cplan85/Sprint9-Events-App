@@ -1,61 +1,23 @@
+h2 {
+  margin: 2rem;
+}
 .keen-slider {
+  margin: 2rem;
     max-width: 100%;
     overflow-x: hidden;
 }
-.number-slide1 {
-  background: rgb(64, 255, 147);
-  background: linear-gradient(
-    128deg,
-    rgb(64, 255, 147) 0%,
-    rgb(18, 150, 93) 100%
-  );
+.slide {
+  background: #F3F5E7;
+  padding:2rem;
+  min-height: 200px;
 }
 
-.number-slide2 {
-  background: rgb(255, 75, 64);
-  background: linear-gradient(
-    128deg,
-    rgba(255, 154, 63, 1) 0%,
-    rgba(255, 75, 64, 1) 100%
-  );
+.avatar-img {
+  height:30px;
+  margin-right:1rem;
 }
 
-.number-slide3 {
-  background: rgb(182, 255, 64);
-  background: linear-gradient(
-    128deg,
-    rgba(182, 255, 64, 1) 0%,
-    rgba(63, 255, 71, 1) 100%
-  );
-  background: linear-gradient(
-    128deg,
-    rgba(189, 255, 83, 1) 0%,
-    rgba(43, 250, 82, 1) 100%
-  );
-}
-
-.number-slide4 {
-  background: rgb(64, 255, 242);
-  background: linear-gradient(
-    128deg,
-    rgba(64, 255, 242, 1) 0%,
-    rgba(63, 188, 255, 1) 100%
-  );
-}
-
-.number-slide5 {
-  background: rgb(255, 64, 156);
-  background: linear-gradient(
-    128deg,
-    rgba(255, 64, 156, 1) 0%,
-    rgba(255, 63, 63, 1) 100%
-  );
-}
-.number-slide6 {
-  background: rgb(64, 76, 255);
-  background: linear-gradient(
-    128deg,
-    rgba(64, 76, 255, 1) 0%,
-    rgba(174, 63, 255, 1) 100%
-  );
+.event-img {
+  width: 150px;
+  padding:0 .5rem .5rem .5rem;
 }

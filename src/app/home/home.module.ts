@@ -1,7 +1,7 @@
 import { MaterialModule } from './../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ShortNumberPipe } from '../pipes/short-number.pipe';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeMainComponent } from './components/home-main/home-main.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -44,6 +44,7 @@ import { EventMapComponent } from './event-map/event-map.component';
     BtnMyLocationComponent,
     SearchBarComponent,
     SearchResultsComponent,
+    ShortNumberPipe,
     EventsListComponent,
     BtnLoadMoreComponent,
     EventsPanelsComponent,
