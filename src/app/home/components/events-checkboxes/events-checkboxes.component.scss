@@ -10,7 +10,7 @@
     position:absolute;
     top: 140px;
     right:20px;
-    width: 360px;
+    width: 470px;
     z-index:1000;
 
     background-color: white;
@@ -36,4 +36,8 @@
   .icon {
     height: 30px;
     margin-left: .5rem;
+  }
+
+  .category-row {
+    width: 150px;
   }

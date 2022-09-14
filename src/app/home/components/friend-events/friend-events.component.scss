@@ -21,3 +21,12 @@ h2 {
   width: 150px;
   padding:0 .5rem .5rem .5rem;
 }
+
+@media (max-width: 576px) { 
+
+  .slide {
+ 
+    min-height: 325px;
+  }
+  
+ }
