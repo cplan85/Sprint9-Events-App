@@ -5,11 +5,17 @@ import { MaterialModule } from './../material/material.module';
 import { ProtectedRoutingModule } from './protected-routing.module';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MyEventsComponent } from './my-events/my-events.component';
+import { MyMapsComponent } from './my-maps/my-maps.component';
+import { MyCalendarComponent } from './my-calendar/my-calendar.component';
 
 
 @NgModule({
   declarations: [
-    MainDashboardComponent
+    MainDashboardComponent,
+    MyEventsComponent,
+    MyMapsComponent,
+    MyCalendarComponent
   ],
   imports: [
     CommonModule,

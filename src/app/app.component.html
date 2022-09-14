@@ -13,7 +13,7 @@
 
         <mat-nav-list>
             <a 
-            routerLink="./list" 
+            routerLink="./dashboard/my-events" 
             mat-list-item
             (click)="sidenav.toggle()">
             <mat-icon mat-list-icon>label</mat-icon>
@@ -21,7 +21,7 @@
             </a>
 
             <a 
-            routerLink="./maps" 
+            routerLink="./dashboard/my-maps" 
             mat-list-item
             (click)="sidenav.toggle()">
             <mat-icon mat-list-icon>map</mat-icon>
@@ -29,7 +29,7 @@
             </a>
 
             <a 
-            routerLink="./calendar" 
+            routerLink="./dashboard/my-calendar" 
             mat-list-item
             (click)="sidenav.toggle()">
             <mat-icon mat-list-icon>calendar_today</mat-icon>
@@ -72,11 +72,11 @@
             About
         </button>
 
-        <span>auth.usuario</span>
+        <span>{{_user.name}}</span>
         <button 
         routerLink="/auth/login"
         mat-button>
-            Login
+           {{ authService.validateToken() ? 'LogOut' : 'LogIn'}}
         </button>
     </mat-toolbar>
 <div class="container">
