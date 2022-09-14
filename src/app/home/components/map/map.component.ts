@@ -6,7 +6,6 @@ import { Component, AfterViewInit,ElementRef, ViewChild, OnInit} from '@angular/
 import { environment } from 'src/environments/environment';
 import { PlacesService } from 'src/app/services/places.service';
 import * as mapboxgl from 'mapbox-gl';
-import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 
 interface MarkerColor {

@@ -4,15 +4,30 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthResponse } from '../interfaces/interfaces';
 import { catchError, map, tap, Observable } from 'rxjs';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+    //CODE TO TEST FROM STACK OVERFLOW
+LoggedIn : Subject<any> = new Subject<any>();
+myData : any ;
+
+myDataSetter(data = false){
+ this.myData = data;
+ this.LoggedIn.next(this.myData);
+}
+//END OF GENERIC CODE FROM STACK OVERFLOW
+
   private baseUrl: string = environment.baseUrl;
-  private _user!:  User;
+  private _user:  User ={ uid: '',
+    name: '',
+    userName: '',
+    password: '',
+    email: ''
+}
 
   get user() {
     return {...this._user};
@@ -38,6 +53,7 @@ export class AuthService {
             uid: resp.uid!,
             email: resp.email!,
           }
+          this.myDataSetter(true);
          }
       }),
       map( resp => resp.ok),
@@ -92,6 +108,7 @@ export class AuthService {
           uid: resp.uid!,
           email: resp.email!,
         }
+        this.myDataSetter(true);
         return resp.ok
       }),
       //of(false will return false if there is an error)
@@ -101,6 +118,8 @@ export class AuthService {
   }
 
   logout() {
+    console.log('im logged out')
     localStorage.clear();
+    this.myDataSetter(false);
   }
 }

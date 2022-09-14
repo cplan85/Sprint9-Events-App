@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
 
   myForm: FormGroup = this.formBuilder.group({
-    email: ['test1@test.com', [Validators.required, Validators.email]],
+    email: ['JohnDoe@gmail.com', [Validators.required, Validators.email]],
     password: ['123456', [Validators.required, Validators.minLength(6)]]
 
   })

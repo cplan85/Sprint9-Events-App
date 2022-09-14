@@ -32,6 +32,7 @@ myDataSetter(data : any){
  this.myData = data;
  this.mySubject.next(this.myData);
 }
+//END OF GENERIC CODE FROM STACK OVERFLOW
   
 
   flyTo( coords: LngLatLike) {

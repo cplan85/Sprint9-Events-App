@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from './auth/interfaces/interfaces';
 import { AuthService } from './auth/services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,15 +11,37 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
 
- _user!:  User;
+ _user:  User ={ uid: '',
+ name: '',
+ userName: '',
+ password: '',
+ email: ''
+}
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, public router: Router) {
   }
 
   ngOnInit(): void {
-    if (this.authService.validateToken() ) {
-      this._user = this.authService.user
-    } 
+    this.authService.LoggedIn.subscribe((data) => {
+      if(data) {this._user = this.authService.user }
+      else {this._user = { uid: '',
+      name: '',
+      userName: '',
+      password: '',
+      email: ''
+     }
+      }
+
+
+     })
+  
+  }
+
+  logout() {
+
+    this.router.navigateByUrl('/auth/login');
+    this.authService.logout();
+
   }
 
 
