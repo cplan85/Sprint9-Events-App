@@ -28,12 +28,12 @@ export class FeaturedCardComponent implements OnInit {
 
       let email = this.authService.user.email
 
-      let {  name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl, address, promoter, type, lat, long,
+      let {  id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl, address, promoter, type, lat, long,
         seatmapImg, note} = this.featuredEvent;
         
         let venueImage = venueImages? venueImages[0].url: ''
 
-        this.authService.addEvent(email, name, url, date, startTime, img, min, max, currency, venue, venueImage, venueUrl, address, promoter, type, lat, long,
+        this.authService.addEvent(email, id, name, url, date, startTime, img, min, max, currency, venue, venueImage, venueUrl, address, promoter, type, lat, long,
           seatmapImg, note)
         .subscribe( ok => {
           console.log(ok, "ok from add Event")

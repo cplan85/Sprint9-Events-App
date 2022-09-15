@@ -8,6 +8,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { PlacesApiClient } from '../../api';
 import { PlacesResponse } from './../../interfaces/places';
+import { Event } from '../../interfaces/events';
 
 
 @Component({
@@ -114,40 +115,55 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
     return this.placesService.isUserLocationReady;
   }
 
+  populateCards(events: Event[]) {
+
+    events.forEach(event => { 
+      this.featuredEvents.push({
+        id:event.id,
+        name: event.name,
+        url: event.url,
+        date: event.dates.start.localDate,
+        startTime: event.dates.start.localTime,
+        img: event.images[0].url,
+        min: event.priceRanges?  event.priceRanges[0].min : 0,
+        max: event.priceRanges? event.priceRanges[0].max : 1000,
+        currency: event.priceRanges? event.priceRanges[0].currency: '',
+        venue: event._embedded.venues[0].name,
+        venueImages:  event._embedded.venues[0].images,
+        venueUrl: event._embedded.venues[0].url,
+        address: event._embedded.venues[0].address? event._embedded.venues[0].address.line1 : 'Verify Address' ,
+        promoter: event.promoter? event.promoter.name : '',
+        type: event.classifications[0].segment.name,
+        lat: parseFloat(event._embedded.venues[0].location.latitude),
+        long: parseFloat(event._embedded.venues[0].location.longitude),
+      })
+    }
+    )
+
+  }
+
+  loadMoreEvents() {
+
+    this.eventsService.getNextEvents(this.eventsService.next).subscribe(resp => {
+      //console.log(resp, "full Next Response")
+      this.eventsService.setNext(resp._links.next.href)
+      this.populateCards(resp._embedded.events);
+    })
+  }
+
   generateEvents(){
     this.placesService.getUserLocation().then(() => {
       
       this.eventsService.getLocalEvents(this.placesService.userLocation!, 10).subscribe(resp => {
         console.log(resp._embedded.events, "full Response from featured")
 
-        resp._embedded.events.forEach(event => { 
-          this.featuredEvents.push({
-            id:event.id,
-            name: event.name,
-            url: event.url,
-            date: event.dates.start.localDate,
-            startTime: event.dates.start.localTime,
-            img: event.images[0].url,
-            min: event.priceRanges?  event.priceRanges[0].min : 0,
-            max: event.priceRanges? event.priceRanges[0].max : 1000,
-            currency: event.priceRanges? event.priceRanges[0].currency: '',
-            venue: event._embedded.venues[0].name,
-            venueImages:  event._embedded.venues[0].images,
-            venueUrl: event._embedded.venues[0].url,
-            address: event._embedded.venues[0].address? event._embedded.venues[0].address.line1 : 'Verify Address' ,
-            promoter: event.promoter? event.promoter.name : '',
-            type: event.classifications[0].segment.name,
-            lat: parseFloat(event._embedded.venues[0].location.latitude),
-            long: parseFloat(event._embedded.venues[0].location.longitude),
-          })
-        }
-        )
+       this.populateCards(resp._embedded.events);
       } )
 
       this.eventsService.setLocalEvents(this.featuredEvents)
 
       this.placesService.getLocationName().subscribe(resp => {
-        console.log(resp.features[0])
+        //console.log(resp.features[0])
         this.currentCity=resp.features[0].context[3].text;
        })
 

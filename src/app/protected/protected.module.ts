@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MyEventsComponent } from './my-events/my-events.component';
 import { MyMapsComponent } from './my-maps/my-maps.component';
 import { MyCalendarComponent } from './my-calendar/my-calendar.component';
+import { MyEventCardComponent } from './components/my-event-card/my-event-card.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MyCalendarComponent } from './my-calendar/my-calendar.component';
     MainDashboardComponent,
     MyEventsComponent,
     MyMapsComponent,
-    MyCalendarComponent
+    MyCalendarComponent,
+    MyEventCardComponent
   ],
   imports: [
     CommonModule,

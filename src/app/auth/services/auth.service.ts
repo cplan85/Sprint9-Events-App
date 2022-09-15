@@ -31,12 +31,19 @@ myDataSetter(data = false){
     maps: [],
 }
 
+newUser: User = {
+  uid: '',
+    name: '',
+    userName: '',
+    password: '',
+    email: '',
+    events: [],
+    maps: [],
+
+}
+
   get user() {
     return {...this._user};
-  }
-
-  get userName() {
-    return this._user.userName
   }
   constructor(private http: HttpClient ) { }
 
@@ -60,7 +67,9 @@ myDataSetter(data = false){
             uid: resp.uid!,
             email: resp.email!,
           }
-          
+
+
+
           this.myDataSetter(true);
          }
       }),
@@ -116,6 +125,8 @@ myDataSetter(data = false){
           userName: resp.userName!,
           uid: resp.uid!,
           email: resp.email!,
+          events: resp.events!,
+          maps: resp.maps!,
         }
         this.myDataSetter(true);
         return resp.ok
@@ -126,12 +137,17 @@ myDataSetter(data = false){
 
   }
 
-  addEvent( email:string, name: string, url: string, date: string, startTime: string, img: string | undefined, min: number, max: number, currency: string | undefined, venue: string, venueImages: string | undefined, venueUrl: string, 
+  addEvent( email:string, id: string, name: string, url: string, date: string, startTime: string, img: string | undefined, min: number, max: number, currency: string | undefined, venue: string, venueImages: string | undefined, venueUrl: string, 
     address: string, promoter: string | undefined, type: string, lat: number, long: number, seatmapImg : string | undefined, note: string | undefined) {
 
     const apiUrl = `${this.baseUrl}events/add`;
-    const body = {email, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl,
+    const body = {email, id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl,
     address, promoter, type, lat, long, seatmapImg, note};
+
+    console.log(email , " - email", id, " - id", name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl,
+      address, promoter, type, lat, long, seatmapImg, note)
+    
+    
 
     return  this.http.post<AuthResponse>(apiUrl, body)
     .pipe(

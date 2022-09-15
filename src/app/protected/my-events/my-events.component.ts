@@ -1,3 +1,5 @@
+import { AppEvent } from './../../home/interfaces/appEvents';
+import { AuthService } from './../../auth/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyEventsComponent implements OnInit {
 
-  myEvents: Event[] = [];
+  
 
-  constructor() { }
+  myEvents: AppEvent[] = [];
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+
+    this.authService.user.events? this.myEvents = this.authService.user.events : null
   }
 
 }

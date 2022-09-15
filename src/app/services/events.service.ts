@@ -30,7 +30,7 @@ export class EventsService {
   }
 
   getLocalEvents(userLocation: [number, number], size: number): Observable<EventsResponse> {
-    console.log(userLocation, "getLocalEvents")
+  
     this.latLong = `${userLocation![1]},${userLocation![0]}`
     return this.http.get<EventsResponse>(`${this.baseUrl}apikey=${this.apiKey}&latlong=${this.latLong}&size=${size}`)
     

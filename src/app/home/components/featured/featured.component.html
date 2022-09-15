@@ -48,7 +48,10 @@
         </div>
     </div>
     <div class="buttom-button" fxLayout="row" fxLayoutAlign="center center" >
-        <button mat-stroked-button color="primary">LOAD MORE EVENTS</button>
+        <button 
+        mat-stroked-button color="primary"
+        (click)="loadMoreEvents()"
+        >LOAD MORE EVENTS</button>
     </div>
 </div>
 </ng-template>

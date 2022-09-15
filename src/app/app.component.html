@@ -17,7 +17,7 @@
             mat-list-item
             (click)="sidenav.toggle()">
             <mat-icon mat-list-icon>label</mat-icon>
-                <span>My Events</span>
+                <span [matBadge]="_user.events?.length" matBadgeColor="warn" matBadgeOverlap="false" [matBadgeHidden]="!_user.name">My Events</span>
             </a>
 
             <a 
@@ -25,7 +25,7 @@
             mat-list-item
             (click)="sidenav.toggle()">
             <mat-icon mat-list-icon>map</mat-icon>
-                <span>My Maps</span>
+                <span [matBadge]="_user.maps?.length" matBadgeColor="warn" matBadgeOverlap="false" [matBadgeHidden]="!_user.name">My Maps</span>
             </a>
 
             <a 

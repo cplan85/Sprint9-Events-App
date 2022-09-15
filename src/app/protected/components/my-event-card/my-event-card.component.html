@@ -1,0 +1,33 @@
+<mat-card >
+    <mat-card-header>
+        <mat-card-title>{{event.name}}</mat-card-title>
+       
+        <mat-card-subtitle> <mat-icon mat-list-icon>location_on</mat-icon> {{event.venue}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="event.img">
+    <mat-card-content>
+        <h3>{{event.min | number: '1.2-2'}} - {{event.max | number: '1.2-2'}} {{event.currency}}</h3>
+        <div fxLayout="row" fxFill class="full-time-container">
+            <div class="date-container">
+                <h4>{{event.date}}</h4>
+            </div>
+            <div class="time-container"><h4> {{event.startTime}}</h4></div>
+        </div>
+        <!-- <p>
+            <strong>First Appearance</strong> {{heroe.first_appearance}}
+            <br>
+            <strong>Characters: </strong>{{heroe.characters}}
+        </p> -->
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button 
+        color="warn"
+        [routerLink]="['/home/' , event.id]"
+        >Read more...</button>
+        <button mat-button 
+        color="info"
+        matTooltip="Add to my events" 
+        ><mat-icon>add_circle_outline</mat-icon></button>
+    </mat-card-actions>
+</mat-card>

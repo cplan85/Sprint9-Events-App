@@ -1,6 +1,6 @@
 import { Image } from './events';
 export interface AppEvent {
-    id?: string,
+    id: string,
     name: string,
     date: string,
     url: string,

@@ -23,7 +23,7 @@ export class MainDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.user = this.authService._user;
+    this.user = this.authService.user;
     console.log(this.user, "My user")
   }
 

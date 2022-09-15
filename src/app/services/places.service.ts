@@ -70,7 +70,7 @@ get isUserLocationReady(): boolean {
 
   getLocationName(userLocation = this.userLocation) {
 
-    console.log(userLocation)
+    //console.log(userLocation)
     if (!this.userLocation) throw Error('There is no userLocation')
 
    return  this.http.get<PlacesResponse>(`https://api.mapbox.com/geocoding/v5/mapbox.places/${userLocation?.toString()}.json?limit=1&types=place%2Cpostcode%2Caddress&access_token=${environment.mapboxToken}`)
