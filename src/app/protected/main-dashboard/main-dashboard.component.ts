@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth/services/auth.service';
 import { User } from './../../auth/interfaces/interfaces';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,18 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class MainDashboardComponent implements OnInit {
 
 
- user: any = {
+ user: User = {
+  uid: '',
   name: 'John Doe',
   email: 'jDoe@gmail.com',
   userName: 'Jdoe',
   events: [],
   maps: [],
-  friends: [],
  }
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    
+    this.user = this.authService._user;
+    console.log(this.user, "My user")
   }
 
 }

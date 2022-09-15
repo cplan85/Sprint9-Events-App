@@ -22,15 +22,21 @@ myDataSetter(data = false){
 //END OF GENERIC CODE FROM STACK OVERFLOW
 
   private baseUrl: string = environment.baseUrl;
-  private _user:  User ={ uid: '',
+  public _user:  User ={ uid: '',
     name: '',
     userName: '',
     password: '',
-    email: ''
+    email: '',
+    events: [],
+    maps: [],
 }
 
   get user() {
     return {...this._user};
+  }
+
+  get userName() {
+    return this._user.userName
   }
   constructor(private http: HttpClient ) { }
 
@@ -45,14 +51,16 @@ myDataSetter(data = false){
         console.log(resp, '<== respons from auth service')
 
         if (resp.ok) {
-
+    
           localStorage.setItem('token', resp.token!)
           this._user = {
             name: resp.name!,
             userName: resp.userName!,
+            events: resp.events!,
             uid: resp.uid!,
             email: resp.email!,
           }
+          
           this.myDataSetter(true);
          }
       }),
@@ -78,6 +86,7 @@ myDataSetter(data = false){
           this._user = {
             name: resp.name!,
             userName: resp.userName!,
+            events: resp.events!,
             uid: resp.uid!,
             email: resp.email!,
           }

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyEventsComponent implements OnInit {
 
+  myEvents: Event[] = [];
+
   constructor() { }
 
   ngOnInit(): void {

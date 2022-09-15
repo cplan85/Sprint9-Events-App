@@ -1,3 +1,4 @@
+import { AppEvent } from './../../home/interfaces/appEvents';
 export interface AuthResponse {
     ok: boolean;
     uid?: string;
@@ -6,6 +7,8 @@ export interface AuthResponse {
     token?: string;
     msg?: string;
     email?: string,
+    events? : AppEvent[];
+    maps? : [];
 }
 
 export interface User {
@@ -14,5 +17,7 @@ export interface User {
     userName: string;
     password?: string;
     email?: string;
+    events? : AppEvent[];
+    maps? : [];
     
 }

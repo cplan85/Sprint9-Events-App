@@ -15,7 +15,8 @@ export class AppComponent implements OnInit {
  name: '',
  userName: '',
  password: '',
- email: ''
+ email: '',
+ events: [],
 }
 
   constructor(public authService: AuthService, public router: Router) {
