@@ -134,7 +134,7 @@ export interface Venue {
     city:           City;
     state:          City;
     country:        Country;
-    address:        Address;
+    address?:        Address;
     location:       Location;
     upcomingEvents: UpcomingEvents;
     _links:         AttractionLinks;

@@ -57,10 +57,11 @@ export class MapComponent implements AfterViewInit, OnInit {
           img: event.images[0].url ? event.images[0].url : '' ,
           min: event.priceRanges? event.priceRanges[0].min : 0,
           max: event.priceRanges? event.priceRanges[0].max : 1000,
+          currency: event.priceRanges? event.priceRanges[0].currency: '',
           venue: event._embedded.venues[0].name ? event._embedded.venues[0].name : '',
           venueImages:  event._embedded.venues[0].images ? event._embedded.venues[0].images : [] ,
           venueUrl: event._embedded.venues[0].url,
-          address: event._embedded.venues[0].address.line1,
+          address: event._embedded.venues[0].address? event._embedded.venues[0].address.line1 : 'Verify Address' ,
           promoter: event.promoter? event.promoter.name : '',
           type: event.classifications[0].segment.name ? event.classifications[0].segment.name: '',
           lat: parseFloat(event._embedded.venues[0].location.latitude),
@@ -186,7 +187,7 @@ this.map = map;
 const popup = new mapboxgl.Popup()
   .setHTML(`
   <h6>Your Home Base</h6>
-  <span>If you want to return to your center click on top right button.</span>
+  <span>If you want to return to your map's center click on top right button.</span>
   `);
 
   new mapboxgl.Marker({color: 'black'})

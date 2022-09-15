@@ -117,6 +117,35 @@ myDataSetter(data = false){
 
   }
 
+  addEvent( email:string, name: string, url: string, date: string, startTime: string, img: string | undefined, min: number, max: number, currency: string | undefined, venue: string, venueImages: string | undefined, venueUrl: string, 
+    address: string, promoter: string | undefined, type: string, lat: number, long: number, seatmapImg : string | undefined, note: string | undefined) {
+
+    const apiUrl = `${this.baseUrl}events/add`;
+    const body = {email, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl,
+    address, promoter, type, lat, long, seatmapImg, note};
+
+    return  this.http.post<AuthResponse>(apiUrl, body)
+    .pipe(
+      tap( resp => {
+        console.log(resp, '<== respons from auth service - Create Event')
+
+        if (resp.ok) {
+          console.log("event successfully added")
+
+          // this._user = {
+          //   name: resp.name!,
+          //   userName: resp.userName!,
+          //   uid: resp.uid!,
+          //   email: resp.email!,
+          // }
+         }
+      }),
+      map( resp => resp.ok),
+      catchError( err => of(err.error.msg))
+    );
+
+  }
+
   logout() {
     console.log('im logged out')
     localStorage.clear();

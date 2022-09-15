@@ -17,6 +17,7 @@ const routes: Routes = [
     canActivate: [ValidateTokenGuard],
     canLoad: [ValidateTokenGuard]
   },
+  {path:'',redirectTo:'home', pathMatch: 'full' },
   {
     path: '**',
     redirectTo: 'auth'

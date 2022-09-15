@@ -8,6 +8,7 @@ export interface AppEvent {
     img?: string,
     min: number,
     max: number,
+    currency?: string,
     venue: string,
     venueImages:  Image[] | undefined,
     venueUrl: string,
@@ -17,4 +18,5 @@ export interface AppEvent {
     lat: number,
     long: number,
     seatmapImg?: string,
+    note?: string,
 }
