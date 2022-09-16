@@ -1,0 +1,26 @@
+.date-container {
+    background: #FF8BC8;
+    text-align:center;
+    width:50%;
+    color:white;
+}
+
+.time-container {
+    background: #52B9A3; 
+    text-align:center;
+    width:50%;
+    color:white;
+}
+
+mat-card {
+    min-height: 450px;
+}
+
+.avatar-img {
+    height:20px;
+    margin-right:-.5rem;
+  }
+
+  .avatar-img:nth-child(3) {
+    margin-right:1rem;
+  }

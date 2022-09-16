@@ -144,8 +144,8 @@ newUser: User = {
     const body = {email, id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl,
     address, promoter, type, lat, long, seatmapImg, note};
 
-    console.log(email , " - email", id, " - id", name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl,
-      address, promoter, type, lat, long, seatmapImg, note)
+    // console.log(email , " - email", id, " - id", name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl,
+    //   address, promoter, type, lat, long, seatmapImg, note)
     
     
 
@@ -156,13 +156,6 @@ newUser: User = {
 
         if (resp.ok) {
           console.log("event successfully added")
-
-          // this._user = {
-          //   name: resp.name!,
-          //   userName: resp.userName!,
-          //   uid: resp.uid!,
-          //   email: resp.email!,
-          // }
          }
       }),
       map( resp => resp.ok),
@@ -175,5 +168,13 @@ newUser: User = {
     console.log('im logged out')
     localStorage.clear();
     this.myDataSetter(false);
+    this._user = { uid: '',
+    name: '',
+    userName: '',
+    password: '',
+    email: '',
+    events: [],
+    maps: [],
+}
   }
 }
