@@ -1,1 +1,23 @@
-<p>my-maps works!</p>
+<h2>MY SAVED MAPS</h2>
+
+<div *ngIf="myMaps.length === 0; else mymapsReady" 
+fxLayout="column" fxLayoutAlign="center center"
+class="no-maps-container">
+
+<img class="center-img" src="./assets/no-maps.svg" alt="">
+<h3>NO SAVED MAPS YET</h3>
+<button mat-flat-button color="accent">Home</button>
+</div>
+
+<ng-template #mymapsReady>
+<div class="container">
+    <div fxLayout="row wrap"
+    fxLayout.xs="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="1.2rem grid" 
+    >
+    
+    </div>
+   
+</div>
+</ng-template>

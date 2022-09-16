@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyMapsComponent implements OnInit {
 
+  myMaps: any[] = []
   constructor() { }
 
   ngOnInit(): void {
