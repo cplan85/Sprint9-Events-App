@@ -29,11 +29,15 @@
         color="info"
         matTooltip="Add to my events" 
         ><mat-icon>edit</mat-icon></button>
-        <button mat-icon-button 
+
+        <button 
+        mat-icon-button 
         color="info"
         matTooltip="Delete event"
         color="warn" 
+        (click)="deleteEvent()"
         ><mat-icon>delete</mat-icon></button>
+
         <mat-divider></mat-divider>
         <br>
         <div fxLayout="row" fxLayoutAlign="start center">

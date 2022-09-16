@@ -18,6 +18,20 @@ export class MyEventsComponent implements OnInit {
   ngOnInit(): void {
 
     this.authService.user.events? this.myEvents = this.authService.user.events : null
+
+
+    this.authService.myEventsSubject.subscribe((id) => {
+      console.log('MY EVENTS COMPONENT RESPONDS TO DATA CHANGE!', id)
+
+      this.myEvents!.forEach( (event,idx) => {
+        // console.log(`Pantry Name from pantry Controller`,obj.pantryName)
+         if (event.id === id) {
+           this.myEvents!.splice(idx, 1);
+         }
+     })
+     })
   }
+
+  
 
 }

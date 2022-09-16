@@ -21,6 +21,16 @@ myDataSetter(data = false){
 }
 //END OF GENERIC CODE FROM STACK OVERFLOW
 
+ //DETECT CHANGE IN MY EVENTS
+ myEventsSubject : Subject<any> = new Subject<any>();
+ myEventsData : any ;
+ 
+ MyEventsDataSetter(data : any){
+  this.myEventsData = data;
+  this.myEventsSubject.next(this.myEventsData);
+ }
+ //END OF DETECT CHANGE IN MY EVENTS
+
   private baseUrl: string = environment.baseUrl;
   public _user:  User ={ uid: '',
     name: '',
@@ -163,6 +173,26 @@ newUser: User = {
     );
 
   }
+
+  deleteEvent (email: string, id: string) {
+    const apiUrl = `${this.baseUrl}events/delete`;
+
+    const body = {email, id};
+
+    return  this.http.post<AuthResponse>(apiUrl, body)
+    .pipe(
+      tap( resp => {
+        console.log(resp, '<== respons from auth service - Delete Event')
+        this.MyEventsDataSetter(id);
+        if (resp.ok) {
+          console.log("Event successfully deleted")
+         }
+      }),
+      map( resp => resp.ok),
+      catchError( err => of(err.error.msg))
+    );
+  }
+
 
   logout() {
     console.log('im logged out')

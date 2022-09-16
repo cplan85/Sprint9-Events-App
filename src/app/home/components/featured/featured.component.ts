@@ -69,35 +69,12 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
     this.currentCity = place.place_name;
 
     console.log(place, 'selected place')
-//NEED TO REFACTOR ALL OF THIS
     this.eventsService.getLocalEvents([place.center[0], place.center[1]], 10).subscribe(resp => {
       this.featuredEvents = [];
       console.log(resp, "full Response from Change Detection")
       this.eventsService.setNext(resp._links.next.href);
   
-      resp._embedded.events.forEach(event => { 
-        this.featuredEvents.push({
-          id:event.id,
-          name: event.name,
-          url: event.url,
-          date: event.dates.start.localDate,
-          startTime: event.dates.start.localTime,
-          img: event.images[0].url,
-          min: event.priceRanges?  event.priceRanges[0].min : 0,
-          max: event.priceRanges? event.priceRanges[0].max : 1000,
-          currency: event.priceRanges? event.priceRanges[0].currency: '',
-          venue: event._embedded.venues[0].name,
-          venueImages:  event._embedded.venues[0].images,
-          venueUrl: event._embedded.venues[0].url,
-          address: event._embedded.venues[0].address? event._embedded.venues[0].address.line1 : 'Verify Address' ,
-          promoter: event.promoter? event.promoter.name : '',
-          type: event.classifications[0].segment.name,
-          lat: parseFloat(event._embedded.venues[0].location.latitude),
-          long: parseFloat(event._embedded.venues[0].location.longitude),
-          seatmapImg: event.seatmap? event.seatmap.staticUrl : ''
-        })
-      }
-      )
+     this.populateCards(resp._embedded.events);
 
       this.eventsService.setLocalEvents(this.featuredEvents)
   
@@ -136,6 +113,8 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
         type: event.classifications[0].segment.name,
         lat: parseFloat(event._embedded.venues[0].location.latitude),
         long: parseFloat(event._embedded.venues[0].location.longitude),
+        seatmapImg: event.seatmap? event.seatmap.staticUrl : '',
+        note: '',
       })
     }
     )
