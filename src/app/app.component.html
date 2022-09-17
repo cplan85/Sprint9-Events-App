@@ -13,6 +13,13 @@
 
         <mat-nav-list>
             <a 
+            routerLink="./dashboard/" 
+            mat-list-item
+            (click)="sidenav.toggle()">
+            <mat-icon mat-list-icon>dashboard</mat-icon>
+                <span>Main Dashboard</span>
+            </a>
+            <a 
             routerLink="./dashboard/my-events" 
             mat-list-item
             (click)="sidenav.toggle()">

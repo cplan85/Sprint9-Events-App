@@ -16,6 +16,7 @@ import { MapScreenComponent } from './map-screen/map-screen.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-location.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SavedEventSnackComponent } from './components/featured-card/featured-card.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { EventsListComponent } from './events-list/events-list.component';
@@ -42,6 +43,7 @@ import { EventMapComponent } from './event-map/event-map.component';
     MapScreenComponent,
     LoadingComponent,
     BtnMyLocationComponent,
+    SavedEventSnackComponent,
     SearchBarComponent,
     SearchResultsComponent,
     ShortNumberPipe,

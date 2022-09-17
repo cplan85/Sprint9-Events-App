@@ -3,17 +3,18 @@
     <div 
     fxLayout="row"
     fxLayout.xs="column"
-    fxLayoutAlign="space-between start" >
+    fxLayoutAlign="space-between start"
+    fxLayoutAlign.xs="space-around center" >
         <div
         class="left"
         fxFlex="20"
         fxFlex.lg="15"
-        fxFlex.sm="30"
+        fxFlex.sm="90"
          >
          <mat-card>
              <mat-list>
                 <h3>Welcome Back</h3>
-                <h2> {{user.name}}</h2>
+                <h2 class="userName"> {{user.name}}</h2>
                 <p> <mat-icon>perm_identity</mat-icon> {{user.userName}}</p>
                 <mat-divider></mat-divider>
                 <mat-list-item>
@@ -24,7 +25,7 @@
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+                    <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon">
                         <mat-icon>edit</mat-icon>
                       </button>
                     </mat-list-item>

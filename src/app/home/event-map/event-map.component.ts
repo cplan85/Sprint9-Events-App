@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input} from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { AppEvent } from '../interfaces/appEvents';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-event-map',
@@ -20,7 +21,7 @@ export class EventMapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    // (mapboxgl as any).accessToken = environment.mapboxToken;
+    (mapboxgl as any).accessToken = environment.mapboxToken;
      this.map = new mapboxgl.Map({
      container: this.divMap.nativeElement, // container ID
      //mapbox://styles/cplan203/cl6vfqkid005814p4gyy80dlc
@@ -45,8 +46,6 @@ export class EventMapComponent implements AfterViewInit {
   .addTo(this.map)
 
      
-   
-     //this.readLocalStorage();
    }
 
 }

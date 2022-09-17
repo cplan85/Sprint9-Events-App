@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventsResponse } from './../home/interfaces/events';
+import { Event } from './../home/interfaces/events';
 import { PlacesService } from 'src/app/services/places.service';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -34,6 +35,11 @@ export class EventsService {
     this.latLong = `${userLocation![1]},${userLocation![0]}`
     return this.http.get<EventsResponse>(`${this.baseUrl}apikey=${this.apiKey}&latlong=${this.latLong}&size=${size}`)
     
+   }
+
+   getEventbyId(id: string) {
+    const url: string = `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${this.apiKey}`;
+    return this.http.get<Event>(url);
    }
 
    getNextEvents(next:string) {

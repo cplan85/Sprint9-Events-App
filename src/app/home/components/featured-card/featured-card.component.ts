@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../../auth/services/auth.service';
 import { AppEvent } from './../../interfaces/appEvents';
 import { Component, Input, OnInit } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class FeaturedCardComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private _snackBar: MatSnackBar) { }
 
   @Input() featuredEvent!: AppEvent;
 
@@ -37,6 +39,7 @@ export class FeaturedCardComponent implements OnInit {
           seatmapImg, note)
         .subscribe( ok => {
           console.log(ok, "ok from add Event")
+          this.openSnackBar();
           if ( ok === true ) {
             this.router.navigateByUrl('/dashboard')
           } else {
@@ -51,4 +54,23 @@ export class FeaturedCardComponent implements OnInit {
   
     }
 
+    openSnackBar() {
+      this._snackBar.openFromComponent(SavedEventSnackComponent, {
+        duration: 1.5 * 1000,
+      });
+    }
+
 }
+
+@Component({
+  selector: 'snack-bar-component-example-snack',
+  templateUrl: './snack-bar-saved-event-component.html',
+  styles: [
+    `
+    .example-pizza-party {
+      color: hotpink;
+    }
+  `,
+  ],
+})
+export class SavedEventSnackComponent {}

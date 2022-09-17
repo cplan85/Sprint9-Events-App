@@ -25,8 +25,7 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
  selectedPlace: Feature | undefined;
  filteredPlaces!: Observable<Feature[]>;
 
- featuredEvents: AppEvent[] = [
-  ]
+ featuredEvents: AppEvent[] = this.eventsService.localEvents;
 
   private debounceTimer?: NodeJS.Timeout;
 
@@ -154,9 +153,18 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
   
 
   ngOnInit(): void {
-    this.placesService.getUserLocation().then(()=> {
-      this.generateEvents();
-    })
+    console.log(this.eventsService.localEvents, "local events")
+    if(this.eventsService.localEvents.length > 0) {
+      
+      //update the city name and hence location where new searches are to be completed
+       this.isDataLoaded = true;
+    }
+    else {
+      this.placesService.getUserLocation().then(()=> {
+        this.generateEvents();
+      })
+    }
+ 
    
   }
 
