@@ -1,11 +1,13 @@
 <h2>MY EVENTS CALENDAR</h2>
 <div class="container">
-  <mat-card class="demo-inline-calendar-card">
-      <mat-calendar [(selected)]="selected" [dateClass]="dateClass" >
-      </mat-calendar>
-  
-    </mat-card>
-  
-  
-    <p>Selected date: {{selected}}</p>
+  <div class="calendar-content">
+    <mat-card class="demo-inline-calendar-card">
+        <mat-calendar [(selected)]="selected" [dateClass]="dateClass" >
+        </mat-calendar>
+    
+      </mat-card>
+    
+    
+      <p>Selected date: {{selected}}</p>
+  </div>
 </div>
