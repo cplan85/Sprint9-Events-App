@@ -62,7 +62,6 @@ myDataSetter(data : any){
     for (const place of places) {
       const [lng,lat] = place.center;
 
-      const name = 'abc';
       const innerHtmlContent = `<h6>${place.text}</h6>
        <span>${place.place_name}</span>
        <br>`;

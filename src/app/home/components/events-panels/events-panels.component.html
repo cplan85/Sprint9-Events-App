@@ -22,6 +22,15 @@
     <div mat-line>
         <h4>{{place.name}}</h4>
         {{place.date}} - {{place.startTime}}
+        <button mat-icon-button
+        color="warn"
+        [routerLink]="['/home/' , place.id]"
+        ><mat-icon>info</mat-icon></button>
+        <button mat-icon-button
+        color="primary"
+        matTooltip="Add to my events" 
+        (click)="addEvent(place)"
+        ><mat-icon>add_circle</mat-icon></button>
     </div>
     <img [src]="place.img" alt=""> 
     <p>{{place.type}}</p>

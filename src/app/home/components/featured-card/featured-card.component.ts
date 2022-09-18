@@ -51,7 +51,6 @@ export class FeaturedCardComponent implements OnInit {
     else {
       this.router.navigateByUrl('/auth/login')
     }
-  
     }
 
     openSnackBar() {

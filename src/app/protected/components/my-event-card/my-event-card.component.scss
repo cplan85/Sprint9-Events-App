@@ -29,4 +29,12 @@ mat-card {
     font-size: 18px;
 }
 
+@media (min-width: 1286px) { 
+
+  mat-card {
+    min-height: 500px;
+}
+
+ }
+
   

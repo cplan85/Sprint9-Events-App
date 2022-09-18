@@ -13,6 +13,8 @@ export interface AppEvent {
     venueImages:  Image[] | undefined,
     venueUrl: string,
     address: string,
+    city?: string,
+    country?: string,
     promoter?: string,
     type: string,
     lat: number,

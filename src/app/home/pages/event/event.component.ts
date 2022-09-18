@@ -59,9 +59,14 @@ export class EventComponent implements OnInit {
        return appEvent.id === id;
       })
 
+      let matchingLocalEventId =this.eventsService.localEvents?.filter(appEvent => {
+        return appEvent.id === id;
+       })
+
       if(this.authService.user.events && matchingId!.length> 0) {
         this.retrieveEvents(this.authService.user.events) 
-      } else if(this.eventsService.localEvents.length >0) {
+      } else if(this.eventsService.localEvents.length >0 && matchingLocalEventId.length > 0) {
+        console.log('2nd option')
         this.retrieveEvents(this.eventsService.localEvents)
       }
       else {

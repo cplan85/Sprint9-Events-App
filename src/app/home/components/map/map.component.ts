@@ -1,3 +1,5 @@
+import { AuthService } from './../../../auth/services/auth.service';
+import { Router } from '@angular/router';
 import { Event } from './../../interfaces/events';
 import { AppEvent } from './../../interfaces/appEvents';
 import { EventsService } from './../../../services/events.service';
@@ -29,7 +31,9 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   constructor(private placesService: PlacesService,
     private mapService: MapService,
-    private eventsService: EventsService
+    private eventsService: EventsService,
+    private authService: AuthService,
+    private router: Router,
     ) { }
 
     loadMoreEvents(map:mapboxgl.Map) {
@@ -47,7 +51,7 @@ export class MapComponent implements AfterViewInit, OnInit {
     addEventMarkers(events: Event[], map: mapboxgl.Map) {
       
 
-      events.forEach(event => {
+      events.forEach((event, idx) => {
         this.mapEvents.push({
           id:event.id,//
           name: event.name ? event.name : '',
@@ -62,6 +66,8 @@ export class MapComponent implements AfterViewInit, OnInit {
           venueImages:  event._embedded.venues[0].images ? event._embedded.venues[0].images : [] ,
           venueUrl: event._embedded.venues[0].url,
           address: event._embedded.venues[0].address? event._embedded.venues[0].address.line1 : 'Verify Address' ,
+          city: event._embedded.venues[0].address? event._embedded.venues[0].city.name : 'Verify City' ,
+          country: event._embedded.venues[0].address? event._embedded.venues[0].country.name : '' ,
           promoter: event.promoter? event.promoter.name : '',
           type: event.classifications[0].segment.name ? event.classifications[0].segment.name: '',
           lat: parseFloat(event._embedded.venues[0].location.latitude),
@@ -70,15 +76,36 @@ export class MapComponent implements AfterViewInit, OnInit {
         this.mapService.mapEvents = this.mapEvents;
   
         console.log(event.classifications[0].segment.name);
-  
-        const eventPopup = new mapboxgl.Popup()
-        .setHTML(`
-        <h6>${event.name}</h6>
+
+        const innerHtmlContent = `<h6>${event.name}</h6>
         <span>${event.dates.start.localDate}</span>
         <img class="popupImg" src="${event.images[0].url}">
         <p>${event.priceRanges? event.priceRanges[0].min: 0} -${event.priceRanges? event.priceRanges[0].max: 1000} ${event.priceRanges? event.priceRanges[0].currency: ''}</p>
-        <a href=${event.url}>Event Link</a>
-        `);
+        <p> ${event._embedded.venues[0].address? event._embedded.venues[0].city.name : 'Verify City'}</p>
+        <br>`;
+
+        const divElement = document.createElement('div');
+        const addEventBtn = document.createElement('div');
+        addEventBtn.innerHTML = ` <button color="accent" class="mat-raised-button mat-button-base mat-warn change-location-btn add-event-btn">Add To My Events</button>`;
+
+        const infoBtn = document.createElement('div');
+        infoBtn.innerHTML = ` <button color="accent" class="mat-stroked-button mat-button-base mat-warn change-location-btn info-btn">Read more</button><br><br>`;
+
+        divElement.innerHTML = innerHtmlContent;
+        divElement.appendChild(infoBtn);
+        divElement.appendChild(addEventBtn);
+        // btn.className = 'btn';
+        addEventBtn.addEventListener('click', (e) => {
+          console.log(this.mapEvents[idx])
+          this.addEvent(this.mapEvents[idx])
+        });
+        infoBtn.addEventListener('click', (e) => {
+          this.goToInfoPage(this.mapEvents[idx].id)
+        });
+  
+        const eventPopup = new mapboxgl.Popup()
+        .setDOMContent(divElement);
+    
   
         const musicMarker = document.createElement('div');
         musicMarker.className = 'music-marker';
@@ -137,6 +164,41 @@ export class MapComponent implements AfterViewInit, OnInit {
 
       })
     }
+
+    goToInfoPage(id: string){
+      this.router.navigate(['/home/', id])
+    }
+
+    addEvent(event: AppEvent) {
+  
+      if(this.authService.user.email) {
+  
+        let email = this.authService.user.email
+  
+        let {  id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl, address, promoter, type, lat, long,
+          seatmapImg, note} = event;
+          
+          let venueImage = venueImages? venueImages[0].url: ''
+  
+          this.authService.addEvent(email, id, name, url, date, startTime, img, min, max, currency, venue, venueImage, venueUrl, address, promoter, type, lat, long,
+            seatmapImg, note)
+          .subscribe( ok => {
+            console.log(ok, "ok from add Event")
+            //this.openSnackBar();
+            if ( ok === true ) {
+              this.router.navigateByUrl('/dashboard')
+            } else {
+              
+            }
+        })
+  
+      }
+      else {
+        this.router.navigateByUrl('/auth/login')
+      }
+      }
+
+    
 
    
 
