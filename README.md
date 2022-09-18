@@ -104,3 +104,14 @@ Please make sure to update tests as appropriate.
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+[Node.js]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
+[Node-url]: https://nodejs.org/en//
+[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+
+[Express.js]: https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
+[Expressjs-url]: https://expressjs.com/en/guide/routing.html
+
+[MapBox-places]: https://img.shields.io/badge/MapBox%20Places-000000?style=for-the-badge&logo=mapbox&logoColor=white
+[MapBox.com]: https://img.shields.io/badge/MapBox-000000?style=for-the-badge&logo=mapbox&logoColor=white
+[Mapbox-url]: https://www.mapbox.com/
