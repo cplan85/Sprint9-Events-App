@@ -1,3 +1,4 @@
+import { SavedEventSnackComponent } from './../featured-card/featured-card.component';
 import { AuthService } from './../../../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { Event } from './../../interfaces/events';
@@ -7,6 +8,7 @@ import { MapService } from './../../../services/map.service';
 import { Component, AfterViewInit,ElementRef, ViewChild, OnInit} from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { PlacesService } from 'src/app/services/places.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import * as mapboxgl from 'mapbox-gl';
 
 
@@ -34,6 +36,7 @@ export class MapComponent implements AfterViewInit, OnInit {
     private eventsService: EventsService,
     private authService: AuthService,
     private router: Router,
+    private _snackBar: MatSnackBar
     ) { }
 
     loadMoreEvents(map:mapboxgl.Map) {
@@ -169,6 +172,12 @@ export class MapComponent implements AfterViewInit, OnInit {
       this.router.navigate(['/home/', id])
     }
 
+    openSnackBar() {
+      this._snackBar.openFromComponent(SavedEventSnackComponent, {
+        duration: 1.5 * 1000,
+      });
+    }
+
     addEvent(event: AppEvent) {
   
       if(this.authService.user.email) {
@@ -177,14 +186,15 @@ export class MapComponent implements AfterViewInit, OnInit {
   
         let {  id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl, address, promoter, type, lat, long,
           seatmapImg, note} = event;
+          console.log(url, "my url")
           
-          let venueImage = venueImages? venueImages[0].url: ''
+          let venueImage = venueImages && venueImages.length>0? venueImages[0].url: ''
   
           this.authService.addEvent(email, id, name, url, date, startTime, img, min, max, currency, venue, venueImage, venueUrl, address, promoter, type, lat, long,
             seatmapImg, note)
           .subscribe( ok => {
             console.log(ok, "ok from add Event")
-            //this.openSnackBar();
+            this.openSnackBar();
             if ( ok === true ) {
               this.router.navigateByUrl('/dashboard')
             } else {
@@ -216,13 +226,8 @@ export class MapComponent implements AfterViewInit, OnInit {
       
         
         })
-
-
        })
    
-
-    
-    
     }
 
   ngAfterViewInit(): void {
