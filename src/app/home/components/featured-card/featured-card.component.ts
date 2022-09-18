@@ -33,7 +33,7 @@ export class FeaturedCardComponent implements OnInit {
       let {  id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl, address, promoter, type, lat, long,
         seatmapImg, note} = this.featuredEvent;
         
-        let venueImage = venueImages? venueImages[0].url: ''
+        let venueImage = venueImages && venueImages.length>0? venueImages[0].url: ''
 
         this.authService.addEvent(email, id, name, url, date, startTime, img, min, max, currency, venue, venueImage, venueUrl, address, promoter, type, lat, long,
           seatmapImg, note)
