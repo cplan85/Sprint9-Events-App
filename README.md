@@ -91,10 +91,15 @@ ng serve --open
 
 ## :bookmark_tabs: **Usage Instructions**
 
-Upon starting live server, The app will attempt to retrieve the user location. Upon successful retrieval of user location, the app will automatically load 10 event cards of events nearby. THe user is able to get additional information on a separate page or add that event to their "My Event" section if they are logged in.
+### Featured Events:
+Upon starting the client server, The app will attempt to retrieve the user location. Upon successful retrieval of user location, the app will automatically load 10 cards of events nearby. The user may also search for a location anywhere in the world, and the app will update with events near that new location. The user is able to get additional information on a separate page or add that event to their "My Event" section if they are logged in. In the bottom is a "Load More Events" button where the user can load 10 additional events on mouse click.
 
-Below is the map section whereby a map will be loaded with the center point being the user's location. On initialization 40 events are loaded on the map and each user can click on the markers to retrieve additional information.
+## ![Featured demo](src/assets/Featured-demo.gif)
 
+### Map Functionality:
+Below is the map section whereby a map will be loaded with the center point being the user's location. On initialization 40 events are loaded on the map and each user can click on the markers to retrieve additional information or they may save the event if they are logged in.
+
+## ![map demo](src/assets/Map-demo.gif)
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
