@@ -100,7 +100,7 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
         url: event.url,
         date: event.dates.start.localDate,
         startTime: event.dates.start.localTime,
-        img: event.images[0].url,
+        img: event.images[4].url,
         min: event.priceRanges?  event.priceRanges[0].min : 0,
         max: event.priceRanges? event.priceRanges[0].max : 1000,
         currency: event.priceRanges? event.priceRanges[0].currency: '',
