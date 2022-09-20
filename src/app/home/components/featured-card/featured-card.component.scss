@@ -1,12 +1,18 @@
 mat-card {
-    background-color: #8CD1C2;
+    background: rgb(140,209,194);
+background: linear-gradient(0deg, rgba(140,209,194,1) 58%, rgba(255,139,200,1) 100%);
     margin-top: 1.2rem;
     position:relative;
     min-height: 500px;
 }
 
+mat-card-title {
+    padding: 1rem 0;
+    font-size: 22px;
+}
+
 img {
-    min-height: 180px;
+    min-height: 160px;
 }
 
 .date-container{
@@ -23,9 +29,17 @@ img {
     width:50%;
 }
 
+.time-container >h5, .date-container >h5{
+    margin:.3rem;
+    font-weight:500;
+}
+
 .full-time-container {
     max-height: 30px;
+    align-items: center;
 }
+
+
 
 // .mat-card-image {
 // //max-height:140px;

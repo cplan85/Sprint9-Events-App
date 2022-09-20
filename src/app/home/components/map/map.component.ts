@@ -33,7 +33,15 @@ export class MapComponent implements AfterViewInit, OnInit {
   mapEvents: AppEvent[] = [];
   mapMarkers: mapboxgl.Marker[] = [];
 
-  markersCluster = L.markerClusterGroup({removeOutsideVisibleBounds: true});
+  markersCluster = L.markerClusterGroup({
+    polygonOptions: {
+      fillColor: '#3887be',
+      color: '#3887be',
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.5
+    }
+  });
 
   constructor(private placesService: PlacesService,
     private mapService: MapService,
@@ -144,7 +152,7 @@ export class MapComponent implements AfterViewInit, OnInit {
           this.mapMarkers.push(musicMapMarker)
           var marker = L.marker(L.latLng(lat, long  )).bindPopup("<h2>"+event.name+"</h2><p>"+event.dates+"</p>");
           this.markersCluster.addLayer(marker);
-          //map.addLayer(this.markersCluster)
+         // map.addLayer(this.markersCluster)
          }
 
          if(event.classifications[0].segment.name==="Sports") {
@@ -175,7 +183,8 @@ export class MapComponent implements AfterViewInit, OnInit {
          }
 
       })
-
+        
+/*
       for (const marker of this.mapMarkers) {
        // console.log(marker.getLngLat() )
         const sameMarkers = this.mapMarkers.filter(m => m.getLngLat().lat === marker.getLngLat().lat && m.getLngLat().lng === marker.getLngLat().lng);
@@ -193,7 +202,7 @@ export class MapComponent implements AfterViewInit, OnInit {
             marker.setOffset([offset, 0]);
         }
     }
-
+    */
     }
   
 
@@ -304,6 +313,7 @@ const popup = new mapboxgl.Popup()
   
   })
 
+  //map.addLayer(this.markersCluster);
   }
  
 }

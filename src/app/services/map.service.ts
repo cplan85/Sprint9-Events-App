@@ -39,7 +39,7 @@ myDataSetter(data : any){
     if (!this.isMapReady) throw Error('The map is not initialized')
 
     this.map?.flyTo({
-      zoom: 14,
+      zoom: 18,
       center: coords
     })
   }
