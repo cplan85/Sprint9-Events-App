@@ -1,3 +1,4 @@
+import { EventsService } from './../../../services/events.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../auth/services/auth.service';
 import { AppEvent } from './../../interfaces/appEvents';
@@ -17,6 +18,7 @@ export class FeaturedCardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private eventsService: EventsService,
     private _snackBar: MatSnackBar) { }
 
   @Input() featuredEvent!: AppEvent;
@@ -38,7 +40,8 @@ export class FeaturedCardComponent implements OnInit {
         this.authService.addEvent(email, id, name, url, date, startTime, img, min, max, currency, venue, venueImage, venueUrl, address, promoter, type, lat, long,
           seatmapImg, note)
         .subscribe( ok => {
-          console.log(ok, "ok from add Event")
+          console.log(ok, "ok from add Event");
+          this.eventsService.setAddedEvent(this.featuredEvent)
           this.openSnackBar();
           if ( ok === true ) {
             this.router.navigateByUrl('/dashboard')
@@ -72,4 +75,7 @@ export class FeaturedCardComponent implements OnInit {
   `,
   ],
 })
-export class SavedEventSnackComponent {}
+export class SavedEventSnackComponent {
+
+  constructor (public eventsService: EventsService,) {}
+}

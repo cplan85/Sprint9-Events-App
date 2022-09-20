@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { PlacesService } from 'src/app/services/places.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as mapboxgl from 'mapbox-gl';
+import * as L from 'leaflet';
 
 
 interface MarkerColor {
@@ -30,6 +31,9 @@ export class MapComponent implements AfterViewInit, OnInit {
 
   map!: mapboxgl.Map;
   mapEvents: AppEvent[] = [];
+  mapMarkers: mapboxgl.Marker[] = [];
+
+  markersCluster = L.markerClusterGroup({removeOutsideVisibleBounds: true});
 
   constructor(private placesService: PlacesService,
     private mapService: MapService,
@@ -49,6 +53,7 @@ export class MapComponent implements AfterViewInit, OnInit {
       })
     }
 
+    
     
 
     addEventMarkers(events: Event[], map: mapboxgl.Map) {
@@ -131,11 +136,15 @@ export class MapComponent implements AfterViewInit, OnInit {
           
          if(event.classifications[0].segment.name==="Music") {
   
-          new mapboxgl.Marker(musicMarker, { draggable:true})
+         let musicMapMarker = new mapboxgl.Marker(musicMarker, { draggable:true})
           .setLngLat([long, lat])
           .setPopup(eventPopup)
           .addTo(map)
-  
+          
+          this.mapMarkers.push(musicMapMarker)
+          var marker = L.marker(L.latLng(lat, long  )).bindPopup("<h2>"+event.name+"</h2><p>"+event.dates+"</p>");
+          this.markersCluster.addLayer(marker);
+          //map.addLayer(this.markersCluster)
          }
 
          if(event.classifications[0].segment.name==="Sports") {
@@ -166,7 +175,27 @@ export class MapComponent implements AfterViewInit, OnInit {
          }
 
       })
+
+      for (const marker of this.mapMarkers) {
+       // console.log(marker.getLngLat() )
+        const sameMarkers = this.mapMarkers.filter(m => m.getLngLat().lat === marker.getLngLat().lat && m.getLngLat().lng === marker.getLngLat().lng);
+        console.log(sameMarkers, "same Markers")
+   
+        // if there is more than one marker with the same coordinates
+        if (sameMarkers.length > 1) {
+            // get the index of the current marker
+            const index = sameMarkers.indexOf(marker);
+   
+            // calculate the offset for the current marker
+            const offset = 10 * (index - (sameMarkers.length - 1) / 2);
+   
+            // set the offset
+            marker.setOffset([offset, 0]);
+        }
     }
+
+    }
+  
 
     goToInfoPage(id: string){
       this.router.navigate(['/home/', id])
@@ -194,6 +223,7 @@ export class MapComponent implements AfterViewInit, OnInit {
             seatmapImg, note)
           .subscribe( ok => {
             console.log(ok, "ok from add Event")
+            this.eventsService.setAddedEvent(event)
             this.openSnackBar();
             if ( ok === true ) {
               this.router.navigateByUrl('/dashboard')
@@ -238,7 +268,7 @@ export class MapComponent implements AfterViewInit, OnInit {
 const map = new mapboxgl.Map({
 container: 'map', // container ID
 //mapbox://styles/cplan203/cl6vfqkid005814p4gyy80dlc
-style: 'mapbox://styles/cplan203/cl6vfqkid005814p4gyy80dlc', // style URL
+style: 'mapbox://styles/cplan203/cl8af4aq2004915s1oonaq8nm', // style URL
 center: this.placesService.userLocation, // starting position [lng, lat]
 zoom: 12, // starting zoom
 projection: {name: 'globe' }// display the map as a 3D globe
@@ -251,6 +281,7 @@ map.setFog({"color": "#f5f5f5",
 });
 
 this.map = map;
+
 const popup = new mapboxgl.Popup()
   .setHTML(`
   <h6>Your Home Base</h6>
@@ -269,11 +300,10 @@ const popup = new mapboxgl.Popup()
     this.eventsService.setNext(resp._links.next.href)
 
     this.addEventMarkers(resp._embedded.events, map);
-
+    
   
   })
 
-  
   }
  
 }

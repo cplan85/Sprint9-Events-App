@@ -29,6 +29,8 @@ import { EventComponent } from './pages/event/event.component';
 import { HomeComponent } from './home/home.component';
 import { EventMapComponent } from './event-map/event-map.component';
 
+import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
+
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { EventMapComponent } from './event-map/event-map.component';
     HomeRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    LeafletMarkerClusterModule,
+    LeafletMarkerClusterModule
   ]
 })
 export class HomeModule { }

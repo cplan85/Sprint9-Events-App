@@ -30,6 +30,11 @@ export class EventsService {
     this.next = next;
   }
 
+  addedEvent!: AppEvent;
+  setAddedEvent(event: AppEvent) {
+    this.addedEvent = event;
+  }
+
   getLocalEvents(userLocation: [number, number], size: number): Observable<EventsResponse> {
   
     this.latLong = `${userLocation![1]},${userLocation![0]}`
