@@ -11,6 +11,7 @@ import { PlacesService } from 'src/app/services/places.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as mapboxgl from 'mapbox-gl';
 import * as L from 'leaflet';
+//import "@bewithjonam/mapboxgl-spiderifier";
 
 
 interface MarkerColor {
@@ -312,6 +313,8 @@ const popup = new mapboxgl.Popup()
     
   
   })
+
+  
 
   //map.addLayer(this.markersCluster);
   }

@@ -1,16 +1,22 @@
 h2 {
   margin: 2rem;
 }
+
+.container {
+  width: 100%;
+}
 .keen-slider {
   margin: 2rem;
-    max-width: 100%;
+    
     overflow-x: hidden;
 }
 .slide {
   background: #F3F5E7;
   padding:2rem;
   min-height: 200px;
+  width: 30vw;
 }
+
 
 .avatar-img {
   height:30px;

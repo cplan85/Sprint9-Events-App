@@ -25,7 +25,7 @@ export class EventMapComponent implements AfterViewInit {
      this.map = new mapboxgl.Map({
      container: this.divMap.nativeElement, // container ID
      //mapbox://styles/cplan203/cl6vfqkid005814p4gyy80dlc
-     style: 'mapbox://styles/cplan203/cl6vfqkid005814p4gyy80dlc', // style URL
+     style: 'mapbox://styles/cplan203/cl8af4aq2004915s1oonaq8nm', // style URL
      center: [this.event.long, this.event.lat], // starting position [lng, lat]
      zoom: this.zoomValue, // starting zoom
      projection: {name: 'globe' }// display the map as a 3D globe

@@ -29,10 +29,11 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/@bewithjonam/mapboxgl-spiderifier/lib/mapboxgl-spiderifier.css",
               "src/styles.scss",
               "src/theme.scss"
             ],
-            "scripts": []
+            "scripts": ["./node_modules/@bewithjonam/mapboxgl-spiderifier/lib/mapboxgl-spiderifier.js"]
           },
           "configurations": {
             "production": {
