@@ -1,4 +1,4 @@
-<div class="container">
+<div class="section-container">
     <h2 class="section-title">Featured Events in
         <mat-form-field appearance="fill">
             <input
@@ -32,15 +32,16 @@
 <app-loading *ngIf="!isUserLocationReady; else mapReady"></app-loading>
 
 <ng-template #mapReady>
-<div class="container">
+<div class="section-container">
     <div fxLayout="row wrap"
+    class="cards-container"
     fxLayout.xs="column"
     fxLayoutAlign="center"
     fxLayoutGap="1.2rem grid"
     *ngIf="isDataLoaded"  
     >
-        <div fxFlex="20"
-            fxFlex.lg="15"
+        <div fxFlex="25"
+            fxFlex.lg="20"
             fxFlex.sm="30"
              
         *ngFor="let featuredEvent of featuredEvents">

@@ -6,6 +6,17 @@ mat-form-field {
     padding: 2rem;
 }
 
-.container {
+.section-container {
+    max-width:1200px;
+    margin: auto;
+}
+
+.cards-container {
     margin: 2rem;
 }
+
+@media (min-width: 992px) {
+    .section-container {
+    margin: auto;
+}
+ }
