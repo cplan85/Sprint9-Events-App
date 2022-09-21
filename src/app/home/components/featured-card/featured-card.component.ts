@@ -4,6 +4,7 @@ import { AuthService } from './../../../auth/services/auth.service';
 import { AppEvent } from './../../interfaces/appEvents';
 import { Component, Input, OnInit } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class FeaturedCardComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private eventsService: EventsService,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog) { }
 
   @Input() featuredEvent!: AppEvent;
 
@@ -55,6 +57,8 @@ export class FeaturedCardComponent implements OnInit {
       this.router.navigateByUrl('/auth/login')
     }
     }
+
+
 
     openSnackBar() {
       this._snackBar.openFromComponent(SavedEventSnackComponent, {
