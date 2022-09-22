@@ -1,5 +1,5 @@
 img {
-    width:60%;
+    width:50%;
     border-radius:3rem;
 }
 
@@ -30,4 +30,9 @@ h1 {
     line-height: 5rem !important;
     text-align: center;
     font-weight: 500;
+}
+
+.lead:hover {
+    text-shadow: 1vmin 0 0 #fc7dac;
+    cursor:pointer;
 }
