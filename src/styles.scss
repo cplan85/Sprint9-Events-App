@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+@font-face {
+  font-family: "Rockville Solid";
+  src: url(./assets/fonts/Aemstel-Regular.otf) format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+
 html, body { height: 100%; 
   max-width: 100%;
   overflow-x: hidden;}

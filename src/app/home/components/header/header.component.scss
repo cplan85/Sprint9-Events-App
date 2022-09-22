@@ -20,3 +20,14 @@ background-size: cover;
 h1 {
     color:white;
 }
+
+.lead {
+    margin: 2rem 0;
+    font-family: "Rockville Solid", Arial, Helvetica, sans-serif;
+   // text-shadow: 1vmin 0 0 #fc7dac;
+    font-size: 5rem;
+    max-width: 70%;
+    line-height: 5rem !important;
+    text-align: center;
+    font-weight: 500;
+}

@@ -2,3 +2,9 @@
     position: fixed;
     z-index: 1000;
 }
+
+@media (max-width: 576px) { 
+.top-nav-buttons {
+    visibility: hidden;
+}
+ }
