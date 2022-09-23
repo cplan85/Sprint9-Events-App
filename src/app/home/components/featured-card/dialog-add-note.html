@@ -1,0 +1,16 @@
+<div id="dialog-add-note">
+  <h1 mat-dialog-title>SAVE EVENT - {{data.event.name}}</h1>
+ 
+  <div mat-dialog-content>
+    <div fxLayout="column" fxLayoutAlign="space-around center" >
+    Want to add an optional note?
+    <mat-form-field  class="example-full-width">
+      <mat-label>Type your Note Here</mat-label>
+      <textarea matInput placeholder="Ex. I'm really excited about this band..."></textarea>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="warn">SAVE TO MY EVENTS</button>
+    </div>
+  </div>
+
+</div>

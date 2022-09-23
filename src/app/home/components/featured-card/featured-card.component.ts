@@ -2,7 +2,7 @@ import { EventsService } from './../../../services/events.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../auth/services/auth.service';
 import { AppEvent } from './../../interfaces/appEvents';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Inject } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
@@ -45,6 +45,7 @@ export class FeaturedCardComponent implements OnInit {
           console.log(ok, "ok from add Event");
           this.eventsService.setAddedEvent(this.featuredEvent)
           this.openSnackBar();
+          this.openDialog();
           if ( ok === true ) {
             this.router.navigateByUrl('/dashboard')
           } else {
@@ -66,6 +67,14 @@ export class FeaturedCardComponent implements OnInit {
       });
     }
 
+    openDialog() {
+      this.dialog.open(DialogAddNote, {
+        data: {
+          event: this.featuredEvent,
+        },
+      });
+    }
+
 }
 
 @Component({
@@ -82,4 +91,30 @@ export class FeaturedCardComponent implements OnInit {
 export class SavedEventSnackComponent {
 
   constructor (public eventsService: EventsService,) {}
+}
+
+@Component({
+  selector: 'dialog-add-note',
+  templateUrl: 'dialog-add-note.html',
+  styles: [
+    `
+    .example-full-width {
+      width: 90%;
+      padding: 1rem;
+      border: solid;
+      border-width: thin;
+      background-color:white;
+    }
+    #dialog-add-note {
+       background-color: #54B9A4;
+      padding: 2rem;
+      /* border-radius: 2rem 0!important; */
+     
+    }
+  `,
+  ],
+
+})
+export class DialogAddNote {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {event: AppEvent}) {}
 }

@@ -7,6 +7,7 @@ import { HomeMainComponent } from './components/home-main/home-main.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { DialogMapInfoDialog } from './components/btn-question-mark/btn-question-mark.component';
+import { DialogAddNote } from './components/featured-card/featured-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { MapComponent } from './components/map/map.component';
@@ -37,6 +38,7 @@ import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluste
   declarations: [
     HomeMainComponent,
     HeaderComponent,
+    DialogAddNote,
     DialogMapInfoDialog,
     FeaturedComponent,
     MapComponent,
