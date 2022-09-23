@@ -103,7 +103,7 @@ myDataSetter(data : any){
   assignNewCoordinates(coordinates: [number, number]) {
     this.map?.flyTo({center: coordinates});
     console.log(coordinates)
-    this.myDataSetter(coordinates)
+    this.myDataSetter(coordinates);
   }
 
   createMarkersFromPlaces(places: Feature[], userLocation: [number, number]) {
@@ -130,6 +130,7 @@ myDataSetter(data : any){
       // btn.className = 'btn';
       assignBtn.addEventListener('click', (e) => {
         this.assignNewCoordinates([lng,lat])
+        popup.remove();
       });
 
 

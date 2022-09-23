@@ -7,7 +7,7 @@ import { PlacesService } from 'src/app/services/places.service';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent {
+export class SearchBarComponent implements OnInit {
   
   showSearch: boolean = false;
 
@@ -32,6 +32,14 @@ export class SearchBarComponent {
     if(!this.showSearch) {
       this.mapsService.removeMarkers();
     }
+  }
+
+  ngOnInit(): void {
+    this.mapsService.mySubject.subscribe((data) => {
+      console.log('SEARCH BAR COMPONENT RESPONDS TO DATA CHANGE!', data);
+      this.toggleSearch();
+    
+     })
   }
   
 

@@ -20,8 +20,8 @@
     >
     <div class="scroll-item">
     <div mat-line>
-        <h4>{{place.name}}</h4>
-        {{place.date}} - {{place.startTime}}
+        <h4>{{place.name.length > 40 ? (place.name | slice:0:40)+'..' : place.name}}</h4>
+        {{place.date | date:'MMM.dd.yy'}} - {{place.startTime | slice:0:5}}h
         <button mat-icon-button
         color="warn"
         [routerLink]="['/home/' , place.id]"

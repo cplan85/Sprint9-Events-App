@@ -91,24 +91,31 @@ friends: [{
 
   ngAfterViewInit() {
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      //loop: true,
+      loop: true,
       slides: {
-        perView: 3.5,
+        perView: 3,
         spacing: 10,
       },
 
       breakpoints: {
-        '(max-width: 576px)': {
+        '(min-width: 100px)': {
           loop: false,
           slides: {
             perView: 1,
             spacing: 10,
           },
         },
-        '(max-width: 768px)': {
+        '(min-width: 576px)': {
+          loop: true,
+          slides: {
+            perView: 2,
+            spacing: 10,
+          },
+        },
+        '(min-width: 1200px)': {
           loop: false,
           slides: {
-            perView: 2.5,
+            perView: 3,
             spacing: 10,
           },
         },

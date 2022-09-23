@@ -2,6 +2,11 @@ h2 {
   margin: 2rem;
 }
 
+.section-container {
+  max-width:1200px;
+  margin: auto;
+}
+
 .container {
   width: 100%;
 }
@@ -12,9 +17,13 @@ h2 {
 }
 .slide {
   background: #F3F5E7;
-  padding:2rem;
-  min-height: 200px;
-  width: 30vw;
+  //padding:2rem;
+  min-height: 320px;
+
+}
+
+.single-slide {
+  margin:1rem;
 }
 
 
@@ -24,7 +33,7 @@ h2 {
 }
 
 .event-img {
-  width: 150px;
+  max-width: 150px;
   padding:0 .5rem .5rem .5rem;
 }
 

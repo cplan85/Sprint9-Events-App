@@ -22,6 +22,7 @@ export class EventsListComponent implements OnInit {
       console.log(resp.features[0])
       this.currentCity=resp.features[0].context[3].text;
      })
+
   }
 
   toggleEvents() {

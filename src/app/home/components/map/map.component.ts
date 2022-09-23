@@ -76,7 +76,7 @@ export class MapComponent implements AfterViewInit, OnInit {
           date: event.dates.start.localDate ? event.dates.start.localDate: '' ,
           startTime: event.dates.start.localTime,
           img: event.images[0].url ? event.images[0].url : '' ,
-          min: event.priceRanges? event.priceRanges[0].min : 0,
+          min: event.priceRanges? event.priceRanges[0].min : 1,
           max: event.priceRanges? event.priceRanges[0].max : 1000,
           currency: event.priceRanges? event.priceRanges[0].currency: '',
           venue: event._embedded.venues[0].name ? event._embedded.venues[0].name : '',
@@ -97,7 +97,7 @@ export class MapComponent implements AfterViewInit, OnInit {
         const innerHtmlContent = `<h6>${event.name}</h6>
         <span>${event.dates.start.localDate}</span>
         <img class="popupImg" src="${event.images[0].url}">
-        <p>${event.priceRanges? event.priceRanges[0].min: 0} -${event.priceRanges? event.priceRanges[0].max: 1000} ${event.priceRanges? event.priceRanges[0].currency: ''}</p>
+        <p>Starts at ${event.priceRanges? event.priceRanges[0].min: 1} ${event.priceRanges? event.priceRanges[0].currency: ''}</p>
         <p> ${event._embedded.venues[0].address? event._embedded.venues[0].city.name : 'Verify City'}</p>
         <br>`;
 
