@@ -2,8 +2,8 @@
 <!-- <img src="./../../../../assets/header4.png" alt=""> -->
 <div fxLayout="column" fxLayoutAlign="center center" >
     <img src="./../../../../assets/search-marker.svg" alt="">
-    <h1 class="lead text-white">What's happening near you?</h1>
-    <button mat-raised-button color="warn">Find Out Now!</button>
+    <h1 class="lead text-white" (click)="navigateToSection('events-map')">What's happening near you?</h1>
+    <button mat-raised-button color="warn" (click)="navigateToSection('events-map')">Find Out Now!</button>
 </div>
 
 </div>

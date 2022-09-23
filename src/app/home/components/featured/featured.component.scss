@@ -1,5 +1,6 @@
 mat-form-field {
-    min-width: 33%;
+    min-width: 50%;
+    max-height:20%;
 }
 
 .buttom-button {
@@ -9,14 +10,16 @@ mat-form-field {
 .section-container {
     max-width:1200px;
     margin: auto;
+    padding: 2rem 0;
 }
 
 .cards-container {
     margin: 2rem;
 }
 
-@media (min-width: 992px) {
+@media (max-width: 1200px) {
     .section-container {
-    margin: auto;
+    margin: 2rem;
 }
  }
+ 

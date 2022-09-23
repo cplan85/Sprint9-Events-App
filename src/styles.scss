@@ -2,7 +2,7 @@
 
 
 @font-face {
-  font-family: "Rockville Solid";
+  font-family: "Aemstel";
   src: url(./assets/fonts/Aemstel-Regular.otf) format("truetype");
   font-weight: bold;
   font-style: italic;
@@ -108,6 +108,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   text-align: center;
   font-weight: 700 !important;
   text-transform: uppercase;
-  font-size: 42px;
-  //font-family: "Rockville Solid", Arial, Helvetica, sans-serif !important;
+  font-size: 42px !important;
+  font-family: "Aemstel", Arial, Helvetica, sans-serif !important;
 }
