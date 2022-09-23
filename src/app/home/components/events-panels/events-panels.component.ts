@@ -37,7 +37,8 @@ export class EventsPanelsComponent implements OnInit {
    flyTo(place: AppEvent) {
      this.selectedId = place.id!;
      const [lng, lat] = [place.long, place.lat];
-     this.mapService.flyTo([lng,lat])
+     this.mapService.flyTo([lng,lat]);
+     this.mapService.createCurrentMarker([lng,lat], place);
    }
 
    addEvent(event: AppEvent) {

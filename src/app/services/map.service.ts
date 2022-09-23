@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AppEvent } from './../home/interfaces/appEvents';
 import { Feature } from './../home/interfaces/places';
 import { Injectable } from '@angular/core';
@@ -10,10 +11,13 @@ import { Subject } from 'rxjs';
 })
 export class MapService {
 
+  constructor (private router: Router) {}
+
   mapEvents: AppEvent[] = [];
 
   private map: Map | undefined;
   private markers: Marker[] = [];
+  private currentMarker: Marker[] = [];
 
   get isMapReady() {
     return !!this.map;
@@ -42,6 +46,58 @@ myDataSetter(data : any){
       zoom: 18,
       center: coords
     })
+  }
+
+
+  goToInfoPage(id: string){
+    this.router.navigate(['/home/', id])
+  }
+
+  resetCurrentMarker() {
+    this.currentMarker.forEach( marker => marker.remove());
+  }
+
+  createCurrentMarker(coords: LngLatLike, event: AppEvent) {
+
+    if(!this.map) throw Error('Map is not initialized');
+
+   this.resetCurrentMarker();
+    
+    const innerHtmlContent = `<h6>${event.name}</h6>
+    <span>${event.date}</span>
+    <img class="popupImg" src="${event.img}">
+    <p>${event.min} -${event.max} ${event.currency}</p>
+    <p> ${event.city}</p>
+    <br>`;
+
+    const divElement = document.createElement('div');
+    const addEventBtn = document.createElement('div');
+    addEventBtn.innerHTML = ` <button color="accent" class="mat-raised-button mat-button-base mat-warn change-location-btn add-event-btn">Add To My Events</button>`;
+
+    const infoBtn = document.createElement('div');
+    infoBtn.innerHTML = ` <button color="accent" class="mat-stroked-button mat-button-base mat-warn change-location-btn info-btn">Read more</button><br><br>`;
+
+    infoBtn.addEventListener('click', (e) => {
+      this.goToInfoPage(event.id)
+    });
+
+    divElement.innerHTML = innerHtmlContent;
+    divElement.appendChild(infoBtn);
+    divElement.appendChild(addEventBtn);
+
+
+    const eventPopup = new mapboxgl.Popup()
+    .setDOMContent(divElement);
+
+    const el = document.createElement('div');
+    el.className = event.type === 'Music' ? 'current-music-marker' : event.type === "Arts & Theatre" ? 'current-arts-marker' : event.type === 'Sports' ? 'current-sports-marker' : event.type === 'Miscellaneous' ? 'current-misc-marker' : 'current-music-marker' ;
+    
+    const newMarker = new Marker(el)
+    .setLngLat(coords)
+    .setPopup( eventPopup)
+    .addTo (this.map);
+    this.currentMarker.push(newMarker);
+
   }
 
   assignNewCoordinates(coordinates: [number, number]) {
@@ -79,14 +135,7 @@ myDataSetter(data : any){
 
       const popup = new Popup()
       .setDOMContent(divElement);
-      // .setHTML(`
-      // <h6>${place.text}</h6>
-      // <span>${place.place_name}</span>
-      // <br>
-      // <button color="warn" onClick='${this.testFunction([lng,lat])}' class="mat-raised-button mat-button-base mat-warn change-location-btn">Change my location</button>`)
-
- 
-
+    
       const el = document.createElement('div');
       el.className = 'search-marker';
 

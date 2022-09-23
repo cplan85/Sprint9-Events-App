@@ -42,7 +42,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex: 1 1 auto;
 }
 
-.search-marker, .music-marker, .misc-marker, .sports-marker, .arts-marker, .family-marker{
+.search-marker, .music-marker, .misc-marker, .sports-marker, .arts-marker, .family-marker, .current-music-marker, .current-arts-marker, .current-sports-marker, .current-misc-marker{
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -52,6 +52,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .search-marker {
   background-image: url('./assets/search-marker.svg');
+}
+
+.current-music-marker {
+  background-image: url('./assets/selected-music-marker.svg');
+}
+
+.current-misc-marker {
+  background-image: url('./assets/current-misc-marker.svg');
+}
+
+
+.current-arts-marker {
+  background-image: url('./assets/current-arts-marker.svg');
+}
+
+.current-sports-marker {
+  background-image: url('./assets/current-sports-marker.svg');
 }
 
 .music-marker {
