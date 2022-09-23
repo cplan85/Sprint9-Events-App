@@ -1,58 +1,60 @@
-<div class="section-container">
-    <h2 class="section-title">Featured Events in
-        <mat-form-field appearance="fill">
-            <input
-            type="text"
-            placeholder="Type In a city.."
-            matInput
-            aria-label="Find Hero"
-            #txtQuery
-            [(ngModel)]="term"
-            [matAutocomplete]="auto"
-            (input)="finding(txtQuery.value)"
-            [value]="currentCity"
-            >
+<div class="featured">
+    <div class="section-container">
+        <h2 class="section-title">Featured Events in
+            <mat-form-field appearance="fill">
+                <input
+                type="text"
+                placeholder="Type In a city.."
+                matInput
+                aria-label="Find Hero"
+                #txtQuery
+                [(ngModel)]="term"
+                [matAutocomplete]="auto"
+                (input)="finding(txtQuery.value)"
+                [value]="currentCity"
+                >
     
-            <mat-autocomplete
-            autoActiveFirstOption
-            (optionSelected)="optionSelected( $event)"
-            #auto="matAutocomplete">
-                <mat-option *ngFor="let place of places" [value]="place">
-                  {{place.place_name
-                  }}
-                </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+                <mat-autocomplete
+                autoActiveFirstOption
+                (optionSelected)="optionSelected( $event)"
+                #auto="matAutocomplete">
+                    <mat-option *ngFor="let place of places" [value]="place">
+                      {{place.place_name
+                      }}
+                    </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
     
-    </h2>
-</div>
-<mat-divider></mat-divider>
-<br>
-
-<app-loading *ngIf="!isUserLocationReady; else mapReady"></app-loading>
-
-<ng-template #mapReady>
-<div class="section-container">
-    <div fxLayout="row wrap"
-    class="cards-container"
-    fxLayout.xs="column"
-    fxLayoutAlign="center"
-    fxLayoutGap="1.2rem grid"
-    *ngIf="isDataLoaded"  
-    >
-        <div fxFlex="25"
-            fxFlex.lg="20"
-            fxFlex.sm="30"
-             
-        *ngFor="let featuredEvent of featuredEvents">
-        <app-featured-card [featuredEvent]="featuredEvent" ></app-featured-card>
+        </h2>
+    </div>
+    <mat-divider></mat-divider>
+    <br>
+    
+    <app-loading *ngIf="!isUserLocationReady; else mapReady"></app-loading>
+    
+    <ng-template #mapReady>
+    <div class="section-container">
+        <div fxLayout="row wrap"
+        class="cards-container"
+        fxLayout.xs="column"
+        fxLayoutAlign="center"
+        fxLayoutGap="1.2rem grid"
+        *ngIf="isDataLoaded"
+        >
+            <div fxFlex="25"
+                fxFlex.lg="20"
+                fxFlex.sm="30"
+    
+            *ngFor="let featuredEvent of featuredEvents">
+            <app-featured-card [featuredEvent]="featuredEvent" ></app-featured-card>
+            </div>
+        </div>
+        <div class="buttom-button" fxLayout="row" fxLayoutAlign="center center" >
+            <button id="events-map"
+            mat-stroked-button color="primary"
+            (click)="loadMoreEvents()"
+            >LOAD MORE EVENTS</button>
         </div>
     </div>
-    <div class="buttom-button" fxLayout="row" fxLayoutAlign="center center" >
-        <button id="events-map" 
-        mat-stroked-button color="primary"
-        (click)="loadMoreEvents()"
-        >LOAD MORE EVENTS</button>
-    </div>
+    </ng-template>
 </div>
-</ng-template>

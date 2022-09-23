@@ -3,6 +3,16 @@ mat-form-field {
     max-height:20%;
 }
 
+.featured {
+    background-image: url('../../../../assets/featured-background2.svg');
+    background-repeat: repeat repeat;
+//     -webkit-background-size: cover;
+// -moz-background-size: cover;
+// -o-background-size: cover;
+// background-size: cover;
+}
+
+
 .buttom-button {
     padding: 2rem;
 }
