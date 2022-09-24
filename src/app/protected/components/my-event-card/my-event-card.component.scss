@@ -13,7 +13,13 @@
 }
 
 mat-card {
-    min-height: 450px;
+    min-height: 600px;
+    
+}
+
+.cover-img {
+  min-height: 160px;
+  max-height:180px;
 }
 
 .avatar-img {
@@ -27,6 +33,11 @@ mat-card {
 
   .mat-card-header .mat-card-title {
     font-size: 18px;
+}
+
+.full-time-container, .date-container, .time-container {
+  max-height: 30px;
+  align-items: center;
 }
 
 @media (min-width: 1286px) { 

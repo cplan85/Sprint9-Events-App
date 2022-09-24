@@ -2,18 +2,24 @@
 <div class="container">
     <div 
     fxLayout="row"
+    fxLayout.sm="column"
     fxLayout.xs="column"
     fxLayoutAlign="space-between start"
+    fxLayoutAlign.sm="space-around center"
     fxLayoutAlign.xs="space-around center" >
         <div
         class="left"
         fxFlex="20"
-        fxFlex.lg="15"
-        fxFlex.sm="90"
+        fxFlex.lg="25"
+        fxFlex.sm="100"
+        fxFlex.md="20"
+        fxFlex.xs="95"
+        fxLayoutAlign="start center"
          >
-         <mat-card>
+         <mat-card id="profile-card">
              <mat-list>
                 <h3>Welcome Back</h3>
+                <img class="profile-img" src="./assets/man-avatar-2.svg" alt="">
                 <h2 class="userName"> {{user.name}}</h2>
                 <p> <mat-icon>perm_identity</mat-icon> {{user.userName}}</p>
                 <mat-divider></mat-divider>
@@ -33,9 +39,11 @@
          </mat-card>
     </div>
         <div class="right"
-        fxFlex="80"
-        fxFlex.lg="85"
-        fxFlex.sm="90"
+        fxFlex="70"
+        fxFlex.lg="75"
+        fxFlex.sm="100"
+        fxFlex.md="75"
+        fxFlex.xs="95"
         >
           
                 <div class="right-content"

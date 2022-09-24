@@ -1,18 +1,20 @@
 
-<h2 class="section-title">MY EVENTS </h2>
-<div class="container">
-    <div fxLayout="row wrap"
-    fxLayout.xs="column"
-    fxLayoutAlign="center"
-    fxLayoutGap="1.2rem grid"
-    >
-        <div fxFlex="35"
-            fxFlex.lg="30"
-            fxFlex.sm="40"
-             
-        *ngFor="let event of myEvents"
+<div class="section-container">
+    <h2 class="section-title">MY EVENTS </h2>
+    <div class="container">
+        <div fxLayout="row wrap"
+        fxLayout.xs="column"
+        fxLayoutAlign="center"
+        fxLayoutGap="1.2rem grid"
         >
-        <app-my-event-card [event]="event" ></app-my-event-card> 
+            <div fxFlex="35"
+                fxFlex.lg="30"
+                fxFlex.sm="40"
+    
+            *ngFor="let event of myEvents"
+            >
+            <app-my-event-card [event]="event" ></app-my-event-card>
+            </div>
         </div>
     </div>
 </div>

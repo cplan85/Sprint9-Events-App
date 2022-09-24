@@ -1,23 +1,20 @@
 <mat-card >
+    <img class="cover-img" mat-card-image [src]="event.img">
     <mat-card-header>
         <mat-card-title>{{event.name}}</mat-card-title>
        
-        <mat-card-subtitle> <mat-icon mat-list-icon>location_on</mat-icon> {{event.venue}}</mat-card-subtitle>
+        <mat-card-subtitle fxLayout="row" fxLayoutAlign="start center"> <mat-icon mat-list-icon>location_on</mat-icon> {{event.venue && event.venue.length >22 ? (event.venue | slice:0:22)+'..':(event.venue)  }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="event.img">
     <mat-card-content>
-        <h5>{{event.min | number: '1.2-2'}} - {{event.max | number: '1.2-2'}} {{event.currency}}</h5>
+        <h5>Starts at {{event.min | number: '1.2-2'}} {{event.currency}}</h5>
         <div fxLayout="row" fxFill class="full-time-container">
-            <div class="date-container">
-                <h5>{{event.date}}</h5>
+            <div 
+            fxLayoutAlign="center center"
+            class="date-container">
+                <h5>{{event.date | date:'MMM.dd.yy'}}</h5>
             </div>
-            <div class="time-container"><h5> {{event.startTime}}</h5></div>
+            <div class="time-container"><h5> {{event.startTime | slice:0:5}}</h5></div>
         </div>
-        <!-- <p>
-            <strong>First Appearance</strong> {{heroe.first_appearance}}
-            <br>
-            <strong>Characters: </strong>{{heroe.characters}}
-        </p> -->
     </mat-card-content>
 
     <mat-card-actions>
@@ -26,7 +23,7 @@
         [routerLink]="['/home/' , event.id]"
         ><mat-icon>info</mat-icon></button>
         <button mat-icon-button 
-        color="info"
+        color="warn"
         matTooltip="Edit event note" 
         ><mat-icon>edit</mat-icon></button>
 
@@ -47,5 +44,7 @@
             
         <small>45 friends are going</small>
         </div>
+        <br>
+        <p>{{"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero facilis non consequuntur qui, perferendis error inventore ipsum eveniet animi quasi voluptatem amet, sit delectus assumenda! Ducimus perferendis repellendus cum repudiandae." | slice:0:80}} </p>
     </mat-card-actions>
 </mat-card>
