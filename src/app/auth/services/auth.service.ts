@@ -174,6 +174,29 @@ newUser: User = {
 
   }
 
+
+  editEvent( email:string, id: string, note: string | undefined) {
+
+    const apiUrl = `${this.baseUrl}events/update`;
+    const body = {email, id, note};
+    
+    
+
+    return  this.http.post<AuthResponse>(apiUrl, body)
+    .pipe(
+      tap( resp => {
+        console.log(resp, '<== respons from auth service - Edit Event')
+
+        if (resp.ok) {
+          console.log("event successfully added")
+         }
+      }),
+      map( resp => resp.ok),
+      catchError( err => of(err.error.msg))
+    );
+
+  }
+
   deleteEvent (email: string, id: string) {
     const apiUrl = `${this.baseUrl}events/delete`;
 

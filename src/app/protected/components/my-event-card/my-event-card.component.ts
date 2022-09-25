@@ -2,6 +2,7 @@ import { AuthService } from './../../../auth/services/auth.service';
 import { AppEvent } from './../../../home/interfaces/appEvents';
 import { Component, OnInit, Input, Inject} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-my-event-card',
@@ -10,12 +11,26 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class MyEventCardComponent implements OnInit {
 
+  addednote: boolean = false;
+  newNote: string ='';
+
   @Input() event!: AppEvent;
 
   constructor(private authService: AuthService,
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  setToSaved(boolean: boolean = false, note='') {
+    this.addednote = boolean;
+    this.newNote = note;
+    console.log(note, 'from executed edit')
+  }
+
+  setNote(note: string) {
+    this.newNote = note;
+    console.log(note)
   }
 
   deleteEvent() {
@@ -55,12 +70,20 @@ export class MyEventCardComponent implements OnInit {
     openDialog() {
       if(this.authService.user.email) {
 
-        this.dialog.open(DialogEditNote, {
+       const dialogRef = this.dialog.open(DialogEditNote, {
           data: {
             event: this.event,
+            setFalse: () => this.setToSaved(),
+            setTrue: () => this.setToSaved(true),
           },
         });
 
+        dialogRef.afterClosed().subscribe(result => {
+         console.log(result.note, "hodhfo")
+         this.addednote = true;
+         this.newNote  = result.note;
+        });
+ 
       } 
       else {
         //this.router.navigateByUrl('/auth/login');
@@ -103,30 +126,29 @@ export class DialogEditNote {
 
   newNote: string ='';
   initialNote: string | undefined = this.data.event.note
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {event: AppEvent, setFalse: Function,setTrue: Function}, 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {event: AppEvent, setFalse: Function,setTrue: Function, setNote: Function}, 
   private authService: AuthService, 
+  public dialogRef: MatDialogRef<DialogEditNote>
   ) {
   }
 
 
-  addEvent(note: string) {
+  editEvent() {
   
     if(this.authService.user.email) {
 
       let email = this.authService.user.email
 
-      let {  id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl, address, promoter, type, lat, long,
-        seatmapImg, note} = this.data.event;
+      let { id, note} = this.data.event;
 
         this.newNote? note = this.newNote: null;
-        
-        let venueImage = venueImages && venueImages.length>0? venueImages[0].url: ''
 
-        this.authService.addEvent(email, id, name, url, date, startTime, img, min, max, currency, venue, venueImage, venueUrl, address, promoter, type, lat, long,
-          seatmapImg, note)
+  
+        console.log('note should be good here', note)
+
+        this.authService.editEvent(email, id, note)
         .subscribe( ok => {
-          console.log(ok, "ok from add Event");
-          this.data.setTrue()
+          this.dialogRef.close({note: this.newNote});
           if ( ok === true ) {
             //this.router.navigateByUrl('/dashboard')
           } else {
