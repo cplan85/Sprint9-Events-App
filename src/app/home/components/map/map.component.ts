@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { PlacesService } from 'src/app/services/places.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as mapboxgl from 'mapbox-gl';
+import { LngLatBounds } from 'mapbox-gl';
 import * as L from 'leaflet';
 //import "@bewithjonam/mapboxgl-spiderifier";
 
@@ -158,10 +159,12 @@ export class MapComponent implements AfterViewInit, OnInit {
 
          if(event.classifications[0].segment.name==="Sports") {
   
-          new mapboxgl.Marker(sportsMarker, { draggable:true})
+          let sportsMapMarker = new mapboxgl.Marker(sportsMarker, { draggable:true})
           .setLngLat([long, lat])
           .setPopup(eventPopup)
           .addTo(map)
+
+          this.mapMarkers.push(sportsMapMarker)
   
          }
   
@@ -256,13 +259,23 @@ export class MapComponent implements AfterViewInit, OnInit {
 
       this.mapService.mySubject.subscribe((data) => {
         console.log('MAP COMPONENT RESPONDS TO DATA CHANGE!', data)
-      
+        this.mapMarkers = [];
         this.eventsService.getLocalEvents(data, 40).subscribe(resp => {
           this.mapEvents = [];
           console.log(resp, "full Response from Change Detection")
           this.eventsService.setNext(resp._links.next.href)
       
           this.addEventMarkers(resp._embedded.events, this.map);
+
+              // NEW CODE FOR BOUNDING MAP
+              const bounds = new LngLatBounds();
+              this.mapMarkers.forEach(marker => bounds.extend(marker.getLngLat()));
+              console.log(data, "my data")
+              bounds.extend(data);
+              this.map.fitBounds(bounds, {
+                padding: 100
+              }) 
+              // MAKE SURE TO ADD CONDITIONS FOR OTHER MARKERS BESIDES SPORTS AND MUSIC
       
         
         })
