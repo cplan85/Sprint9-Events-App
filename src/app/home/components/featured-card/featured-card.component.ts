@@ -15,49 +15,36 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 export class FeaturedCardComponent implements OnInit {
 
   heroId!: string;
+  isSaved: boolean = false;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private eventsService: EventsService,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog) { }
 
   @Input() featuredEvent!: AppEvent;
 
   ngOnInit(): void {
+    this.isEventAlreadySaved(this.featuredEvent.id)
   }
 
-  addEvent() {
-  
-    if(this.authService.user.email) {
+  setToSaved(boolean: boolean = false) {
+    console.log('SAVEDD')
+    this.isSaved = boolean;
+  }
 
-      let email = this.authService.user.email
-
-      let {  id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl, address, promoter, type, lat, long,
-        seatmapImg, note} = this.featuredEvent;
-        
-        let venueImage = venueImages && venueImages.length>0? venueImages[0].url: ''
-
-        this.authService.addEvent(email, id, name, url, date, startTime, img, min, max, currency, venue, venueImage, venueUrl, address, promoter, type, lat, long,
-          seatmapImg, note)
-        .subscribe( ok => {
-          console.log(ok, "ok from add Event");
-          this.eventsService.setAddedEvent(this.featuredEvent)
-          this.openSnackBar();
-          this.openDialog();
-          if ( ok === true ) {
-            this.router.navigateByUrl('/dashboard')
-          } else {
-            
-          }
-      })
-
+  isEventAlreadySaved(id:string) {
+    if (this.authService.user.events && this.authService.user.events.length> 0) {
+      this.authService.user.events.some(element => {
+        if (element.id === id) {
+          this.isSaved = true;
+        }
+      
+        return false;
+      });
     }
-    else {
-      this.router.navigateByUrl('/auth/login')
-    }
-    }
+  }
 
 
 
@@ -68,11 +55,21 @@ export class FeaturedCardComponent implements OnInit {
     }
 
     openDialog() {
-      this.dialog.open(DialogAddNote, {
-        data: {
-          event: this.featuredEvent,
-        },
-      });
+      if(this.authService.user.email) {
+
+        this.dialog.open(DialogAddNote, {
+          data: {
+            event: this.featuredEvent,
+            setfalse: () => {this.setToSaved()},
+            setTrue: () => {this.setToSaved(true)},
+          },
+        });
+
+      } 
+      else {
+        this.router.navigateByUrl('/auth/login');
+      }
+    
     }
 
 }
@@ -111,10 +108,61 @@ export class SavedEventSnackComponent {
       /* border-radius: 2rem 0!important; */
      
     }
+    button {
+      margin-right: 2rem;
+    }
   `,
   ],
 
 })
 export class DialogAddNote {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {event: AppEvent}) {}
+
+  newNote: string ='';
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {event: AppEvent, setFalse: Function,setTrue: Function}, 
+  private authService: AuthService, 
+  private router: Router, 
+  private eventsService: EventsService,
+  private _snackBar: MatSnackBar,
+  ) {
+  }
+
+
+  addEvent(note: string) {
+  
+    if(this.authService.user.email) {
+
+      let email = this.authService.user.email
+
+      let {  id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl, address, promoter, type, lat, long,
+        seatmapImg, note} = this.data.event;
+
+        this.newNote? note = this.newNote: null;
+        
+        let venueImage = venueImages && venueImages.length>0? venueImages[0].url: ''
+
+        this.authService.addEvent(email, id, name, url, date, startTime, img, min, max, currency, venue, venueImage, venueUrl, address, promoter, type, lat, long,
+          seatmapImg, note)
+        .subscribe( ok => {
+          console.log(ok, "ok from add Event");
+          this.eventsService.setAddedEvent(this.data.event)
+          this.openSnackBar();
+          this.data.setTrue()
+          if ( ok === true ) {
+            this.router.navigateByUrl('/dashboard')
+          } else {
+            
+          }
+      })
+
+    }
+    else {
+      this.router.navigateByUrl('/auth/login')
+    }
+    }
+
+    openSnackBar() {
+      this._snackBar.openFromComponent(SavedEventSnackComponent, {
+        duration: 1.5 * 1000,
+      });
+    }
 }

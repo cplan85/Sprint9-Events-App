@@ -6,10 +6,13 @@
     Want to add an optional note?
     <mat-form-field  class="example-full-width">
       <mat-label>Type your Note Here</mat-label>
-      <textarea matInput placeholder="Ex. I'm really excited about this band..."></textarea>
+      <textarea matInput [(ngModel)]="newNote" placeholder="Ex. I'm really excited about this band..."></textarea>
     </mat-form-field>
     <br>
-    <button mat-raised-button color="warn">SAVE TO MY EVENTS</button>
+    <div fxLayout="row" fxLayoutAlign="space-around center" >
+    <button mat-raised-button (click)="addEvent(newNote)" color="warn" mat-dialog-close>SAVE TO MY EVENTS</button>
+    <button mat-raised-button mat-dialog-close color="accent" mat-dialog-close>X</button>
+    </div>
     </div>
   </div>
 

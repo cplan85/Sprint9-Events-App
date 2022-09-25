@@ -19,15 +19,25 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-button 
-        color="warn"
-        [routerLink]="['/home/' , featuredEvent.id]"
-        ><mat-icon>info</mat-icon></button>
-        <button mat-button 
-        color="info"
-        (click)="addEvent()"
-        matTooltip="Add to my events" 
-        ><mat-icon>bookmark_border</mat-icon></button>
+        <div fxLayout="row">
+            <button mat-button
+            color="warn"
+            [routerLink]="['/home/' , featuredEvent.id]"
+            ><mat-icon>info</mat-icon></button>
+            <div *ngIf="isSaved; else notSaved">
+                <button mat-button
+                color="info"
+                matTooltip="Event is already saved"
+                ><mat-icon>bookmark</mat-icon></button>
+            </div>
+            <ng-template #notSaved>
+                <button mat-button
+                color="info"
+                (click)="openDialog()"
+                matTooltip="Add to my events"
+                ><mat-icon>bookmark_border</mat-icon></button>
+            </ng-template>
+        </div>
     </mat-card-actions>
 </mat-card>
 

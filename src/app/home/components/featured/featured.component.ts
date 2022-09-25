@@ -99,7 +99,7 @@ export class FeaturedComponent implements OnInit, AfterViewInit {
         name: event.name,
         url: event.url,
         date: event.dates.start.localDate,
-        startTime: event.dates.start.timeTBA? 'timeTBA' : event.dates.start.localTime,
+        startTime: event.dates.start.timeTBA? 'TBD' : event.dates.start.localTime,
         img: event.images[3].url,
         min: event.priceRanges?  event.priceRanges[0].min : 1,
         max: event.priceRanges? event.priceRanges[0].max : 1000,
