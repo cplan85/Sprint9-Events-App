@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { User } from './auth/interfaces/interfaces';
 import { AuthService } from './auth/services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  @ViewChild('sidenav') sidenav!: MatSidenav;
 
 
  _user:  User ={ uid: '',
@@ -36,6 +39,11 @@ export class AppComponent implements OnInit {
 
      })
   
+  }
+
+  logOutandCloseNav() {
+    this.logout();
+    this.sidenav.toggle()
   }
 
   logout() {

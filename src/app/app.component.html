@@ -13,6 +13,37 @@
 
         <mat-nav-list>
             <a 
+            routerLink="./home/" 
+            mat-list-item
+            (click)="sidenav.toggle()">
+            <mat-icon mat-list-icon>home</mat-icon>
+                <span>Home</span>
+            </a>
+            <a 
+            routerLink="./home/" 
+            mat-list-item
+            (click)="sidenav.toggle()">
+            <mat-icon mat-list-icon>info</mat-icon>
+                <span>About</span>
+            </a>
+            <div *ngIf="_user.name; else elseMenu">
+                <a
+            (click)="logOutandCloseNav()"
+            mat-list-item>
+            <mat-icon mat-list-icon>account_circle</mat-icon>
+              LogOut
+            </a>
+        </div>
+        <ng-template #elseMenu>
+            <a 
+            routerLink="'/auth/login'"
+            (click)="sidenav.toggle()"
+            mat-list-item>
+            <mat-icon mat-list-icon>account_circle</mat-icon>
+               LogIn
+        </a>
+        </ng-template>
+            <a 
             routerLink="./dashboard/" 
             mat-list-item
             (click)="sidenav.toggle()">
@@ -86,16 +117,17 @@
               LogOut
             </button>
         </div>
+        <ng-template #elseBlock>
+            <button 
+            routerLink="'/auth/login'"
+            mat-button>
+               LogIn
+            </button>
+        
+        </ng-template>
 
         </div>
-<ng-template #elseBlock>
-    <button 
-    routerLink="'/auth/login'"
-    mat-button>
-       LogIn
-    </button>
 
-</ng-template>
 
     </mat-toolbar>
 <div class="container">

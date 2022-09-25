@@ -1,0 +1,18 @@
+<div id="dialog-add-note">
+  <h1 mat-dialog-title>Edit Note - {{data.event.name}}</h1>
+ 
+  <div mat-dialog-content>
+    <div fxLayout="column" fxLayoutAlign="space-around center" >
+    <mat-form-field  class="example-full-width">
+      <mat-label>Type your Note Here</mat-label>
+      <textarea matInput [(ngModel)]="newNote" type="text" placeholder="{{data.event.note}}" [value]="initialNote"></textarea>
+    </mat-form-field>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-around center" >
+    <button mat-raised-button (click)="addEvent(newNote)" color="warn" mat-dialog-close>EDIT NOTE</button>
+    <button mat-stroked-button mat-dialog-close color="info" mat-dialog-close>X</button>
+    </div>
+    </div>
+  </div>
+
+</div>
