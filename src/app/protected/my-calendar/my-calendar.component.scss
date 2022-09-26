@@ -12,12 +12,13 @@ button.example-custom-date-class {
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
-height:100vh;
+height:120vh;
 
   }
 
   .calendar-card {
     width: 90%;
+    margin: 2rem;
   }
 
   .calendar-title {
@@ -36,7 +37,7 @@ height:100vh;
 }
 
 .calendar-img {
-  max-width: 90%;
+  max-width:90%;
   margin-top:1rem;
 }
 
@@ -46,8 +47,9 @@ height:100vh;
 }
 
 .side-card{
-  min-height: 60vh;
+  min-height: 50vh;
   background-color:white;
+  margin: 2rem;
 }
 
 @media (max-width: 1200px) { 
@@ -66,8 +68,22 @@ height:100vh;
     margin-bottom:2rem;
 }
 
-.full-calendar-container {
-  height:150vh;
+.calendar-card {
+  margin: 0px;
 }
+
+.side-card {
+  margin: 0px;
+}
+
+.full-calendar-container {
+  padding-bottom:2rem;
+  height:130vh;
+}
+
+.calendar-img {
+  max-height: 70px;
+}
+
 
  }

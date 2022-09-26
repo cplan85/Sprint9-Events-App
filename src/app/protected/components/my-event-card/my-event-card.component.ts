@@ -3,6 +3,7 @@ import { AppEvent } from './../../../home/interfaces/appEvents';
 import { Component, OnInit, Input, Inject} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-my-event-card',
@@ -71,17 +72,16 @@ export class MyEventCardComponent implements OnInit {
        const dialogRef = this.dialog.open(DialogEditNote, {
           data: {
             event: this.event,
-            setFalse: () => this.setToSaved(),
-            setTrue: () => this.setToSaved(true),
           },
         });
 
         dialogRef.afterClosed().subscribe(result => {
           this.addednote = true;
-         console.log(result, "my new note")
-         this.event.note = result.note;
+         console.log(result, "dialogRef Afer close note")
+         this.event.note = result.note
          this.newNote  = result.note;
-        });
+        })
+        
  
       } 
       else {
@@ -109,7 +109,7 @@ export class MyEventCardComponent implements OnInit {
       background-color:white;
     }
     #dialog-add-note {
-       background-color: #54B9A4;
+      background-color: #54B9A4;
       padding: 2rem;
       /* border-radius: 2rem 0!important; */
      
@@ -125,7 +125,7 @@ export class DialogEditNote {
 
   newNote: string ='';
   initialNote: string | undefined = this.data.event.note
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {event: AppEvent, setFalse: Function,setTrue: Function, setNote: Function}, 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {event: AppEvent}, 
   private authService: AuthService, 
   public dialogRef: MatDialogRef<DialogEditNote>
   ) {
@@ -133,6 +133,7 @@ export class DialogEditNote {
 
 
   closeDialog() {
+    console.log(this.initialNote, "initial note")
     this.dialogRef.close({note: this.initialNote});
   }
 

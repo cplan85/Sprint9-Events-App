@@ -7,7 +7,7 @@
     fxLayoutAlign="space-around start"
     fxLayoutAlign.xs="space-around center"
      fxLayoutGap="1.2rem">
-      <div fxFlex="70" fxFlex.xs="100">
+      <div fxFlex="60" fxFlex.xs="100">
         <mat-card class="calendar-card">
             <mat-calendar [(selected)]="selected" [dateClass]="dateClass" >
             </mat-calendar>
@@ -16,7 +16,7 @@
   
   
       </div>
-        <div fxFlex="30" fxFlex.xs="100">
+        <div fxFlex="40" fxFlex.xs="100">
           <mat-card class="side-card">
             <p>Selected date: {{selected | date}}</p>
             <mat-divider></mat-divider>
