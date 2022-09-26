@@ -1,25 +1,32 @@
-<h2 class="section-title calendar-title">MY EVENTS CALENDAR</h2>
-<div class="container">
-  <div class="calendar-content"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1.2rem">
-    <div fxFlex="70">
-      <mat-card class="demo-inline-calendar-card">
-          <mat-calendar [(selected)]="selected" [dateClass]="dateClass" >
-          </mat-calendar>
-      
-        </mat-card>
-      
-      
-        <p>Selected date: {{selected | date}}</p>
-    </div>
-      <div fxFlex="30">
-        <mat-card class="side-card">
-        <div *ngIf="selected && filterEvent(selected).length>0; else elseBlock">
-          <h2>{{filterEvent(selected)[0].name}} at {{filterEvent(selected)[0].startTime}}</h2>
-          <img class="calendar-img" [src]="filterEvent(selected)[0].img" alt="event-image">
-        </div>
-      </mat-card>
-        <ng-template #elseBlock>No Events on that Date</ng-template>
+<div class="full-calendar-container">
+  <h2 class="section-title calendar-title">MY EVENTS CALENDAR</h2>
+  <div class="calendar-container">
+    <div class="calendar-content"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1.2rem">
+      <div fxFlex="70">
+        <mat-card class="demo-inline-calendar-card">
+            <mat-calendar [(selected)]="selected" [dateClass]="dateClass" >
+            </mat-calendar>
+  
+          </mat-card>
+  
+  
       </div>
-
+        <div fxFlex="30">
+          <mat-card class="side-card">
+            <p>Selected date: {{selected | date}}</p>
+            <mat-divider></mat-divider>
+          <div *ngIf="selected && filterEvent(selected).length>0; else elseBlock">
+            <div  *ngFor="let event of filterEvent(selected)">
+              <img class="calendar-img" [src]="event.img" alt="event-image">
+            <h2>{{event.name}}</h2>
+            <h3 fxLayout="row" fxLayoutAlign="start center"><mat-icon class="icon-display" mat-list-icon>access_time</mat-icon> {{event.startTime | slice:0:5}}</h3>
+            <mat-card-subtitle fxLayout="row" fxLayoutAlign="start center"><mat-icon class="icon-display" mat-list-icon>location_on</mat-icon> {{event.venue && event.venue.length >22 ? (event.venue | slice:0:22)+'..':(event.venue)  }}</mat-card-subtitle>
+          </div>
+          </div>
+        </mat-card>
+          <ng-template #elseBlock>No Events on that Date</ng-template>
+        </div>
+  
+    </div>
   </div>
 </div>

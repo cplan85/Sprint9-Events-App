@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { AppEvent } from './../home/interfaces/appEvents';
 import { Feature } from './../home/interfaces/places';
@@ -11,7 +12,7 @@ import { Subject } from 'rxjs';
 })
 export class MapService {
 
-  constructor (private router: Router) {}
+  constructor (private router: Router, private authService: AuthService) {}
 
   mapEvents: AppEvent[] = [];
 
@@ -48,6 +49,37 @@ myDataSetter(data : any){
     })
   }
 
+  addEvent(event: AppEvent) {
+  
+    if(this.authService.user.email) {
+
+      let email = this.authService.user.email
+
+      let {  id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl, address, promoter, type, lat, long,
+        seatmapImg, note} = event;
+        console.log(url, "my url")
+        
+        let venueImage = venueImages && venueImages.length>0? venueImages[0].url: ''
+
+        this.authService.addEvent(email, id, name, url, date, startTime, img, min, max, currency, venue, venueImage, venueUrl, address, promoter, type, lat, long,
+          seatmapImg, note)
+        .subscribe( ok => {
+          console.log(ok, "ok from add Event")
+          //this.eventsService.setAddedEvent(event)
+         // this.openSnackBar();
+          if ( ok === true ) {
+            this.router.navigateByUrl('/dashboard')
+          } else {
+            
+          }
+      })
+
+    }
+    else {
+      this.router.navigateByUrl('/auth/login')
+    }
+    }
+
 
   goToInfoPage(id: string){
     this.router.navigate(['/home/', id])
@@ -79,6 +111,10 @@ myDataSetter(data : any){
 
     infoBtn.addEventListener('click', (e) => {
       this.goToInfoPage(event.id)
+    });
+
+    addEventBtn.addEventListener('click', (e) => {
+      this.addEvent(event);
     });
 
     divElement.innerHTML = innerHtmlContent;

@@ -30,3 +30,11 @@ button {
     max-width:1200px;
     margin:auto;
 }
+
+@media (max-width: 595px) { 
+
+    .center-column, .right-column {
+      margin: 2rem;
+  }
+  
+   }
