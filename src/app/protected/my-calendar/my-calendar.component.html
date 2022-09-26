@@ -1,9 +1,14 @@
 <div class="full-calendar-container">
   <h2 class="section-title calendar-title">MY EVENTS CALENDAR</h2>
   <div class="calendar-container">
-    <div class="calendar-content"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1.2rem">
-      <div fxFlex="70">
-        <mat-card class="demo-inline-calendar-card">
+    <div class="calendar-content"  
+    fxLayout="row"
+    fxLayout.xs="column" 
+    fxLayoutAlign="space-around start"
+    fxLayoutAlign.xs="space-around center"
+     fxLayoutGap="1.2rem">
+      <div fxFlex="70" fxFlex.xs="100">
+        <mat-card class="calendar-card">
             <mat-calendar [(selected)]="selected" [dateClass]="dateClass" >
             </mat-calendar>
   
@@ -11,7 +16,7 @@
   
   
       </div>
-        <div fxFlex="30">
+        <div fxFlex="30" fxFlex.xs="100">
           <mat-card class="side-card">
             <p>Selected date: {{selected | date}}</p>
             <mat-divider></mat-divider>

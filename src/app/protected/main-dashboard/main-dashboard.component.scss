@@ -33,6 +33,20 @@ mat-card {
     
 }
 
+@media (max-width: 960px) {
+    
+
+   #profile-card {
+        width: 550px;
+    }
+
+    .profile-img {
+        max-width: 50%;
+        margin:auto;
+    }
+
+ }
+
 @media (max-width: 599px) {
     
     .left {
