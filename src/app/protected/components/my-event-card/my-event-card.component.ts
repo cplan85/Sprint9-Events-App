@@ -16,6 +16,7 @@ export class MyEventCardComponent implements OnInit {
 
   @Input() event!: AppEvent;
 
+
   constructor(private authService: AuthService,
     public dialog: MatDialog) { }
 
@@ -28,10 +29,7 @@ export class MyEventCardComponent implements OnInit {
     console.log(note, 'from executed edit')
   }
 
-  setNote(note: string) {
-    this.newNote = note;
-    console.log(note)
-  }
+
 
   deleteEvent() {
   
@@ -79,8 +77,9 @@ export class MyEventCardComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-         console.log(result.note, "hodhfo")
-         this.addednote = true;
+          this.addednote = true;
+         console.log(result, "my new note")
+         this.event.note = result.note;
          this.newNote  = result.note;
         });
  
@@ -133,6 +132,11 @@ export class DialogEditNote {
   }
 
 
+  closeDialog() {
+    this.dialogRef.close({note: this.initialNote});
+  }
+
+
   editEvent() {
   
     if(this.authService.user.email) {
@@ -143,11 +147,9 @@ export class DialogEditNote {
 
         this.newNote? note = this.newNote: null;
 
-  
-        console.log('note should be good here', note)
-
         this.authService.editEvent(email, id, note)
         .subscribe( ok => {
+          this.initialNote = this.newNote;
           this.dialogRef.close({note: this.newNote});
           if ( ok === true ) {
             //this.router.navigateByUrl('/dashboard')

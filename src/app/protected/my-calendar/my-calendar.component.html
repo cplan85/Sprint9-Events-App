@@ -1,13 +1,25 @@
 <h2 class="section-title calendar-title">MY EVENTS CALENDAR</h2>
 <div class="container">
-  <div class="calendar-content">
-    <mat-card class="demo-inline-calendar-card">
-        <mat-calendar [(selected)]="selected" [dateClass]="dateClass" >
-        </mat-calendar>
-    
+  <div class="calendar-content"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1.2rem">
+    <div fxFlex="70">
+      <mat-card class="demo-inline-calendar-card">
+          <mat-calendar [(selected)]="selected" [dateClass]="dateClass" >
+          </mat-calendar>
+      
+        </mat-card>
+      
+      
+        <p>Selected date: {{selected | date}}</p>
+    </div>
+      <div fxFlex="30">
+        <mat-card class="side-card">
+        <div *ngIf="selected && filterEvent(selected).length>0; else elseBlock">
+          <h2>{{filterEvent(selected)[0].name}} at {{filterEvent(selected)[0].startTime}}</h2>
+          <img class="calendar-img" [src]="filterEvent(selected)[0].img" alt="event-image">
+        </div>
       </mat-card>
-    
-    
-      <p>Selected date: {{selected}}</p>
+        <ng-template #elseBlock>No Events on that Date</ng-template>
+      </div>
+
   </div>
 </div>

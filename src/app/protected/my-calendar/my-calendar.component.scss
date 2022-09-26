@@ -13,6 +13,24 @@ button.example-custom-date-class {
 }
 
 .calendar-content {
-  width: 80%;
+  max-width:1200px;
   margin: auto;
+
 }
+
+.calendar-img {
+  max-width: 90%;
+}
+
+.side-card{
+  min-height: 60vh;
+  background-color:white;
+}
+
+@media (max-width: 1200px) { 
+
+  .calendar-content {
+    margin: 2rem;
+}
+
+ }
