@@ -16,21 +16,21 @@
             routerLink="./home/" 
             mat-list-item
             (click)="sidenav.toggle()">
-            <mat-icon mat-list-icon>home</mat-icon>
+            <mat-icon mat-list-icon class="sidenav-icon">home</mat-icon>
                 <span>Home</span>
             </a>
             <a 
             routerLink="./home/" 
             mat-list-item
             (click)="sidenav.toggle()">
-            <mat-icon mat-list-icon>info</mat-icon>
+            <mat-icon mat-list-icon class="sidenav-icon">info</mat-icon>
                 <span>About</span>
             </a>
             <div *ngIf="_user.name; else elseMenu">
                 <a
             (click)="logOutandCloseNav()"
             mat-list-item>
-            <mat-icon mat-list-icon>account_circle</mat-icon>
+            <mat-icon mat-list-icon class="sidenav-icon">account_circle</mat-icon>
               LogOut
             </a>
         </div>
@@ -39,7 +39,7 @@
             routerLink="'/auth/login'"
             (click)="sidenav.toggle()"
             mat-list-item>
-            <mat-icon mat-list-icon>account_circle</mat-icon>
+            <mat-icon mat-list-icon class="sidenav-icon">account_circle</mat-icon>
                LogIn
         </a>
         </ng-template>
@@ -47,22 +47,22 @@
             routerLink="./dashboard/" 
             mat-list-item
             (click)="sidenav.toggle()">
-            <mat-icon mat-list-icon>dashboard</mat-icon>
+            <mat-icon mat-list-icon class="sidenav-icon">dashboard</mat-icon>
                 <span>Main Dashboard</span>
             </a>
             <a 
             routerLink="./dashboard/my-events" 
             mat-list-item
             (click)="sidenav.toggle()">
-            <mat-icon mat-list-icon>label</mat-icon>
-                <span [matBadge]="_user.events?.length" matBadgeColor="warn" matBadgeOverlap="false" [matBadgeHidden]="!_user.name">My Events</span>
+            <mat-icon mat-list-icon class="sidenav-icon">label</mat-icon>
+                <span [matBadge]="_user && _user.events? _user.events.length + counter : 0" matBadgeColor="warn" matBadgeOverlap="false" [matBadgeHidden]="!_user.name">My Events</span>
             </a>
 
             <a 
             routerLink="./dashboard/my-maps" 
             mat-list-item
             (click)="sidenav.toggle()">
-            <mat-icon mat-list-icon>map</mat-icon>
+            <mat-icon mat-list-icon class="sidenav-icon">map</mat-icon>
                 <span [matBadge]="_user.maps?.length" matBadgeColor="warn" matBadgeOverlap="false" [matBadgeHidden]="!_user.name">My Maps</span>
             </a>
 
@@ -70,7 +70,7 @@
             routerLink="./dashboard/my-calendar" 
             mat-list-item
             (click)="sidenav.toggle()">
-            <mat-icon mat-list-icon>calendar_today</mat-icon>
+            <mat-icon mat-list-icon class="sidenav-icon">calendar_today</mat-icon>
                 <span>My Calendar</span>
             </a>
 
@@ -78,7 +78,7 @@
             routerLink="./find" 
             mat-list-item
             (click)="sidenav.toggle()">
-            <mat-icon mat-list-icon>search</mat-icon>
+            <mat-icon mat-list-icon class="sidenav-icon">search</mat-icon>
                 <span>Search Events</span>
             </a>
 

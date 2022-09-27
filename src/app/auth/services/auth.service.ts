@@ -25,11 +25,21 @@ myDataSetter(data = false){
  myEventsSubject : Subject<any> = new Subject<any>();
  myEventsData : any ;
  
- MyEventsDataSetter(data : any){
+ deletedEventsDataSetter(data : any){
   this.myEventsData = data;
   this.myEventsSubject.next(this.myEventsData);
  }
  //END OF DETECT CHANGE IN MY EVENTS
+
+  //DETECT WHEN EVENT ADDED
+  addedEventSubject : Subject<any> = new Subject<any>();
+  addedEventData : any ;
+  
+  addedEventsDataSetter(data : any){
+   this.addedEventData = data;
+   this.addedEventSubject.next(this.addedEventData);
+  }
+  //END OF DETECT WHEN EVENT ADDED
 
   private baseUrl: string = environment.baseUrl;
   public _user:  User ={ uid: '',
@@ -154,18 +164,13 @@ newUser: User = {
     const body = {email, id, name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl,
     address, promoter, type, lat, long, seatmapImg, note};
 
-    // console.log(email , " - email", id, " - id", name, url, date, startTime, img, min, max, currency, venue, venueImages, venueUrl,
-    //   address, promoter, type, lat, long, seatmapImg, note)
-    
-    
-
     return  this.http.post<AuthResponse>(apiUrl, body)
     .pipe(
       tap( resp => {
         console.log(resp, '<== respons from auth service - Create Event')
-
+        this.addedEventsDataSetter('add');
         if (resp.ok) {
-          console.log("event successfully added")
+          console.log("event successfully added");
          }
       }),
       map( resp => resp.ok),
@@ -206,7 +211,7 @@ newUser: User = {
     .pipe(
       tap( resp => {
         console.log(resp, '<== respons from auth service - Delete Event')
-        this.MyEventsDataSetter(id);
+        this.deletedEventsDataSetter(id);
         if (resp.ok) {
           console.log("Event successfully deleted")
          }
