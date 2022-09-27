@@ -111,3 +111,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 42px !important;
   font-family: "Aemstel", Arial, Helvetica, sans-serif !important;
 }
+
+@media (max-width: 600px) { 
+
+  .wrap-login100 {
+    width: 90%;
+}
+
+.container-login100 {
+  width: auto;
+}
+
+}
