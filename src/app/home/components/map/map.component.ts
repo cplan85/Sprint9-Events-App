@@ -12,7 +12,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import * as mapboxgl from 'mapbox-gl';
 import { LngLatBounds } from 'mapbox-gl';
 import * as L from 'leaflet';
-//import "@bewithjonam/mapboxgl-spiderifier";
 
 
 interface MarkerColor {
@@ -277,7 +276,6 @@ export class MapComponent implements AfterViewInit, OnInit {
               }) 
               // MAKE SURE TO ADD CONDITIONS FOR OTHER MARKERS BESIDES SPORTS AND MUSIC
       
-        
         })
        })
    

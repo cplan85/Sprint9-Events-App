@@ -87,9 +87,6 @@ newUser: User = {
             uid: resp.uid!,
             email: resp.email!,
           }
-
-
-
           this.myDataSetter(true);
          }
       }),
@@ -223,7 +220,6 @@ newUser: User = {
 
 
   logout() {
-    console.log('im logged out')
     localStorage.clear();
     this.myDataSetter(false);
     this._user = { uid: '',
