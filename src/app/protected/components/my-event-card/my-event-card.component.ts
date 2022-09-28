@@ -13,9 +13,10 @@ import { delay } from 'rxjs';
 export class MyEventCardComponent implements OnInit {
 
   addednote: boolean = false;
-  newNote: string ='';
 
   @Input() event!: AppEvent;
+
+  newNote: string | undefined ='';
 
 
   constructor(private authService: AuthService,
@@ -123,13 +124,14 @@ export class MyEventCardComponent implements OnInit {
 })
 export class DialogEditNote {
 
-  newNote: string ='';
+  newNote = this.data.event.note;
   initialNote: string | undefined = this.data.event.note
   constructor(@Inject(MAT_DIALOG_DATA) public data: {event: AppEvent}, 
   private authService: AuthService, 
   public dialogRef: MatDialogRef<DialogEditNote>
   ) {
   }
+
 
 
   closeDialog() {

@@ -5,7 +5,7 @@
     <div fxLayout="column" fxLayoutAlign="space-around center" >
     <mat-form-field  class="example-full-width">
       <mat-label>Type your Note Here</mat-label>
-      <textarea matInput [(ngModel)]="newNote" type="text" placeholder="{{data.event.note}}" [value]="initialNote"></textarea>
+      <textarea matInput [(ngModel)]="newNote" type="text" (ngModelChange)="newNote = $event" placeholder="{{data.event.note}}"  [value]="initialNote"></textarea>
     </mat-form-field>
     <br>
     <div fxLayout="row" fxLayoutAlign="space-around center" >
