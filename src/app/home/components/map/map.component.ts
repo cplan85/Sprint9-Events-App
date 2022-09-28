@@ -325,7 +325,20 @@ const popup = new mapboxgl.Popup()
   
   })
 
-  
+  map.on('dragend', () => {
+
+    if (map.getZoom() > 12.6) {
+
+      this.eventsService.getLocalEvents([map.getCenter().lng, map.getCenter().lat], 40).subscribe(resp => {
+        console.log(resp, "full Response")
+        this.eventsService.setNext(resp._links.next.href)
+    
+        this.addEventMarkers(resp._embedded.events, map);
+      })
+    }
+    
+    });
+
 
   //map.addLayer(this.markersCluster);
   }

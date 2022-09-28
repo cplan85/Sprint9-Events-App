@@ -47,7 +47,7 @@ counter: number = 0;
 
 
     
-    this.authService.validateToken().subscribe(data => {console.log('Is token Valid? ==>',data)
+    this.authService.validateToken().subscribe(data => {
   
     if(data) {this._user = this.authService.user }
     else {this._user = { uid: '',
