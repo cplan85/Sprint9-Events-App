@@ -63,9 +63,10 @@ export class MapComponent implements AfterViewInit, OnInit {
     }
 
     
-    
+    count: number = 0;
 
     addEventMarkers(events: Event[], map: mapboxgl.Map) {
+      
       
 
       events.forEach((event, idx) => {
@@ -90,9 +91,11 @@ export class MapComponent implements AfterViewInit, OnInit {
           lat: parseFloat(event._embedded.venues[0].location.latitude),
           long: parseFloat(event._embedded.venues[0].location.longitude)
         })
+        this.count +=1;
+        let newIdx = this.count;
         this.mapService.mapEvents = this.mapEvents;
   
-        console.log(event.classifications[0].segment.name);
+        //console.log(event.classifications[0].segment.name);
 
         const innerHtmlContent = `<h6>${event.name}</h6>
         <span>${event.dates.start.localDate}</span>
@@ -113,11 +116,10 @@ export class MapComponent implements AfterViewInit, OnInit {
         divElement.appendChild(addEventBtn);
         // btn.className = 'btn';
         addEventBtn.addEventListener('click', (e) => {
-          console.log(this.mapEvents[idx])
-          this.addEvent(this.mapEvents[idx])
+          this.addEvent(this.mapEvents[newIdx-1])
         });
         infoBtn.addEventListener('click', (e) => {
-          this.goToInfoPage(this.mapEvents[idx].id)
+          this.goToInfoPage(event.id)
         });
   
         const eventPopup = new mapboxgl.Popup()
