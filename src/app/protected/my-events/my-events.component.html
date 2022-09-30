@@ -1,6 +1,16 @@
 
-<div class="section-container">
+<div class="section-container" [ngStyle]="{ 'background-image': myEvents.length === 0 ? 'none' : '../../../assets/MyEvents-Background3.svg' }">
     <h2 class="section-title my-events-title">MY EVENTS </h2>
+    
+    <div *ngIf="myEvents.length === 0; else myEventsReady" 
+fxLayout="column" fxLayoutAlign="center center"
+class="no-events-container">
+
+<img class="center-img" src="./assets/no-events.svg" alt="">
+<h2 style="color: white">NO SAVED EVENTS YET</h2>
+<button mat-flat-button color="accent">Home</button>
+</div>
+<ng-template #myEventsReady>
     <div class="container">
         <div fxLayout="row wrap"
         fxLayout.xs="column"
@@ -17,4 +27,5 @@
             </div>
         </div>
     </div>
+</ng-template>
 </div>

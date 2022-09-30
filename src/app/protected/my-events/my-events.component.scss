@@ -5,6 +5,17 @@
 
 }
 
+.no-events-container{
+    height:80vh;
+    width: 100%;
+    text-align:center;
+}
+
+.center-img {
+    max-width:35%;
+}
+
+
 .my-events-title {
     text-align:center;
    padding-top:4rem;
@@ -14,6 +25,7 @@
 
 min-height: 100vh;
     background-image: url('../../../assets/MyEvents-Background3.svg');
+    background-color: #54B9A4;
     -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;

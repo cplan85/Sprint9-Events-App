@@ -33,10 +33,10 @@ export class FriendEventsComponent implements OnInit {
   total_interested: 1300,
   friends: [
     {
-    name: 'John',
-    img: './assets/man-avatar-1.svg'
+    name: 'Janet12',
+    img: './assets/woman-avatar-2.svg'
   }, {
-    name: 'Dave',
+    name: 'Dave2',
     img: './assets/man-avatar-2.svg'
   },
   {
@@ -65,9 +65,9 @@ friends: [
 ]
 },
 
-{name: 'Cassia',
-img: "https://s1.ticketm.net/dam/a/60c/783fab2e-55a0-421d-91f0-d378b4fca60c_1632431_RETINA_LANDSCAPE_16_9.jpg",
-date: '2022-10-01',
+{name: 'Sam Ryder',
+img: "https://s1.ticketm.net/dam/a/9c8/d1b0f31a-274a-41ba-829c-77b46c0ba9c8_1686901_RETINA_PORTRAIT_16_9.jpg",
+date: '2022-11-08',
 total_interested: 8200,
 friends: [{
   name: 'John',
@@ -78,7 +78,7 @@ friends: [{
 },
 {
   name: 'Jane',
-  img: './assets/woman-avatar-1.svg'
+  img: './assets/woman-avatar-3.svg'
 }],
 }
 
@@ -113,7 +113,7 @@ friends: [{
           },
         },
         '(min-width: 1200px)': {
-          loop: false,
+          loop: true,
           slides: {
             perView: 3,
             spacing: 10,
