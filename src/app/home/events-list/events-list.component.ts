@@ -19,7 +19,7 @@ export class EventsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.placesService.getLocationName().subscribe(resp => {
-      console.log(resp.features[0])
+      console.log( "My location from Get Location on Startup ==>",resp.features[0])
       this.currentCity=resp.features[0].context[3].text;
      })
 

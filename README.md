@@ -99,7 +99,7 @@ Upon starting the client server, The app will attempt to retrieve the user locat
 ### Map Functionality:
 Below is the map section whereby a map will be loaded with the center point being the user's location. On initialization 40 events are loaded on the map and each user can click on the markers to retrieve additional information or they may save the event if they are logged in.
 
-## ![map demo](src/assets/Map-demo.gif)
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

@@ -1,6 +1,6 @@
 <mat-card >
     <img mat-card-image [src]="featuredEvent.img">
-        <mat-card-title>{{featuredEvent.name}}</mat-card-title>  
+        <mat-card-title>{{featuredEvent.name.length >54 ? (featuredEvent.name | slice:0:54)+'..':(featuredEvent.name) }}</mat-card-title>  
         <mat-card-subtitle fxLayout="row" fxLayoutAlign="start center"><mat-icon mat-list-icon>location_on</mat-icon> {{featuredEvent.venue && featuredEvent.venue.length >22 ? (featuredEvent.venue | slice:0:22)+'..':(featuredEvent.venue)  }}</mat-card-subtitle>
  
     <mat-card-content>
