@@ -2,6 +2,8 @@
 
 This App mainly utilizes [Ticketmaster's Discovery API](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/), [MapBox Geocoding Places API](https://docs.mapbox.com/api/search/geocoding/), and [Mapbox's GL JS library](https://docs.mapbox.com/#maps) to allow users to retrieve local events, and then search for events around the world. The Back-end developed in Node and Express with MongoDB as the database allows users to employ CRUD operations on three collections of Users, Events, and Maps.
 
+### [Deployed Link](https://event-zorro.herokuapp.com/)
+<br>
 
 ## **Preview**
 ## ![preview gif](src/assets/EZorro-preview.gif)
