@@ -111,6 +111,15 @@ export class SavedEventSnackComponent {
     button {
       margin-right: 2rem;
     }
+
+    @media (max-width: 599px) {
+
+.dialog-close-button {
+  margin-top:1rem;
+  width: 80%;
+}
+
+}
   `,
   ],
 

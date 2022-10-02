@@ -32,4 +32,21 @@ mat-form-field {
     margin: 2rem;
 }
  }
+
+
+ @media (max-width: 960px) {
+
+    mat-form-field {
+        min-width: 80%;
+        max-height:10%;
+    }
+ }
+
+ @media (max-width: 750px) {
+
+    mat-form-field {
+        min-width: 100%;
+        max-height:10%;
+    }
+ }
  

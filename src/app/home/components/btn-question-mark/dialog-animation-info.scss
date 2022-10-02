@@ -9,3 +9,34 @@
 .info-text {
     max-width:75%;
 }
+
+#style-2::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5DF56;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #80CBC4;
+}
+
+
+@media (max-width: 450px) {
+
+    .dialog-container {
+        padding:1rem;
+    }
+
+    .info-text {
+        max-width:50%;
+    }
+    
+ }

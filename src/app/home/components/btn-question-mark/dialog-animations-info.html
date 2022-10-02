@@ -4,63 +4,65 @@
         <button mat-button mat-dialog-close>X</button>
     </div>
     <br>
-    <div fxLayout="row" fxLayoutAlign="space-between center" >
-        <div class="info-text">Click any location pin on the map to display more information about that event.</div>
-        <img class="icon" src="./../../../../assets/music-marker.svg" alt="">
-    </div>
-    <br>
-    <div fxLayout="row" fxLayoutAlign="space-between center" >
-        <div class="info-text"><b>TOP RIGHT:</b> Click on the my location button located to return to your original location.</div>
-        <button 
-        mat-mini-fab color="accent" 
-        aria-label="Example icon button with a bookmark icon"
-        >
-            <mat-icon>my_location</mat-icon>
-          </button>
-    </div>
-    <br>
-    <div fxLayout="row" fxLayoutAlign="space-between center" >
-        <div class="info-text"><b>RIGHT:</b> Use the filter/key button to toggle what type of events are visibile on the map, or to view the map key.</div>
-        <button
-        mat-mini-fab color="accent" 
-        aria-label="Example icon button with a bookmark icon"
-        matBadgeColor="warn"
-        >
-            <mat-icon>filter_list</mat-icon>
-          </button>
-    </div>
-    <br>
-    <div fxLayout="row" fxLayoutAlign="space-between center" >
-        <div class="info-text"><b>BOTTOM RIGHT:</b> Use the load more button to display more events in the map.</div>
-        <button 
-        id="load-more"
-        mat-mini-fab color="accent"
-        >
-            <mat-icon>add_location</mat-icon>
-          </button>
+    <mat-dialog-content id="style-2">
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+            <div class="info-text">Click any location pin on the map to display more information about that event.</div>
+            <img class="icon" src="./../../../../assets/music-marker.svg" alt="">
+        </div>
+        <br>
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+            <div class="info-text"><b>TOP RIGHT:</b> Click on the my location button located to return to your original location.</div>
+            <button
+            mat-mini-fab color="accent"
+            aria-label="Example icon button with a bookmark icon"
+            >
+                <mat-icon>my_location</mat-icon>
+              </button>
+        </div>
+        <br>
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+            <div class="info-text"><b>RIGHT:</b> Use the filter/key button to toggle what type of events are visibile on the map, or to view the map key.</div>
+            <button
+            mat-mini-fab color="accent"
+            aria-label="Example icon button with a bookmark icon"
+            matBadgeColor="warn"
+            >
+                <mat-icon>filter_list</mat-icon>
+              </button>
+        </div>
+        <br>
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+            <div class="info-text"><b>BOTTOM RIGHT:</b> Use the load more button to display more events in the map.</div>
+            <button
+            id="load-more"
+            mat-mini-fab color="accent"
+            >
+                <mat-icon>add_location</mat-icon>
+              </button>
         
-    </div>
-    <br>
-    <div fxLayout="row" fxLayoutAlign="space-between center" >
-        <div class="info-text"><b>TOP LEFT:</b> Use the search button to search for any city or address in the world.</div>
-        <button 
-        id="load-more"
-        mat-mini-fab color="accent"
-        >
-            <mat-icon>search</mat-icon>
-          </button>
-    </div>
-    <br>
-    <div fxLayout="row" fxLayoutAlign="space-between center" >
-        <div class="info-text"><b>LEFT:</b>Use the events button to see a drop down list of events. Upon clicking on an event, the map will zoom to that location. The pink badge indicates the number of events displayed in the map</div>
-        <button
-        mat-mini-fab color="accent" 
-        aria-label="events button"
-        [matBadge]="10"
-        matBadgeColor="warn"
-        >
-            <mat-icon>event_note</mat-icon>
-          </button>
-    </div>
+        </div>
+        <br>
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+            <div class="info-text"><b>TOP LEFT:</b> Use the search button to search for any city or address in the world.</div>
+            <button
+            id="load-more"
+            mat-mini-fab color="accent"
+            >
+                <mat-icon>search</mat-icon>
+              </button>
+        </div>
+        <br>
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+            <div class="info-text"><b>LEFT:</b>Use the events button to see a drop down list of events. Upon clicking on an event, the map will zoom to that location. The pink badge indicates the number of events displayed in the map</div>
+            <button
+            mat-mini-fab color="accent"
+            aria-label="events button"
+            [matBadge]="10"
+            matBadgeColor="warn"
+            >
+                <mat-icon>event_note</mat-icon>
+              </button>
+        </div>
+    </mat-dialog-content>
 </div>
 

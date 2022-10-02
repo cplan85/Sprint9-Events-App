@@ -9,9 +9,9 @@
       <textarea matInput [(ngModel)]="newNote" placeholder="Ex. I'm really excited about this band..."></textarea>
     </mat-form-field>
     <br>
-    <div fxLayout="row" fxLayoutAlign="space-around center" >
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutAlign.xs="space-between center" >
     <button mat-raised-button (click)="addEvent(newNote)" color="warn" mat-dialog-close>SAVE TO MY EVENTS</button>
-    <button mat-raised-button mat-dialog-close color="accent" mat-dialog-close>X</button>
+    <button mat-raised-button mat-dialog-close color="accent" mat-dialog-close class="dialog-close-button">X</button>
     </div>
     </div>
   </div>
