@@ -11,7 +11,7 @@ matBadgeColor="warn"
   <ng-template #elseBlock>
     <div class="checkboxes-container">
      <div class="close-button-container"
-     fxLayout="row" fxLayoutAlign="space-between center"
+     fxLayout="row" fxLayoutAlign="space-between center" 
      >
      <p>Filter/Key</p>
        <button
@@ -19,15 +19,20 @@ matBadgeColor="warn"
        (click)="toggleCheckboxes()">X</button>
      </div>
    
-     <section class="example-section">
-        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center"><img class="icon" src="./../../../../assets/music-marker.svg" alt="">Music <mat-checkbox color="primary" (click)="toggleCategory('music-marker', music)" class="example-margin" [(ngModel)]="music"></mat-checkbox></div>
-        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center"><img class="icon" src="./../../../../assets/sports-marker.svg" alt="">Sports <mat-checkbox color="primary" (click)="toggleCategory('sports-marker', sports)"  class="example-margin" [(ngModel)]="sports"></mat-checkbox></div>
-        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center"><img class="icon" src="./../../../../assets/arts-marker.svg" alt="">Theatre <mat-checkbox color="primary" (click)="toggleCategory('arts-marker', arts)" class="example-margin" [(ngModel)]="arts"></mat-checkbox></div>
+     <section class="example-section" fxLayout="row" fxLayout.xs="column">
+        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutAlign.xs="space-between center"><img class="icon" src="./../../../../assets/music-marker.svg" alt="">Music <mat-checkbox color="primary" (click)="toggleCategory('music-marker', music)" class="example-margin" [(ngModel)]="music"></mat-checkbox></div>
+        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center"
+        fxLayoutAlign.xs="space-between center"><img class="icon" src="./../../../../assets/sports-marker.svg" alt="">Sports <mat-checkbox color="primary" (click)="toggleCategory('sports-marker', sports)"  class="example-margin" [(ngModel)]="sports"></mat-checkbox></div>
+        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center"
+        fxLayoutAlign.xs="space-between center"><img class="icon" src="./../../../../assets/arts-marker.svg" alt="">Theatre <mat-checkbox color="primary" (click)="toggleCategory('arts-marker', arts)" class="example-margin" [(ngModel)]="arts"></mat-checkbox></div>
       </section>
-      <section class="example-section">
-        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center"><img class="icon" src="./../../../../assets/family-marker.svg" alt="">Family <mat-checkbox color="primary" class="example-margin" [(ngModel)]="family"></mat-checkbox></div>
-        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center"><img class="icon" src="./../../../../assets/film-marker.svg" alt="">Film <mat-checkbox color="primary" class="example-margin" [(ngModel)]="film"></mat-checkbox></div>
-        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center">
+      <section class="example-section" fxLayout="row" fxLayout.xs="column">
+        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center"
+        fxLayoutAlign.xs="space-between center"><img class="icon" src="./../../../../assets/family-marker.svg" alt="">Family <mat-checkbox color="primary" class="example-margin" [(ngModel)]="family"></mat-checkbox></div>
+        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center"
+        fxLayoutAlign.xs="space-between center"><img class="icon" src="./../../../../assets/film-marker.svg" alt="">Film <mat-checkbox color="primary" class="example-margin" [(ngModel)]="film"></mat-checkbox></div>
+        <div class="category-row" fxLayout="row" fxLayoutAlign="space-around center"
+        fxLayoutAlign.xs="space-between center">
           <img class="icon" src="./../../../../assets/misc-marker.svg" alt="">Misc. <mat-checkbox color="primary" class="example-margin"
           [(ngModel)]="misc"
           (click)="toggleCategory('misc-marker', misc)"

@@ -23,3 +23,18 @@
   h4{
     color: #DE739F;
   }
+
+  
+ @media (max-width: 599px) {
+
+  .example-viewport {
+    height: 140px;
+    width: 100%;
+  }
+
+  .scroll-item{
+    margin: .5rem;
+    height: 200px;
+    cursor: crosshair;
+  }
+}

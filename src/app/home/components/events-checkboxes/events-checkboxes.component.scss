@@ -41,3 +41,26 @@
   .category-row {
     width: 150px;
   }
+
+  @media (max-width: 599px) {
+
+    .checkboxes-container {
+        max-width:40%;
+    }
+
+    .category-row {
+      max-width: 100%;
+      height: 50px;
+    }
+    
+
+    .example-section {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      height: 65px;
+    }
+
+  
+    
+ }
