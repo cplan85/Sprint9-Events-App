@@ -101,6 +101,8 @@ Upon starting the client server, The app will attempt to retrieve the user locat
 ### Map Functionality:
 Below is the map section whereby a map will be loaded with the center point being the user's location. On initialization 40 events are loaded on the map and each user can click on the markers to retrieve additional information or they may save the event if they are logged in.
 
+There are several buttons on both the left side of map, which allow the user to retrieve more events or filter out current events on the map.
+
 
 ## Contributing
 
