@@ -106,7 +106,7 @@ export class MapComponent implements AfterViewInit, OnInit {
 
         const divElement = document.createElement('div');
         const addEventBtn = document.createElement('div');
-        addEventBtn.innerHTML = ` <button color="accent" class="mat-raised-button mat-button-base mat-warn change-location-btn add-event-btn">Add To My Events</button>`;
+        addEventBtn.innerHTML = ` <button color="accent" class="mat-raised-button mat-button-base mat-warn add-event-btn">Add To My Events</button>`;
 
         const infoBtn = document.createElement('div');
         infoBtn.innerHTML = ` <button color="accent" class="mat-stroked-button mat-button-base mat-warn change-location-btn info-btn">Read more</button><br><br>`;
@@ -117,6 +117,7 @@ export class MapComponent implements AfterViewInit, OnInit {
         // btn.className = 'btn';
         addEventBtn.addEventListener('click', (e) => {
           this.addEvent(this.mapEvents[newIdx-1])
+          console.log(this.mapEvents[newIdx-1], "why this no work")
         });
         infoBtn.addEventListener('click', (e) => {
           this.goToInfoPage(event.id)
