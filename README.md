@@ -1,6 +1,6 @@
 # Sprint 9 Events App
 
-This App mainly utilizes [Ticketmaster's Discovery API](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/), [MapBox Geocoding Places API](https://docs.mapbox.com/api/search/geocoding/), and [Mapbox's GL JS library](https://docs.mapbox.com/#maps) to allow users to retrieve local events, and then search for events around the world. The Back-end developed in Node and Express with MongoDB as the database allows users to employ CRUD operations on three collections of Users, Events, and Maps.
+This App mainly utilizes [Ticketmaster's Discovery API](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/), [MapBox Geocoding Places API](https://docs.mapbox.com/api/search/geocoding/), and [Mapbox's GL JS library](https://docs.mapbox.com/#maps) to allow users to retrieve local events, and then search for events around the world. The Back-end is developed in Node and Express with MongoDB as the database allows users to employ CRUD operations on three collections of Users, Events, and Maps. [Back-End Repo](https://github.com/cplan85/Sprint9-Backend)
 
 ### [Deployed Link](https://event-zorro.herokuapp.com/)
 <br>
@@ -48,16 +48,17 @@ Due to the breadth of the API responses from Ticketmaster's API, I learned how t
 ## Roadmap
 
 - [ ] Add Dashboard Components for saved maps.
+- [ ] Once user add events automatically create a map with all the saved events associated with that user.
 - [ ] Add additional functionality to map to save individual markers to User's saved maps.
 - [ ] Implement more helpful UI features such as modal asking a user to confirm when they either add or delete Events or Maps.
-- [ ] Implement edit feature on each Saved Event whereby the User can create a unique note about the saved event.
-- [ ] Implement working calendar feature that automatically populates User's Calendar with the dates of their saved events.
+- [X] Implement edit feature on each Saved Event whereby the User can create a unique note about the saved event.
+- [X] Implement working calendar feature that automatically populates User's Calendar with the dates of their saved events.
 - [ ] Implement advanced filtering for the user's saved events based on dates, location, and event type.
 - [ ] Add ability for Users to search Users of app and add them to Friends.
 - [ ] Create a "friends" key for each User to store individaul User's friends and show if Friend is interested in the same events.
 - [ ] Add dashboard feature to put User's interests so that suggested Events based on User's preferences appear.
 - [ ] Add "components" document to easily copy & paste sections of the readme.
-- [ ] Additional styling to featured and my events cards.
+- [ ] Additional styling to Featured and My Events cards.
 - [ ] Refactor the code.
 
 
