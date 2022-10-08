@@ -100,9 +100,17 @@ Upon starting the client server, The app will attempt to retrieve the user locat
 ## ![Featured demo](src/assets/Featured-demo.gif)
 
 ### Map Functionality:
-Below is the map section whereby a map will be loaded with the center point being the user's location. On initialization 40 events are loaded on the map and each user can click on the markers to retrieve additional information or they may save the event if they are logged in.
+Below is the map section whereby a map will be loaded with the center point being the user's location. On initialization 40 events are loaded on the map and each user can click on the markers to retrieve additional information or they may save the event to their "My Events" section if they are logged in.
 
-There are several buttons on both the left side of map, which allow the user to retrieve more events or filter out current events on the map.
+On the top right are the return to center, help, and filter buttons. If a user clicks on the return to center button the map will automatically scroll and zoom to the user's location. The help button opens up a dialog, which describes the map's functions, and the filter buttons allows the user to filter events from 6 events categories.
+
+## ![Featured demo](src/assets/map-functions1.gif)
+
+On the bottom right, is a load more function that will load more events on the map. This can be applied when the map zoom is far away. Yet when a user is zoomed in sufficiently on the map, every time the user scrolls, 40 more events load onto the map automatically.
+
+On the left are the search places and events panel buttons. In the search button the user is able to type in any location in the world, and the map will find 5 matching locations matching the query, and the map will zoom out to show the 5 search markers matching the query. If the user selects one of the markers, he or she is then able to load events from that location, which will set the Events count to restart from that location.
+
+In the Events panel, the user is able to click on a drop-down of all the events loaded on the map. When a user clicks on a event, the map zooms and pans to that particular event, and the user is then able to read more information about that event or add to their own Events.
 
 
 ## Contributing
